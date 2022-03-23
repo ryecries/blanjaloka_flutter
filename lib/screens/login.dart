@@ -142,6 +142,41 @@ class _LoginState extends State<Login> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
+                            top: 8,
+                            left: 18,
+                          ),
+                          child: Align(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              "Confirm Password",
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),),
+                          ),
+                        ),
+                        Container(
+                            margin: EdgeInsets.symmetric(horizontal: 16,vertical: 4),
+                            padding: EdgeInsets.symmetric(horizontal: 12,vertical: 2),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: Colors.grey,width: 1)
+                            ),
+                            child: Container(
+                              width: double.infinity,
+                              height: 40,
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: TextField(
+                                  obscureText: true,
+                                  decoration: new InputDecoration.collapsed(
+                                      hintText: 'Re-Enter Password'
+                                  ),
+                                ),
+                              ),
+                            )
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
                             top: 36,
                           ),
                           child: ElevatedButton(
