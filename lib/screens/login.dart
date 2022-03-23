@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -12,13 +13,13 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
+        // leading: IconButton(
+        //   icon: Icon(Icons.arrow_back, color: Colors.black),
+        //   onPressed: () => Navigator.of(context).pop(),
+        // ),
         backgroundColor: Colors.white,
         elevation: 0.5,
-        title: Text("Daftar",style: TextStyle(color: Colors.black),),
+        title: Text("Pendaftaran Toko Blanjaloka",style: TextStyle(color: Colors.black),),
       ),
       body: SafeArea(
         child: Container(
@@ -66,6 +67,40 @@ class _LoginState extends State<Login> {
                                 child: TextField(
                                   decoration: new InputDecoration.collapsed(
                                       hintText: 'Nama'
+                                  ),
+                                ),
+                              ),
+                            )
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            top: 8,
+                            left: 18,
+                          ),
+                          child: Align(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              "Email",
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),),
+                          ),
+                        ),
+                        Container(
+                            margin: EdgeInsets.symmetric(horizontal: 16,vertical: 4),
+                            padding: EdgeInsets.symmetric(horizontal: 12,vertical: 2),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: Colors.grey,width: 1)
+                            ),
+                            child: Container(
+                              width: double.infinity,
+                              height: 40,
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: TextField(
+                                  decoration: new InputDecoration.collapsed(
+                                      hintText: 'Email'
                                   ),
                                 ),
                               ),
@@ -175,6 +210,17 @@ class _LoginState extends State<Login> {
                               ),
                             )
                         ),
+                        Container(
+                          height: 200,
+                          child: CupertinoDatePicker(
+                            mode: CupertinoDatePickerMode.date,
+                            initialDateTime: DateTime(1969, 1, 1),
+                            onDateTimeChanged: (DateTime newDateTime) {
+                              // Do something
+                            },
+                          ),
+                        ),
+
                         Padding(
                           padding: const EdgeInsets.only(
                             top: 36,
