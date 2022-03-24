@@ -16,7 +16,7 @@ class RegisterInfoToko extends StatefulWidget {
 
 class _RegisterInfoTokoState extends State<RegisterInfoToko> {
   File? image;
-  String? _nameToko;
+  String? _namaToko;
   String? _kategoriProduk;
   String? _prov;
   String? _kota;
@@ -53,6 +53,9 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
             decoration: InputDecoration(
               hintText: 'Masukkan Nama Toko',
             ),
+            onSaved: (value){
+              _namaToko = value;
+            },
           ),
         )
       ],
@@ -253,12 +256,18 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
 
   Widget _buildLokasiToko() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          child: Text("Lokasi", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+          padding: const EdgeInsets.only(left: 8),
+          child: Text(
+            "Lokasi",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
         ),
-        Spacer(),
+        // Spacer(),
         Container(
+          padding: const EdgeInsets.only(right: 8),
           child: ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
@@ -309,18 +318,19 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 image != null
-                    ? ClipRRect(
-                        // margin:
-                        //     EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                        borderRadius: BorderRadius.circular(10.0),
-                        child: Image.file(
-                          image!,
-                          fit: BoxFit.cover,
-                          height: 80,
-                          width: 80,
-                        ))
+                    ? Padding(
+                        padding: const EdgeInsets.only(left: 5),
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: Image.file(
+                              image!,
+                              fit: BoxFit.cover,
+                              height: 80,
+                              width: 80,
+                            )),
+                      )
                     : Container(
-                        // margin: EdgeInsets.symmetric(vertical: 15),
+                        padding: const EdgeInsets.only(left: 8),
                         child: Icon(
                           Icons.add_a_photo_outlined,
                           size: 80.0,
@@ -335,7 +345,7 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
                 ),
                 Spacer(),
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: 15),
+                  padding: const EdgeInsets.only(right: 8),
                   child: ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor:
@@ -363,8 +373,9 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
                 Form(
                     child: Column(
                   key: _formKey,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  // mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    new Padding(padding: EdgeInsets.only(top: 15)),
                     _buildNameToko(),
                     _buildKategoriProduk(),
                     _buildProv(),
@@ -385,10 +396,10 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
                 );
               },
               extendedPadding:
-                  EdgeInsets.symmetric(horizontal: 90, vertical: 12),
+                  EdgeInsets.symmetric(horizontal: 120, vertical: 12),
               label: Text(
                 'SIMPAN',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 16),
               ),
               backgroundColor: bPrimaryColor,
               shape: RoundedRectangleBorder(
