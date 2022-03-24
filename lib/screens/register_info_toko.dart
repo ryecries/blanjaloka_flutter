@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:blanjaloka_flutter/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'enterpassword.dart';
@@ -53,7 +52,7 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
             decoration: InputDecoration(
               hintText: 'Masukkan Nama Toko',
             ),
-            onSaved: (value){
+            onSaved: (value) {
               _namaToko = value;
             },
           ),
@@ -256,10 +255,11 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
 
   Widget _buildLokasiToko() {
     return Row(
+      
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          padding: const EdgeInsets.only(left: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
           child: Text(
             "Lokasi",
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -267,7 +267,7 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
         ),
         // Spacer(),
         Container(
-          padding: const EdgeInsets.only(right: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
           child: ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
@@ -383,6 +383,7 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
                     _buildPasar(),
                     _buildAlamatToko(),
                     _buildPatokan(),
+                    new Padding(padding: EdgeInsets.only(top: 10)),
                     _buildLokasiToko(),
                   ],
                 ))
