@@ -1,4 +1,5 @@
 import 'package:blanjaloka_flutter/screens/login.dart';
+import 'package:blanjaloka_flutter/screens/rekening.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
@@ -15,7 +16,6 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
     ]);
     return MaterialApp(
-
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: GoogleFonts.nunitoSansTextTheme(
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             .appBarTheme
             .copyWith(systemOverlayStyle: SystemUiOverlayStyle.dark),
       ),
-      home: Login(),
+      home: rekening(),
     );
   }
 }
