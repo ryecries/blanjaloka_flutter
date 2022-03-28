@@ -4,10 +4,16 @@ import 'package:flutter/painting.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
-class ImagePedagangWidget extends StatelessWidget {
+class ImagePedagangWidget extends StatefulWidget {
   ImagePedagangWidget({Key? key, this.titleImg}) : super(key: key);
-  File? image;
   final String? titleImg;
+
+  @override
+  State<ImagePedagangWidget> createState() => _ImagePedagangWidgetState();
+}
+
+class _ImagePedagangWidgetState extends State<ImagePedagangWidget> {
+  File? image;
 
   Future getImage() async {
     final ImagePicker _picker = ImagePicker();
@@ -15,7 +21,6 @@ class ImagePedagangWidget extends StatelessWidget {
     image = File(imagePicked!.path);
     // setState(() {});
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +49,7 @@ class ImagePedagangWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 5),
           child: Text(
-            titleImg ?? "(Title)",
+            widget.titleImg ?? "(Title)",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
