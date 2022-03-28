@@ -1,7 +1,7 @@
+import 'package:blanjaloka_flutter/screens/pedagang.dart';
+import 'package:blanjaloka_flutter/screens/register_info_toko.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
-import 'enterpassword.dart';
 
 class TokoReg extends StatefulWidget {
   const TokoReg({Key? key}) : super(key: key);
@@ -11,17 +11,38 @@ class TokoReg extends StatefulWidget {
 }
 
 class _TokoRegState extends State<TokoReg> {
+  bool isChecked = false;
+
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        centerTitle: false,
         backgroundColor: Colors.white,
         elevation: 0.5,
-        title: Text("Pendaftaran Toko Blanjaloka",
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.black),),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 8),
+          child: Text("Pendaftaran Toko Blanjaloka",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black),
+          ),
+        ),
+        centerTitle: false,
+        automaticallyImplyLeading: false,
+        actions: [
+          Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('This is more menu')));},
+                child: Icon(
+                    Icons.more_vert,
+                  color: Colors.black,
+                ),
+              )
+          ),
+        ],
       ),
       body: SafeArea(
         child: Container(
@@ -71,7 +92,138 @@ class _TokoRegState extends State<TokoReg> {
                         ),
 
                         // identitas pedagang dll. isi dibawah
+                        Padding(padding: const EdgeInsets.only(
+                            left: 8,
+                        ),
+                          child: Container(
 
+                            height: 56,
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(width: 1.0, color: Colors.grey),
+                              ),
+                              color: Colors.white,
+                            ),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => Pedagang()),
+                                );
+                              },
+                              child: Row(
+                                children: [
+                                  // Checkbox(
+                                  //   checkColor: Colors.white,
+                                  //   fillColor: MaterialStateProperty.resolveWith(getColor),
+                                  //   value: isChecked,
+                                  //   shape: CircleBorder(),
+                                  //   onChanged: (bool? value) {
+                                  //     setState(() {
+                                  //       isChecked = value!;
+                                  //     });
+                                  //   },
+                                  // ),
+                                  Expanded(
+                                      flex: 10,
+                                      child: Text(
+                                        'Identitas Pedagang',
+                                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                      )),
+                                  Expanded(flex: 2, child: Icon(Icons.arrow_forward_ios)),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(padding: const EdgeInsets.only(
+                          left: 8,
+                        ),
+                          child: Container(
+
+                            height: 56,
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(width: 1.0, color: Colors.grey),
+                              ),
+                              color: Colors.white,
+                            ),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => RegisterInfoToko()),
+                                );
+                              },
+                              child: Row(
+                                children: [
+                                  // Checkbox(
+                                  //   checkColor: Colors.white,
+                                  //   fillColor: MaterialStateProperty.resolveWith(getColor),
+                                  //   value: isChecked,
+                                  //   shape: CircleBorder(),
+                                  //   onChanged: (bool? value) {
+                                  //     setState(() {
+                                  //       isChecked = value!;
+                                  //     });
+                                  //   },
+                                  // ),
+                                  Expanded(
+                                      flex: 10,
+                                      child: Text(
+                                        'Informasi Toko',
+                                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                      )),
+                                  Expanded(flex: 2, child: Icon(Icons.arrow_forward_ios)),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(padding: const EdgeInsets.only(
+                          left: 8,
+                        ),
+                          child: Container(
+
+                            height: 56,
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(width: 1.0, color: Colors.grey),
+                              ),
+                              color: Colors.white,
+                            ),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => Pedagang()),
+                                );
+                              },
+                              child: Row(
+                                children: [
+                                  // Checkbox(
+                                  //   checkColor: Colors.white,
+                                  //   fillColor: MaterialStateProperty.resolveWith(getColor),
+                                  //   value: isChecked,
+                                  //   shape: CircleBorder(),
+                                  //   onChanged: (bool? value) {
+                                  //     setState(() {
+                                  //       isChecked = value!;
+                                  //     });
+                                  //   },
+                                  // ),
+                                  Expanded(
+                                      flex: 10,
+                                      child: Text(
+                                        'Informasi Rekening',
+                                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                      )),
+                                  Expanded(flex: 2, child: Icon(Icons.arrow_forward_ios)),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -87,10 +239,10 @@ class _TokoRegState extends State<TokoReg> {
                     width: double.infinity,
                     child: ElevatedButton(
                       child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 120,vertical: 12),
-                          child: Text("Lanjut",style: TextStyle(fontSize: 20),)),
+                          padding: EdgeInsets.symmetric(horizontal: 90,vertical: 12),
+                          child: Text("Kirim Data",style: TextStyle(fontSize: 20),)),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => EnterPassword()),);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Pedagang()),);
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFF00838F),

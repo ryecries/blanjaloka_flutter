@@ -1,3 +1,4 @@
+import 'package:blanjaloka_flutter/constant.dart';
 import 'package:blanjaloka_flutter/screens/tokoregister.dart';
 import 'package:flutter/material.dart';
 
@@ -175,13 +176,13 @@ class _EnterPasswordState extends State<EnterPassword> {
                     width: double.infinity,
                     child: ElevatedButton(
                       child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 120,vertical: 12),
+                          padding: EdgeInsets.symmetric(horizontal: 90,vertical: 12),
                           child: Text("Lanjut",style: TextStyle(fontSize: 20),)),
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => TokoReg()),);
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xFF00838F),
+                        primary: bPrimaryColor,
                         onPrimary: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
