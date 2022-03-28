@@ -1,7 +1,7 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+
+import '../widget.dart';
 
 class rekening extends StatefulWidget {
   const rekening({Key? key}) : super(key: key);
@@ -14,146 +14,89 @@ class _rekeningState extends State<rekening> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-          title: Text(
-        "Informasi Rekening",
-        textAlign: TextAlign.left,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-      )),
+        backgroundColor: Colors.white,
+        elevation: 0.5,
+        title: Text(
+          "Informasi Rekening",
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+      ),
       body: SafeArea(
-          child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.white,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 20,
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.white,
           ),
-          child: Stack(
-            children: [
-              Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: 8,
-                      left: 18,
-                    ),
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        "Nama Pemilik Rekening",
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 20,
+            ),
+            child: Stack(
+              children: [
+                ListView(
+                  children: [
+                    Column(
+                      children: [
+                        ImagePedagangWidget(titleImg: "Foto Buku Rekening"),
+                        // identitas pedagang dll. isi dibawah
+                        Padding(padding: const EdgeInsets.only(top: 12)),
+                        PedagangWidget(
+                          title: "Nama Pemilik Rekening",
+                          hint: "Masukkan Nama Pemilik Rekening",
                         ),
-                      ),
+                        PedagangWidget(
+                          title: "Nomor Rekening",
+                          hint: "Masukkan Nomor Rekening",
+                        ),
+                        Pedagang2Widget(
+                          title2: "Nama Bank",
+                          hint2: "Pilih Nama Bank",
+                        ),
+                      ],
                     ),
-                  ),
-                  Container(
-                      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 12, vertical: 2),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Colors.grey, width: 1)),
+                  ],
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    margin: const EdgeInsets.only(
+                      left: 10,
+                      right: 10,
+                      bottom: 25,
+                    ),
+                    width: double.infinity,
+                    child: ElevatedButton(
                       child: Container(
-                        width: double.infinity,
-                        height: 40,
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: TextField(
-                            decoration: new InputDecoration.collapsed(
-                                hintText: "Masukkan Nama Pemilik Rekening"),
-                          ),
-                        ),
-                      )),
-                  Padding(
-                    padding: EdgeInsets.only(top: 8, left: 18),
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        "Nomor Rekening",
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 100, vertical: 12),
+                          child: Text(
+                            "Simpan",
+                            style: TextStyle(fontSize: 20),
+                          )),
+                      onPressed: () {
+                        // Navigator.push(context, MaterialPageRoute(builder: (context) => EnterPassword()),);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFF00838F),
+                        onPrimary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
                         ),
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 4,
-                    ),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 2,
-                    ),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.grey, width: 1)),
-                    child: Container(
-                      width: double.infinity,
-                      height: 40,
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: TextField(
-                          decoration: new InputDecoration.collapsed(
-                              hintText: "Masukkan Nomor Rekening"),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 8, left: 18),
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        "Nama Bank",
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 4,
-                    ),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 2,
-                    ),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.grey, width: 1)),
-                    child: Container(
-                      width: double.infinity,
-                      height: 40,
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: TextField(
-                          decoration: new InputDecoration.collapsed(
-                              hintText: "Masukkan Nama Bank"),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
-      )),
+      ),
     );
   }
 }
