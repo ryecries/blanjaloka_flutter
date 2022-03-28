@@ -82,11 +82,33 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-          child: TextFormField(
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-                hintText: 'Pilih Kategori Produk',
-                suffixIcon: Icon(Icons.keyboard_arrow_down)),
+          child: Container(
+            height: 56,
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(width: 1.0, color: Colors.grey),
+              ),
+            ),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RegisterInfoToko()),
+                );
+              },
+              child: Row(
+                children: [
+                  Expanded(
+                      flex: 10,
+                      child: Text(
+                        'Informasi Toko',
+                        style: TextStyle(
+                            fontSize: 16, color: Colors.black54),
+                      )),
+                  Expanded(flex: 2, child: Icon(Icons.keyboard_arrow_down, color: Colors.black45)),
+                ],
+              ),
+            ),
           ),
         )
       ],
@@ -255,7 +277,6 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
 
   Widget _buildLokasiToko() {
     return Row(
-      
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
@@ -267,7 +288,7 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
         ),
         // Spacer(),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
           child: ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
@@ -383,7 +404,6 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
                     _buildPasar(),
                     _buildAlamatToko(),
                     _buildPatokan(),
-                    new Padding(padding: EdgeInsets.only(top: 10)),
                     _buildLokasiToko(),
                   ],
                 ))

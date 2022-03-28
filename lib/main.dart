@@ -1,5 +1,7 @@
+import 'package:blanjaloka_flutter/screens/pedagang.dart';
 import 'package:blanjaloka_flutter/screens/register_info_toko.dart';
 import 'package:blanjaloka_flutter/screens/login.dart';
+import 'package:blanjaloka_flutter/screens/validasi_ubah_pass.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
             .appBarTheme
             .copyWith(systemOverlayStyle: SystemUiOverlayStyle.dark),
       ),
-      home: RegisterInfoToko(),
+      home: Login(),
     );
   }
 }
