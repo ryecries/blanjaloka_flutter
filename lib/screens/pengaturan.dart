@@ -321,7 +321,7 @@ class Pengaturan extends StatelessWidget {
                                 Expanded(
                                     flex: 1,
                                     child: Icon(Icons.arrow_forward_ios,
-                                        size: 14, color: Colors.black)),
+                                        size: 14, color: Colors.grey)),
                               ],
                             ),
                           ),
