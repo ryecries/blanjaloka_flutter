@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:blanjaloka_flutter/widget.dart';
 
+import 'editprofilakun.dart';
+
 class Pedagang extends StatefulWidget {
   const Pedagang({Key? key}) : super(key: key);
 
@@ -87,7 +89,7 @@ class _PedagangState extends State<Pedagang> {
                           padding: EdgeInsets.symmetric(horizontal: 100,vertical: 12),
                           child: Text("Simpan",style: TextStyle(fontSize: 20),)),
                       onPressed: () {
-                        // Navigator.push(context, MaterialPageRoute(builder: (context) => EnterPassword()),);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfil()),);
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFF00838F),
