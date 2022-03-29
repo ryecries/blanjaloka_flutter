@@ -1,3 +1,4 @@
+import 'package:blanjaloka_flutter/screens/pengaturan_lokasi_toko.dart';
 import 'package:flutter/material.dart';
 
 class Pengaturan extends StatelessWidget {
@@ -94,11 +95,11 @@ class Pengaturan extends StatelessWidget {
                             ),
                             child: InkWell(
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //       builder: (context) => Pedagang()),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => PengaturanLokasiToko()),
+                                );
                               },
                               child: Row(
                                 children: [
