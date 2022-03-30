@@ -102,10 +102,12 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
                       flex: 10,
                       child: Text(
                         'Informasi Toko',
-                        style: TextStyle(
-                            fontSize: 16, color: Colors.black54),
+                        style: TextStyle(fontSize: 16, color: Colors.black54),
                       )),
-                  Expanded(flex: 2, child: Icon(Icons.keyboard_arrow_down, color: Colors.black45)),
+                  Expanded(
+                      flex: 2,
+                      child: Icon(Icons.keyboard_arrow_down,
+                          color: Colors.black45)),
                 ],
               ),
             ),
@@ -318,118 +320,132 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 1,
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black54),
-          onPressed: () => Navigator.of(context).pop(),
+        appBar: AppBar(
+          elevation: 1,
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.black54),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Text(
+            "Informasi Toko",
+            style:
+                TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
+          ),
         ),
-        title: Text(
-          "Informasi Toko",
-          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
-        ),
-      ),
-      body: Container(
-        margin: EdgeInsets.all(20),
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+        body: Container(
+            margin: EdgeInsets.all(20),
+            width: MediaQuery.of(context).size.width,
+            child: Stack(
               children: [
-                image != null
-                    ? Padding(
+                Column(children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      image != null
+                          ? Padding(
+                              padding: const EdgeInsets.only(left: 5),
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  child: Image.file(
+                                    image!,
+                                    fit: BoxFit.cover,
+                                    height: 80,
+                                    width: 80,
+                                  )),
+                            )
+                          : Container(
+                              padding: const EdgeInsets.only(left: 8),
+                              child: Icon(
+                                Icons.add_a_photo_outlined,
+                                size: 80.0,
+                              ),
+                            ),
+                      Padding(
                         padding: const EdgeInsets.only(left: 5),
-                        child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10.0),
-                            child: Image.file(
-                              image!,
-                              fit: BoxFit.cover,
-                              height: 80,
-                              width: 80,
-                            )),
-                      )
-                    : Container(
-                        padding: const EdgeInsets.only(left: 8),
-                        child: Icon(
-                          Icons.add_a_photo_outlined,
-                          size: 80.0,
+                        child: Text(
+                          "Foto Profil Toko",
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 5),
-                  child: Text(
-                    "Foto Profil Toko",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                      Spacer(),
+                      Container(
+                        padding: const EdgeInsets.only(right: 8),
+                        child: ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(Colors.white),
+                                shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(18.0),
+                                        side:
+                                            BorderSide(color: bPrimaryColor)))),
+                            // TextButton.styleFrom(backgroundColor: bPrimaryColor),
+                            onPressed: () async {
+                              await getImage();
+                            },
+                            child: Text(
+                              "Ambil Foto",
+                              style: TextStyle(
+                                  color: bPrimaryColor,
+                                  fontWeight: FontWeight.bold),
+                            )),
+                      )
+                    ],
                   ),
-                ),
-                Spacer(),
-                Container(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      side: BorderSide(color: bPrimaryColor)))),
-                      // TextButton.styleFrom(backgroundColor: bPrimaryColor),
-                      onPressed: () async {
-                        await getImage();
+                  Expanded(
+                      child: ListView(
+                    children: [
+                      Form(
+                          child: Column(
+                        key: _formKey,
+                        // mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          new Padding(padding: EdgeInsets.only(top: 15)),
+                          _buildNameToko(),
+                          _buildKategoriProduk(),
+                          _buildProv(),
+                          _buildKota(),
+                          _buildPasar(),
+                          _buildAlamatToko(),
+                          _buildPatokan(),
+                          _buildLokasiToko(),
+                          SizedBox(height: 80)
+                        ],
+                      ))
+                    ],
+                  ))
+                ]),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    margin: const EdgeInsets.only(
+                      bottom: 20,
+                    ),
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      child: Container(
+                          padding: EdgeInsets.symmetric(vertical: 12),
+                          child: Text(
+                            "Simpan",
+                            style: TextStyle(fontSize: 20),
+                          )),
+                      onPressed: () {
+                        // Navigator.push(context, MaterialPageRoute(builder: (context) => EnterPassword()),);
                       },
-                      child: Text(
-                        "Ambil Foto",
-                        style: TextStyle(
-                            color: bPrimaryColor, fontWeight: FontWeight.bold),
-                      )),
+                      style: ElevatedButton.styleFrom(
+                        primary: bPrimaryColor,
+                        onPrimary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
+                  ),
                 )
               ],
-            ),
-            Expanded(
-                child: ListView(
-              children: [
-                Form(
-                    child: Column(
-                  key: _formKey,
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    new Padding(padding: EdgeInsets.only(top: 15)),
-                    _buildNameToko(),
-                    _buildKategoriProduk(),
-                    _buildProv(),
-                    _buildKota(),
-                    _buildPasar(),
-                    _buildAlamatToko(),
-                    _buildPatokan(),
-                    _buildLokasiToko(),
-                  ],
-                ))
-              ],
-            )),
-            FloatingActionButton.extended(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => EnterPassword()),
-                );
-              },
-              extendedPadding:
-                  EdgeInsets.symmetric(horizontal: 120, vertical: 12),
-              label: Text(
-                'SIMPAN',
-                style: TextStyle(fontSize: 16),
-              ),
-              backgroundColor: bPrimaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+            )));
   }
 }
