@@ -84,11 +84,11 @@ class _UbahPasswordState extends State<ValidasiUbahPassword> {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.only(top: 10),
                         margin: const EdgeInsets.only(
-                          left: 10,
-                          right: 10,
-                          bottom: 25,
+                          top: 10,
+                          left: 8,
+                          right: 8,
+                          bottom: 10,
                         ),
                         width: double.infinity,
                         child: ElevatedButton(
