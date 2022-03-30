@@ -1,3 +1,4 @@
+import 'package:blanjaloka_flutter/screens/reset_password.dart';
 import 'package:blanjaloka_flutter/screens/tokoregister.dart';
 import 'package:blanjaloka_flutter/screens/ubah_password.dart';
 import 'package:flutter/material.dart';
@@ -92,8 +93,7 @@ class _UbahPasswordState extends State<ValidasiUbahPassword> {
                         width: double.infinity,
                         child: ElevatedButton(
                           child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 90, vertical: 12),
+                              padding: EdgeInsets.symmetric(vertical: 12),
                               child: Text(
                                 "Lanjut",
                                 style: TextStyle(fontSize: 20),
@@ -115,9 +115,15 @@ class _UbahPasswordState extends State<ValidasiUbahPassword> {
                         ),
                       ),
                       Container(
-                        child: Text(
-                          "Lupa kata sandi?",
-                          style: TextStyle(color: Colors.lightBlue),
+                        child: TextButton(
+                          child: Text("Lupa Kata Sandi?"),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ResetPassword(),
+                                ));
+                          },
                         ),
                       )
                     ],
