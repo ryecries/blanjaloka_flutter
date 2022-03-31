@@ -1,5 +1,5 @@
 import 'package:blanjaloka_flutter/constant.dart';
-import 'package:blanjaloka_flutter/screens/tokoregister.dart';
+import 'package:blanjaloka_flutter/nav.dart';
 import 'package:flutter/material.dart';
 
 
@@ -165,7 +165,7 @@ class _LoginState extends State<Login> {
                           padding: EdgeInsets.symmetric(vertical: 12),
                           child: Text("Masuk",style: TextStyle(fontSize: 20),)),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => TokoReg()),);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Nav()),);
                       },
                       style: ElevatedButton.styleFrom(
                         primary: bPrimaryColor,
