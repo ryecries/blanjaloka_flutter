@@ -1,5 +1,6 @@
 import 'package:blanjaloka_flutter/screens/pedagang.dart';
 import 'package:blanjaloka_flutter/screens/register_info_toko.dart';
+import 'package:blanjaloka_flutter/screens/rekening.dart';
 import 'package:blanjaloka_flutter/screens/ubah_password.dart';
 import 'package:blanjaloka_flutter/screens/validasi_ubah_pass.dart';
 import 'package:flutter/material.dart';
@@ -198,7 +199,7 @@ class _TokoRegState extends State<TokoReg> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => ValidasiUbahPassword()),
+                                  MaterialPageRoute(builder: (context) => rekening()),
                                 );
                               },
                               child: Row(
