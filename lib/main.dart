@@ -16,7 +16,6 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
     ]);
     return MaterialApp(
-
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: GoogleFonts.nunitoSansTextTheme(
@@ -27,6 +26,7 @@ class MyApp extends StatelessWidget {
             .copyWith(systemOverlayStyle: SystemUiOverlayStyle.dark),
       ),
       home: RegistLogin(),
+
     );
   }
 }
