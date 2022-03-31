@@ -1,8 +1,8 @@
+import 'package:blanjaloka_flutter/nav.dart';
+import 'package:blanjaloka_flutter/screens/login.dart';
 import 'package:blanjaloka_flutter/screens/pedagang.dart';
 import 'package:blanjaloka_flutter/screens/register_info_toko.dart';
 import 'package:blanjaloka_flutter/screens/rekening.dart';
-import 'package:blanjaloka_flutter/screens/ubah_password.dart';
-import 'package:blanjaloka_flutter/screens/validasi_ubah_pass.dart';
 import 'package:flutter/material.dart';
 
 
@@ -245,7 +245,7 @@ class _TokoRegState extends State<TokoReg> {
                           padding: EdgeInsets.symmetric(horizontal: 90,vertical: 12),
                           child: Text("Kirim Data",style: TextStyle(fontSize: 20),)),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Pedagang()),);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Nav()),);
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFF00838F),
