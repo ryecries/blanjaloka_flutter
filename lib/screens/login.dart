@@ -162,7 +162,7 @@ class _LoginState extends State<Login> {
                     width: double.infinity,
                     child: ElevatedButton(
                       child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 90,vertical: 12),
+                          padding: EdgeInsets.symmetric(vertical: 12),
                           child: Text("Masuk",style: TextStyle(fontSize: 20),)),
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => TokoReg()),);
