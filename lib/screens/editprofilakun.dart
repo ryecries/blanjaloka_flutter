@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:blanjaloka_flutter/widget.dart';
 
-import 'enterpassword.dart';
-
-class RegisterAcc extends StatefulWidget {
-  const RegisterAcc({Key? key}) : super(key: key);
+class EditProfil extends StatefulWidget {
+  const EditProfil({Key? key}) : super(key: key);
 
   @override
-  _RegisterAccState createState() => _RegisterAccState();
+  _EditProfilState createState() => _EditProfilState();
 }
 
-class _RegisterAccState extends State<RegisterAcc> {
+class _EditProfilState extends State<EditProfil> {
+  TextEditingController _controller =
+  TextEditingController(text: "Sudjaya");
+
+  TextEditingController _controller2 =
+  TextEditingController(text: "081213141567");
+
+  TextEditingController _controller3 =
+  TextEditingController(text: "Citiasiainc@gmail.com");
+
+  bool _isEnable = false;
+  bool _isEnable2 = false;
+  bool _isEnable3 = false;
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
@@ -21,7 +32,7 @@ class _RegisterAccState extends State<RegisterAcc> {
         ),
         backgroundColor: Colors.white,
         elevation: 0.5,
-        title: Text("Daftar Akun",
+        title: Text("Profil Akun",
           style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.black),),
@@ -43,39 +54,9 @@ class _RegisterAccState extends State<RegisterAcc> {
                   children: [
                     Column(
                       children: [
-                        Column(
-                            children : [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  top: 4,
-                                  left: 8,
-                                ),
-                                child: Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Text(
-                                    "Daftar Akun Toko Blanjaloka",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                    ),),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 8,
-                                  bottom: 20,
-                                ),
-                                child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                        'Lengkapi data dibawah untuk mendaftar Akun Toko Blanjaloka')),
-                              ),
-                            ]
-                        ),
-
                         Padding(
                           padding: const EdgeInsets.only(
-                            top: 8,
+                            top: 12,
                             left: 8,
                           ),
                           child: Align(
@@ -85,73 +66,102 @@ class _RegisterAccState extends State<RegisterAcc> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12,
-                              ),),
-                          ),
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                          child: TextFormField(
-                            decoration: const InputDecoration(
-                              border: UnderlineInputBorder(),
-                              hintText: 'Masukkan Nama Lengkap Anda',
-                              hintStyle: TextStyle(fontSize: 14),
+                              ),
                             ),
                           ),
                         ),
                         Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: TextField(
+                                  controller: _controller,
+                                  enabled: _isEnable,
+                                ),
+                              ),
+                              TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _isEnable = true;
+                                    });
+                                  },
+                                  child: Text("Ubah",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),)),
+                            ],
+                          ),
+                        ),
+                        Padding(
                           padding: const EdgeInsets.only(
-                            top: 24,
+                            top: 12,
                             left: 8,
                           ),
                           child: Align(
                             alignment: Alignment.topLeft,
                             child: Text(
-                              "Nomor Telepon",
+                              "No Handphone",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12,
-                              ),),
-                          ),
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                          child: TextFormField(
-                            decoration: const InputDecoration(
-                              border: UnderlineInputBorder(),
-                              hintText: 'Contoh : 0812*********',
-                              hintStyle: TextStyle(fontSize: 14),
+                              ),
                             ),
                           ),
                         ),
                         Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: TextField(
+                                  controller: _controller2,
+                                  enabled: _isEnable2,
+                                ),
+                              ),
+                              TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _isEnable2 = true;
+                                    });
+                                  },
+                                  child: Text("Ubah",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),)),
+                            ],
+                          ),
+                        ),
+                        Padding(
                           padding: const EdgeInsets.only(
-                            top: 24,
+                            top: 12,
                             left: 8,
                           ),
                           child: Align(
                             alignment: Alignment.topLeft,
                             child: Text(
-                              "Alamat Email",
+                              "Email",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12,
-                              ),),
-                          ),
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                          child: TextFormField(
-                            decoration: const InputDecoration(
-                              border: UnderlineInputBorder(),
-                              hintText: 'Contoh : Emailanda@gmail.com',
-                              hintStyle: TextStyle(fontSize: 14),
+                              ),
                             ),
                           ),
                         ),
-
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: TextField(
+                                  controller: _controller3,
+                                  enabled: _isEnable3,
+                                ),
+                              ),
+                              TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _isEnable3 = true;
+                                    });
+                                  },
+                                  child: Text("Ubah",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),)),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -167,10 +177,10 @@ class _RegisterAccState extends State<RegisterAcc> {
                     width: double.infinity,
                     child: ElevatedButton(
                       child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 90,vertical: 12),
-                          child: Text("Lanjut",style: TextStyle(fontSize: 20),)),
+                          padding: EdgeInsets.symmetric(horizontal: 100,vertical: 12),
+                          child: Text("Simpan",style: TextStyle(fontSize: 20),)),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => EnterPassword()),);
+                        // Navigator.push(context, MaterialPageRoute(builder: (context) => EnterPassword()),);
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFF00838F),
