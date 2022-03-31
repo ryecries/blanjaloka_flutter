@@ -1,6 +1,8 @@
+import 'package:blanjaloka_flutter/screens/editinformasitoko.dart';
 import 'package:blanjaloka_flutter/screens/pedagang.dart';
 import 'package:blanjaloka_flutter/screens/register_info_toko.dart';
 import 'package:blanjaloka_flutter/screens/login.dart';
+import 'package:blanjaloka_flutter/screens/rekening.dart';
 import 'package:blanjaloka_flutter/screens/validasi_ubah_pass.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,7 +23,6 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
     ]);
     return MaterialApp(
-
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: GoogleFonts.nunitoSansTextTheme(
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
             .appBarTheme
             .copyWith(systemOverlayStyle: SystemUiOverlayStyle.dark),
       ),
-      home: Login(),
+      home: EditProfil(),
     );
   }
 }
