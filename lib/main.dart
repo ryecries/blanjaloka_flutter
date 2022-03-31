@@ -1,16 +1,9 @@
-import 'package:blanjaloka_flutter/screens/editinformasitoko.dart';
-import 'package:blanjaloka_flutter/screens/pedagang.dart';
-import 'package:blanjaloka_flutter/screens/register_info_toko.dart';
-import 'package:blanjaloka_flutter/screens/login.dart';
-import 'package:blanjaloka_flutter/screens/rekening.dart';
-import 'package:blanjaloka_flutter/screens/validasi_ubah_pass.dart';
+import 'package:blanjaloka_flutter/screens/regist_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'screens/enterpassword.dart';
-import 'screens/tokoregister.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,7 +25,7 @@ class MyApp extends StatelessWidget {
             .appBarTheme
             .copyWith(systemOverlayStyle: SystemUiOverlayStyle.dark),
       ),
-      home: EditProfil(),
+      home: RegistLogin(),
     );
   }
 }
