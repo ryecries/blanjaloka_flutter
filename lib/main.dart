@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
             .copyWith(systemOverlayStyle: SystemUiOverlayStyle.dark),
       ),
       home: RegistLogin(),
-
     );
   }
 }
