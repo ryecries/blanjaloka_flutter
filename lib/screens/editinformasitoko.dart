@@ -18,7 +18,6 @@ class _EditProfilState extends State<EditProfil> {
 
   bool _isEnable = false;
   bool _isEnable2 = false;
-  bool _isEnable3 = false;
 
   @override
   Widget build(BuildContext context) {
