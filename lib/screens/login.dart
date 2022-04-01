@@ -1,7 +1,7 @@
+import 'package:blanjaloka_flutter/constant.dart';
+import 'package:blanjaloka_flutter/nav.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
-import 'enterpassword.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -11,6 +11,12 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool _passwordVisible = false;
+  @override
+  void initState() {
+    _passwordVisible = false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -21,9 +27,9 @@ class _LoginState extends State<Login> {
         ),
         backgroundColor: Colors.white,
         elevation: 0.5,
-        title: Text("Daftar Akun",
+        title: Text("Masuk",
           style: TextStyle(
-            fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.bold,
               color: Colors.black),),
       ),
       body: SafeArea(
@@ -44,33 +50,33 @@ class _LoginState extends State<Login> {
                     Column(
                       children: [
                         Column(
-                          children : [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                top: 4,
-                                left: 8,
-                              ),
-                              child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                  "Daftar Akun Toko Blanjaloka",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                  ),),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                left: 8,
-                                bottom: 20,
-                              ),
-                              child: Align(
+                            children : [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  top: 4,
+                                  left: 8,
+                                ),
+                                child: Align(
                                   alignment: Alignment.topLeft,
                                   child: Text(
-                                      'Lengkapi data dibawah untuk mendaftar Akun Toko Blanjaloka')),
-                            ),
-                          ]
+                                    'Masuk Akun Toko Blanjaloka',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  left: 8,
+                                  bottom: 20,
+                                ),
+                                child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text(
+                                        'Masukkan Email atau Nomor Telepon dan Kata Sandi Anda yang sudah terdaftar')),
+                              ),
+                            ]
                         ),
 
                         Padding(
@@ -81,7 +87,7 @@ class _LoginState extends State<Login> {
                           child: Align(
                             alignment: Alignment.topLeft,
                             child: Text(
-                              "Nama Lengkap",
+                              "Email/Nomor Telepon",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12,
@@ -94,7 +100,7 @@ class _LoginState extends State<Login> {
                           child: TextFormField(
                             decoration: const InputDecoration(
                               border: UnderlineInputBorder(),
-                              hintText: 'Masukkan Nama Lengkap Anda',
+                              hintText: 'Masukkan Email/No Telepon Anda',
                               hintStyle: TextStyle(fontSize: 14),
                             ),
                           ),
@@ -107,7 +113,7 @@ class _LoginState extends State<Login> {
                           child: Align(
                             alignment: Alignment.topLeft,
                             child: Text(
-                              "Nomor Telepon",
+                              "Kata Sandi",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12,
@@ -118,39 +124,28 @@ class _LoginState extends State<Login> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                           child: TextFormField(
-                            decoration: const InputDecoration(
-                              border: UnderlineInputBorder(),
-                              hintText: 'Contoh : 0812*********',
-                              hintStyle: TextStyle(fontSize: 14),
+                            keyboardType: TextInputType.text,
+                            obscureText: !_passwordVisible,
+                            decoration: InputDecoration(
+                              hintText: 'Masukkan Kata Sandi Anda',
+                              // Here is key idea
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _passwordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: Theme.of(context).primaryColorDark,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _passwordVisible = !_passwordVisible;
+                                  });
+                                },
+                              ),
                             ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            top: 24,
-                            left: 8,
-                          ),
-                          child: Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              "Alamat Email",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
-                              ),),
                           ),
                         ),
 
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                          child: TextFormField(
-                            decoration: const InputDecoration(
-                              border: UnderlineInputBorder(),
-                              hintText: 'Contoh : Emailanda@gmail.com',
-                              hintStyle: TextStyle(fontSize: 14),
-                            ),
-                          ),
-                        ),
 
                       ],
                     ),
@@ -167,13 +162,13 @@ class _LoginState extends State<Login> {
                     width: double.infinity,
                     child: ElevatedButton(
                       child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 90,vertical: 12),
-                          child: Text("Lanjut",style: TextStyle(fontSize: 20),)),
+                          padding: EdgeInsets.symmetric(vertical: 12),
+                          child: Text("Masuk",style: TextStyle(fontSize: 20),)),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => EnterPassword()),);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Nav()),);
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xFF00838F),
+                        primary: bPrimaryColor,
                         onPrimary: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
