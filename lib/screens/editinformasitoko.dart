@@ -139,44 +139,12 @@ class _EditProfilState extends State<EditProfil> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                            top: 12,
-                            left: 8,
+                            top: 0,
+                            left: 0,
                           ),
                           child: Align(
                             alignment: Alignment.topLeft,
-                            child: Text(
-                              "Kategori Produk",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 2),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: TextField(
-                                  controller: _controller3,
-                                  enabled: _isEnable3,
-                                ),
-                              ),
-                              TextButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _isEnable3 = true;
-                                    });
-                                  },
-                                  child: Text(
-                                    "Ubah",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
-                                  )),
-                            ],
+                            child: Pedagang2Widget(title2: "Produk Toko"),
                           ),
                         ),
                       ],
