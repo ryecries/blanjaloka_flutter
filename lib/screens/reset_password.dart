@@ -1,24 +1,15 @@
-import 'package:blanjaloka_flutter/screens/reset_password.dart';
-import 'package:blanjaloka_flutter/screens/tokoregister.dart';
-import 'package:blanjaloka_flutter/screens/ubah_password.dart';
 import 'package:flutter/material.dart';
 
 import '../constant.dart';
 
-class ValidasiUbahPassword extends StatefulWidget {
-  const ValidasiUbahPassword({Key? key}) : super(key: key);
+class ResetPassword extends StatefulWidget {
+  const ResetPassword({Key? key}) : super(key: key);
 
   @override
-  State<ValidasiUbahPassword> createState() => _UbahPasswordState();
+  State<ResetPassword> createState() => _ResetPasswordState();
 }
 
-class _UbahPasswordState extends State<ValidasiUbahPassword> {
-  bool _passwordVisible = false;
-  @override
-  void initState() {
-    _passwordVisible = false;
-  }
-
+class _ResetPasswordState extends State<ResetPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +21,7 @@ class _UbahPasswordState extends State<ValidasiUbahPassword> {
         backgroundColor: Colors.white,
         elevation: 0.5,
         title: Text(
-          "Masukkan Kata Sandi",
+          "Atur Ulang Kata Sandi",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ),
@@ -53,33 +44,35 @@ class _UbahPasswordState extends State<ValidasiUbahPassword> {
                       Padding(
                         padding: const EdgeInsets.only(
                           left: 8,
-                          bottom: 20,
+                        ),
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            "Atur Ulang Kata Sandi",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 8,
+                          right: 8,
+                          bottom: 10,
+                          top: 10,
                         ),
                         child: Text(
-                            'Untuk mengamankan akunmu, silahkan verifikasi identitas dengan memasukkan kata sandi.'),
+                            'Masukkan e-mail atau nomor HP yang terdaftar. Kami akan mengirimkan kode verifikasi untuk atur ulnag kata sandi'),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8, vertical: 2),
                         child: TextFormField(
                           keyboardType: TextInputType.text,
-                          obscureText: !_passwordVisible,
                           decoration: InputDecoration(
-                            hintText: 'Kata sandi Saat Ini',
-                            // Here is key idea
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                _passwordVisible
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                                color: Theme.of(context).primaryColorDark,
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  _passwordVisible = !_passwordVisible;
-                                });
-                              },
-                            ),
+                            hintText: 'Nomor HP atau Email',
                           ),
                         ),
                       ),
@@ -88,22 +81,22 @@ class _UbahPasswordState extends State<ValidasiUbahPassword> {
                           top: 10,
                           left: 8,
                           right: 8,
-                          bottom: 10,
+                          bottom: 25,
                         ),
                         width: double.infinity,
                         child: ElevatedButton(
                           child: Container(
                               padding: EdgeInsets.symmetric(vertical: 12),
                               child: Text(
-                                "Lanjut",
+                                "Kirim",
                                 style: TextStyle(fontSize: 20),
                               )),
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => UbahPassword()),
-                            );
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //       builder: (context) => UbahPassword()),
+                            // );
                           },
                           style: ElevatedButton.styleFrom(
                             primary: bPrimaryColor,
@@ -114,18 +107,6 @@ class _UbahPasswordState extends State<ValidasiUbahPassword> {
                           ),
                         ),
                       ),
-                      Container(
-                        child: TextButton(
-                          child: Text("Lupa Kata Sandi?"),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ResetPassword(),
-                                ));
-                          },
-                        ),
-                      )
                     ],
                   ),
                 ],
