@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:blanjaloka_flutter/widget.dart';
 
-class EditProfil extends StatefulWidget {
-  const EditProfil({Key? key}) : super(key: key);
+class EditInformasiToko extends StatefulWidget {
+  const EditInformasiToko({Key? key}) : super(key: key);
 
   @override
-  _EditProfilState createState() => _EditProfilState();
+  _EditInformasiTokoState createState() => _EditInformasiTokoState();
 }
 
-class _EditProfilState extends State<EditProfil> {
+class _EditInformasiTokoState extends State<EditInformasiToko> {
   TextEditingController _controller = TextEditingController(text: "Sudjaya");
 
   TextEditingController _controller2 =
