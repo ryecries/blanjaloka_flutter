@@ -1,3 +1,4 @@
+import 'package:blanjaloka_flutter/constant.dart';
 import 'package:blanjaloka_flutter/screens/tokoregister.dart';
 import 'package:flutter/material.dart';
 
@@ -104,34 +105,41 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
                       SizedBox(
                         height: 20,
                       ),
-                      InkWell(
-                        onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(builder: (context) => TokoReg()),
-                          // );
-                        },
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                border: Border.all(width: 0.1),
-                                borderRadius: BorderRadius.circular(5)),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Pilih Pembayaran",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  Icon(Icons.arrow_forward_ios, size: 16)
-                                ],
+                      Material(
+                        elevation: 0.5,
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.white,
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(5),
+                          splashColor: bPrimaryColor,
+                          onTap: () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(builder: (context) => TokoReg()),
+                            // );
+                          },
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  border: Border.all(width: 0.1),
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(20, 20, 20, 20),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Pilih Pembayaran",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Icon(Icons.arrow_forward_ios, size: 16)
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -155,34 +163,41 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
                       SizedBox(
                         height: 20,
                       ),
-                      InkWell(
-                        onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(builder: (context) => TokoReg()),
-                          // );
-                        },
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                border: Border.all(width: 0.1),
-                                borderRadius: BorderRadius.circular(5)),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Pilih Sistem Pembayaran",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  Icon(Icons.arrow_forward_ios, size: 16)
-                                ],
+                      Material(
+                        elevation: 0.5,
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.white,
+                        child: InkWell(
+                          splashColor: bPrimaryColor,
+                          borderRadius: BorderRadius.circular(5),
+                          onTap: () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(builder: (context) => TokoReg()),
+                            // );
+                          },
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  border: Border.all(width: 0.1),
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(20, 20, 20, 20),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Pilih Sistem Pembayaran",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Icon(Icons.arrow_forward_ios, size: 16)
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -196,16 +211,11 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                margin: const EdgeInsets.only(
-                  left: 20,
-                  right: 20,
-                  bottom: 20
-                ),
+                margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
                 width: double.infinity,
                 child: ElevatedButton(
                   child: Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 12),
+                      padding: EdgeInsets.symmetric(vertical: 12),
                       child: Text(
                         "Bayar",
                         style: TextStyle(fontSize: 20),
