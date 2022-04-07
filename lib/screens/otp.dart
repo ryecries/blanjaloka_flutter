@@ -1,6 +1,8 @@
 import 'package:blanjaloka_flutter/constant.dart';
 import 'package:flutter/material.dart';
 
+import 'enterpassword.dart';
+
 class OtpScreen extends StatefulWidget {
   const OtpScreen({Key? key}) : super(key: key);
 
@@ -238,11 +240,11 @@ class _OtpScreenState extends State<OtpScreen> {
                             style: TextStyle(fontSize: 20),
                           )),
                       onPressed: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //       builder: (context) => EnterPassword()),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EnterPassword()),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         primary: bPrimaryColor,

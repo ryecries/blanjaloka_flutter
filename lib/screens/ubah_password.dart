@@ -135,11 +135,11 @@ class UbahPassword extends StatelessWidget {
                           style: TextStyle(fontSize: 20),
                         )),
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => TokoReg()),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Login()),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       primary: bPrimaryColor,

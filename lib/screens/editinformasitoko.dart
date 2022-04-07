@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:blanjaloka_flutter/widget.dart';
 
-class EditProfil extends StatefulWidget {
-  const EditProfil({Key? key}) : super(key: key);
+class EditInformasiToko extends StatefulWidget {
+  const EditInformasiToko({Key? key}) : super(key: key);
 
   @override
-  _EditProfilState createState() => _EditProfilState();
+  _EditInformasiTokoState createState() => _EditInformasiTokoState();
 }
 
-class _EditProfilState extends State<EditProfil> {
+class _EditInformasiTokoState extends State<EditInformasiToko> {
   TextEditingController _controller = TextEditingController(text: "Sudjaya");
 
   TextEditingController _controller2 =
@@ -18,7 +18,6 @@ class _EditProfilState extends State<EditProfil> {
 
   bool _isEnable = false;
   bool _isEnable2 = false;
-  bool _isEnable3 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -139,44 +138,12 @@ class _EditProfilState extends State<EditProfil> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                            top: 12,
-                            left: 8,
+                            top: 0,
+                            left: 0,
                           ),
                           child: Align(
                             alignment: Alignment.topLeft,
-                            child: Text(
-                              "Kategori Produk",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 2),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: TextField(
-                                  controller: _controller3,
-                                  enabled: _isEnable3,
-                                ),
-                              ),
-                              TextButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _isEnable3 = true;
-                                    });
-                                  },
-                                  child: Text(
-                                    "Ubah",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
-                                  )),
-                            ],
+                            child: Pedagang2Widget(title2: "Produk Toko"),
                           ),
                         ),
                       ],

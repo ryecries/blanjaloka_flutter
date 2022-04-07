@@ -1,3 +1,4 @@
+import 'package:blanjaloka_flutter/screens/otp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -170,7 +171,7 @@ class _RegisterAccState extends State<RegisterAcc> {
                           padding: EdgeInsets.symmetric(horizontal: 90,vertical: 12),
                           child: Text("Lanjut",style: TextStyle(fontSize: 20),)),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => EnterPassword()),);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => OtpScreen()),);
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFF00838F),
