@@ -1,3 +1,4 @@
+import 'package:blanjaloka_flutter/constant.dart';
 import 'package:flutter/material.dart';
 
 class LabeledRadio extends StatelessWidget {
@@ -18,8 +19,6 @@ class LabeledRadio extends StatelessWidget {
   final int value;
   final ValueChanged<int> onChanged;
 
-  get bPrimaryColor => null;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +27,7 @@ class LabeledRadio extends StatelessWidget {
           border: Border.all(width: 0.2),
           borderRadius: BorderRadius.circular(10)),
       child: InkWell(
-        splashColor: Color(0xFF00838F),
+        splashColor: bPrimaryColor,
         borderRadius: BorderRadius.circular(10),
         onTap: () {
           if (value != groupValue) {
@@ -51,7 +50,7 @@ class LabeledRadio extends StatelessWidget {
               ),
               Spacer(),
               Radio<int>(
-                activeColor: Color(0xFF00838F),
+                activeColor: bPrimaryColor,
                 groupValue: groupValue,
                 value: value,
                 onChanged: (newValue) {

@@ -1,4 +1,5 @@
 import 'package:blanjaloka_flutter/constant.dart';
+import 'package:blanjaloka_flutter/screens/sewatoko/pembayaran_sewa.dart';
 import 'package:blanjaloka_flutter/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,8 @@ class PilihPembayaran extends StatefulWidget {
 
 class _PilihPembayaranState extends State<PilihPembayaran> {
   int _isRadioSelected = 0;
+  String? passImg;
+  String? passText;
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +69,8 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
                           onChanged: (newValue) {
                             setState(() {
                               _isRadioSelected = newValue;
+                              passImg = 'assets/images/logo_bca.png';
+                              passText = 'BCA Virtual Account';
                             });
                           },
                         ),
@@ -78,6 +83,8 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
                           onChanged: (newValue) {
                             setState(() {
                               _isRadioSelected = newValue;
+                              passImg = 'assets/images/logo_bri.png';
+                              passText = 'BRI Virtual Account';
                             });
                           },
                         ),
@@ -90,6 +97,8 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
                           onChanged: (newValue) {
                             setState(() {
                               _isRadioSelected = newValue;
+                              passImg = 'assets/images/logo_bni.png';
+                              passText = 'BNI Virtual Account';
                             });
                           },
                         ),
@@ -102,6 +111,8 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
                           onChanged: (newValue) {
                             setState(() {
                               _isRadioSelected = newValue;
+                              passImg = 'assets/images/logo_mandiri.png';
+                              passText = 'Mandiri Virtual Account';
                             });
                           },
                         ),
@@ -124,6 +135,8 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
                           onChanged: (newValue) {
                             setState(() {
                               _isRadioSelected = newValue;
+                              passImg = 'assets/images/logo_dana.png';
+                              passText = 'DANA';
                             });
                           },
                         ),
@@ -136,18 +149,22 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
                           onChanged: (newValue) {
                             setState(() {
                               _isRadioSelected = newValue;
+                              passImg = 'assets/images/logo_gopay.png';
+                              passText = 'Gopay';
                             });
                           },
                         ),
                         LabeledRadio(
                           img: 'assets/images/logo_linkaja.png',
-                          label: 'Link Aja',
+                          label: 'Link Aja!',
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
                           value: 7,
                           groupValue: _isRadioSelected,
                           onChanged: (newValue) {
                             setState(() {
                               _isRadioSelected = newValue;
+                              passImg = 'assets/images/logo_linkaja.png';
+                              passText = 'Link Aja!';
                             });
                           },
                         ),
@@ -160,6 +177,8 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
                           onChanged: (newValue) {
                             setState(() {
                               _isRadioSelected = newValue;
+                              passImg = 'assets/images/logo_ovo.png';
+                              passText = 'OVO';
                             });
                           },
                         ),
@@ -176,7 +195,12 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
           PrimaryButton(
               buttontxt: 'Konfirmasi',
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => PembayaranSewa(
+                          dataPembayaran: _isRadioSelected,
+                          passedImg: passImg,
+                          passedText: passText,
+                        )));
               })
         ],
       ),

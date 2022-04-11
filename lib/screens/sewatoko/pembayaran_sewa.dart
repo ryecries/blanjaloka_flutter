@@ -6,7 +6,12 @@ import 'package:blanjaloka_flutter/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
 class PembayaranSewa extends StatefulWidget {
-  const PembayaranSewa({Key? key}) : super(key: key);
+  const PembayaranSewa(
+      {Key? key, this.dataPembayaran, this.passedImg, this.passedText})
+      : super(key: key);
+  final int? dataPembayaran;
+  final String? passedImg;
+  final String? passedText;
 
   @override
   State<PembayaranSewa> createState() => _PembayaranSewaState();
@@ -123,19 +128,46 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
                                   borderRadius: BorderRadius.circular(5)),
                               child: Padding(
                                 padding:
-                                    const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Pilih Pembayaran",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Icon(Icons.arrow_forward_ios, size: 16)
-                                  ],
-                                ),
+                                    const EdgeInsets.fromLTRB(20, 4, 20, 4),
+                                child: widget.dataPembayaran != null
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            widget.passedImg!,
+                                            height: 50,
+                                            width: 50,
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 15),
+                                            child: Text(
+                                              widget.passedText!,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          Spacer(),
+                                          Icon(Icons.arrow_forward_ios,
+                                              size: 16)
+                                        ],
+                                      )
+                                    : Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          
+                                          Text(
+                                            "Pilih Sistem Pembayaran",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          SizedBox(height: 50,),
+                                          Icon(Icons.arrow_forward_ios,
+                                              size: 16)
+                                        ],
+                                      ),
                               ),
                             ),
                           ),
@@ -210,7 +242,8 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
                                   isScrollControlled: true,
                                   enableDrag: false,
                                   context: context,
-                                  builder: (context) => PilihSistemPembayaran());
+                                  builder: (context) =>
+                                      PilihSistemPembayaran());
                             },
                           ))
                     ],
