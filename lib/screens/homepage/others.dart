@@ -173,8 +173,8 @@ class _OthersState extends State<Others> {
                                                   ),
                                                   color: Colors.transparent,
                                                   child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.end,
                                                     children: [
-                                                      SizedBox(width: 22.0,),
                                                       Text('Tutup ', style: TextStyle(
                                                           color: Colors.black,fontWeight: FontWeight.bold,
                                                           fontSize: 14.0
