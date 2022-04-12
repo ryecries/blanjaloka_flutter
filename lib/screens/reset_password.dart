@@ -1,3 +1,4 @@
+import 'package:blanjaloka_flutter/screens/ubah_password.dart';
 import 'package:flutter/material.dart';
 
 import '../constant.dart';
@@ -92,11 +93,11 @@ class _ResetPasswordState extends State<ResetPassword> {
                                 style: TextStyle(fontSize: 20),
                               )),
                           onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //       builder: (context) => UbahPassword()),
-                            // );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => UbahPassword()),
+                            );
                           },
                           style: ElevatedButton.styleFrom(
                             primary: bPrimaryColor,

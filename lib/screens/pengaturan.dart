@@ -1,3 +1,4 @@
+import 'package:blanjaloka_flutter/screens/editinformasitoko.dart';
 import 'package:blanjaloka_flutter/screens/editprofilakun.dart';
 import 'package:blanjaloka_flutter/screens/pengaturan_lokasi_toko.dart';
 import 'package:flutter/material.dart';
@@ -56,11 +57,11 @@ class Pengaturan extends StatelessWidget {
                             ),
                             child: InkWell(
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //       builder: (context) => Pedagang()),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => EditInformasiToko()),
+                                );
                               },
                               child: Row(
                                 children: [

@@ -1,5 +1,6 @@
 import 'package:blanjaloka_flutter/constant.dart';
 import 'package:blanjaloka_flutter/nav.dart';
+import 'package:blanjaloka_flutter/screens/reset_password.dart';
 import 'package:flutter/material.dart';
 
 
@@ -145,7 +146,19 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                         ),
-
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                          child: TextButton (
+                            child: Text("Lupa Password?"),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ResetPassword()),
+                              );
+                            },
+                          ),
+                        ),
 
                       ],
                     ),
