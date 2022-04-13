@@ -1,4 +1,5 @@
 import 'package:blanjaloka_flutter/constant.dart';
+import 'package:blanjaloka_flutter/screens/sewatoko/menunggu_pembayaran.dart';
 import 'package:blanjaloka_flutter/screens/sewatoko/pilih_pembayaran.dart';
 import 'package:blanjaloka_flutter/screens/sewatoko/pilih_sistem_pembayaran.dart';
 import 'package:blanjaloka_flutter/screens/tokoregister.dart';
@@ -157,7 +158,7 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          
+
                                           Text(
                                             "Pilih Sistem Pembayaran",
                                             style: TextStyle(
@@ -251,7 +252,14 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
                 )
               ],
             ),
-            PrimaryButton(buttontxt: 'Bayar', onPressed: () {})
+            PrimaryButton(buttontxt: 'Bayar', onPressed: () {
+              String? textToSend = widget.passedText;
+              String? imgToSend = widget.passedImg;
+              Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => MenungguPembayaran(img: imgToSend!,text: textToSend!)),
+            );})
           ],
         ),
       )),
