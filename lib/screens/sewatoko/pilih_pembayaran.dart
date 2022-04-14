@@ -219,12 +219,13 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
           PrimaryButton(
               buttontxt: 'Konfirmasi',
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => PembayaranSewa(
-                          dataPembayaran: _isRadioSelected,
-                          passedImg: passImg,
-                          passedText: passText,
-                        )));
+                // Navigator.of(context).push(MaterialPageRoute(
+                //     builder: (context) => PembayaranSewa(
+                //           dataPembayaran: _isRadioSelected,
+                //           passedImg: passImg,
+                //           passedText: passText,
+                //         )));
+                Navigator.of(context).pop(_isRadioSelected.toString());
               })
         ],
       ),
