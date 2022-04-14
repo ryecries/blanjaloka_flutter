@@ -14,7 +14,7 @@ class PrimaryButton extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
         width: double.infinity,
         child: ElevatedButton(
           child: Container(
