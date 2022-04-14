@@ -1,5 +1,6 @@
 import 'package:blanjaloka_flutter/screens/pengaturan.dart';
 import 'package:blanjaloka_flutter/screens/sewatoko/pembayaran_sewa.dart';
+import 'package:blanjaloka_flutter/screens/sewatoko/pilih_sewa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -224,7 +225,7 @@ class _OthersState extends State<Others> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => PembayaranSewa()),
+                                              builder: (context) => PilihSewa()),
                                         );
                                       },
                                       child: Row(
