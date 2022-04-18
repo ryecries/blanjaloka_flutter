@@ -356,11 +356,9 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
                             )
                           : Container(
                               padding: const EdgeInsets.only(left: 8),
-                              child: Icon(
-                                Icons.add_a_photo_outlined,
-                                size: 80.0,
-                              ),
-                            ),
+                              child: Image(
+                                  image: AssetImage(
+                                      'assets/images/upload_foto.png'))),
                       Padding(
                         padding: const EdgeInsets.only(left: 5),
                         child: Text(

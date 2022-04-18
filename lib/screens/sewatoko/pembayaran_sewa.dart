@@ -7,18 +7,22 @@ import 'package:blanjaloka_flutter/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
 class PembayaranSewa extends StatefulWidget {
-  const PembayaranSewa(
-      {Key? key, this.dataPembayaran, this.passedImg, this.passedText})
-      : super(key: key);
+  final int lamaSewa;
+  final String biayaSewa;
   final int? dataPembayaran;
   final String? passedImg;
   final String? passedText;
+  const PembayaranSewa(
+      {Key? key, this.dataPembayaran, this.passedImg, this.passedText,required this.lamaSewa,required this.biayaSewa})
+      : super(key: key);
 
   @override
   State<PembayaranSewa> createState() => _PembayaranSewaState();
 }
 
 class _PembayaranSewaState extends State<PembayaranSewa> {
+  String? codeBank;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +69,7 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16)),
-                                  Text('3 Bulan',
+                                  Text( '${widget.lamaSewa} Bulan',
                                       style: TextStyle(fontSize: 13))
                                 ],
                               ),
@@ -89,8 +93,8 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
                                   style: TextStyle(fontWeight: FontWeight.bold))
                             ]),
                             Row(children: [
-                              Text('Biaya Sewa Toko :'),
-                              Text(' Rp 540.000',
+                              Text('Biaya Sewa Toko : '),
+                              Text(widget.biayaSewa,
                                   style: TextStyle(fontWeight: FontWeight.bold))
                             ]),
                           ],
@@ -130,13 +134,13 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
                               child: Padding(
                                 padding:
                                     const EdgeInsets.fromLTRB(20, 4, 20, 4),
-                                child: widget.dataPembayaran != null
+                                child: codeBank != null
                                     ? Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
                                           Image.asset(
-                                            widget.passedImg!,
+                                            'assets/images/logo_bca.png',
                                             height: 50,
                                             width: 50,
                                           ),
@@ -144,7 +148,7 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
                                             padding:
                                                 const EdgeInsets.only(left: 15),
                                             child: Text(
-                                              widget.passedText!,
+                                              'Pilih Pembayaran',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold),
                                             ),
@@ -158,13 +162,14 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-
                                           Text(
-                                            "Pilih Sistem Pembayaran",
+                                            "Pilih Pembayaran",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold),
                                           ),
-                                          SizedBox(height: 50,),
+                                          SizedBox(
+                                            height: 50,
+                                          ),
                                           Icon(Icons.arrow_forward_ios,
                                               size: 16)
                                         ],
@@ -172,8 +177,8 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
                               ),
                             ),
                           ),
-                          onTap: () {
-                            showModalBottomSheet(
+                          onTap: () async {
+                            final result = await showModalBottomSheet(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(20),
@@ -182,6 +187,9 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
                                 enableDrag: false,
                                 context: context,
                                 builder: (context) => PilihPembayaran());
+                            setState(() {
+                              this.codeBank = result;
+                            });
                           },
                         ),
                       )
@@ -252,14 +260,19 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
                 )
               ],
             ),
-            PrimaryButton(buttontxt: 'Bayar', onPressed: () {
-              String? textToSend = widget.passedText;
-              String? imgToSend = widget.passedImg;
-              Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => MenungguPembayaran(img: imgToSend!,text: textToSend!)),
-            );})
+            PrimaryButton(
+                buttontxt: 'Bayar',
+                onPressed: () {
+                  // String? textToSend = widget.passedText;
+                  // String? imgToSend = widget.passedImg;
+                  print(codeBank);
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //       builder: (context) => MenungguPembayaran(
+                  //           img: imgToSend!, text: textToSend!)),
+                  // );
+                })
           ],
         ),
       )),

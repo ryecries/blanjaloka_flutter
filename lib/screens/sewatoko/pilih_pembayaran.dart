@@ -61,6 +61,9 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
                               )),
                         ),
                         LabeledRadio(
+                          borderActive: _isRadioSelected == 1
+                              ? bPrimaryColor
+                              : Colors.black,
                           img: 'assets/images/logo_bca.png',
                           label: 'BCA Virtual Account',
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -75,6 +78,9 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
                           },
                         ),
                         LabeledRadio(
+                          borderActive: _isRadioSelected == 2
+                              ? bPrimaryColor
+                              : Colors.black,
                           img: 'assets/images/logo_bri.png',
                           label: 'BRI Virtual Account',
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -89,6 +95,9 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
                           },
                         ),
                         LabeledRadio(
+                          borderActive: _isRadioSelected == 3
+                              ? bPrimaryColor
+                              : Colors.black,
                           img: 'assets/images/logo_bni.png',
                           label: 'BNI Virtual Account',
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -103,6 +112,9 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
                           },
                         ),
                         LabeledRadio(
+                          borderActive: _isRadioSelected == 4
+                              ? bPrimaryColor
+                              : Colors.black,
                           img: 'assets/images/logo_mandiri.png',
                           label: 'Mandiri Virtual Account',
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -127,6 +139,9 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
                               )),
                         ),
                         LabeledRadio(
+                          borderActive: _isRadioSelected == 5
+                              ? bPrimaryColor
+                              : Colors.black,
                           img: 'assets/images/logo_dana.png',
                           label: 'DANA',
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -141,6 +156,9 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
                           },
                         ),
                         LabeledRadio(
+                          borderActive: _isRadioSelected == 6
+                              ? bPrimaryColor
+                              : Colors.black,
                           img: 'assets/images/logo_gopay.png',
                           label: 'Gopay',
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -155,6 +173,9 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
                           },
                         ),
                         LabeledRadio(
+                          borderActive: _isRadioSelected == 7
+                              ? bPrimaryColor
+                              : Colors.black,
                           img: 'assets/images/logo_linkaja.png',
                           label: 'Link Aja!',
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -169,6 +190,9 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
                           },
                         ),
                         LabeledRadio(
+                          borderActive: _isRadioSelected == 8
+                              ? bPrimaryColor
+                              : Colors.black,
                           img: 'assets/images/logo_ovo.png',
                           label: 'OVO',
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -195,12 +219,13 @@ class _PilihPembayaranState extends State<PilihPembayaran> {
           PrimaryButton(
               buttontxt: 'Konfirmasi',
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => PembayaranSewa(
-                          dataPembayaran: _isRadioSelected,
-                          passedImg: passImg,
-                          passedText: passText,
-                        )));
+                // Navigator.of(context).push(MaterialPageRoute(
+                //     builder: (context) => PembayaranSewa(
+                //           dataPembayaran: _isRadioSelected,
+                //           passedImg: passImg,
+                //           passedText: passText,
+                //         )));
+                Navigator.of(context).pop(_isRadioSelected.toString());
               })
         ],
       ),
