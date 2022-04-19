@@ -37,25 +37,26 @@ class _NavState extends State<Nav> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 5,
         type: BottomNavigationBarType.fixed,
         backgroundColor: Color(0xFFFFFFFF),
         selectedItemColor: bPrimaryColor,
         unselectedItemColor:Color(0xFF868290),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(Icons.article_rounded),
               label : ('Pesanan')
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.work),
+              icon: Icon(Icons.description_rounded),
               label : ('Produk')
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person),
+              icon: Icon(Icons.swap_vert_circle),
               label : ('Transaksi')
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.settings_applications),
+              icon: Icon(Icons.grid_view_rounded),
               label : ('Lainnya')
           ),
         ],

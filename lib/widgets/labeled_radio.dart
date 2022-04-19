@@ -10,8 +10,10 @@ class LabeledRadio extends StatelessWidget {
     required this.value,
     required this.onChanged,
     required this.img,
+    required this.borderActive,
   }) : super(key: key);
 
+  final Color borderActive;
   final String img;
   final String label;
   final EdgeInsets padding;
@@ -24,7 +26,9 @@ class LabeledRadio extends StatelessWidget {
     return Container(
       margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
       decoration: BoxDecoration(
-          border: Border.all(width: 0.2),
+          border: Border.all(
+              width: borderActive == bPrimaryColor ? 1.5 : 0.2,
+              color: borderActive),
           borderRadius: BorderRadius.circular(10)),
       child: InkWell(
         splashColor: bPrimaryColor,

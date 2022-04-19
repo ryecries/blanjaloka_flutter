@@ -29,24 +29,24 @@ class _ImagePedagangWidgetState extends State<ImagePedagangWidget> {
       children: [
         image != null
             ? Padding(
-                padding: const EdgeInsets.only(left: 5),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Image.file(
-                      image!,
-                      fit: BoxFit.cover,
-                      height: 80,
-                      width: 80,
-                    )),
-              )
+          padding: const EdgeInsets.only(left: 5),
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: Image.file(
+                image!,
+                fit: BoxFit.cover,
+                height: 80,
+                width: 80,
+              )),
+        )
             : Container(
-                padding: const EdgeInsets.only(left: 8, bottom: 2),
-                child: Image.asset(
-                  "assets/images/upload_foto.png",
-                  height: 60,
-                  width: 60,
-                ),
-              ),
+          padding: const EdgeInsets.only(left: 8, bottom: 2),
+          child: Image.asset(
+            "assets/images/upload_foto.png",
+            height: 60,
+            width: 60,
+          ),
+        ),
         Padding(
           padding: const EdgeInsets.only(left: 5),
           child: Text(
@@ -74,7 +74,6 @@ class _ImagePedagangWidgetState extends State<ImagePedagangWidget> {
 }
 
 ///////////////////////////////////////////////////////////////////////
-
 class ImageProdukWidget extends StatefulWidget {
   ImageProdukWidget({Key? key, this.titleImgs}) : super(key: key);
   final String? titleImgs;
@@ -110,24 +109,24 @@ class _ImageProdukWidgetState extends State<ImageProdukWidget> {
           children: [
             images != null
                 ? Padding(
-                    padding: const EdgeInsets.only(left: 5),
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10.0),
-                        child: Image.file(
-                          images!,
-                          fit: BoxFit.cover,
-                          height: 80,
-                          width: 80,
-                        )),
-                  )
+              padding: const EdgeInsets.only(left: 5),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: Image.file(
+                    images!,
+                    fit: BoxFit.cover,
+                    height: 80,
+                    width: 80,
+                  )),
+            )
                 : Container(
-                    padding: const EdgeInsets.only(left: 8, bottom: 2),
-                    child: Image.asset(
-                      "assets/images/upload_foto.png",
-                      height: 60,
-                      width: 60,
-                    ),
-                  ),
+              padding: const EdgeInsets.only(left: 8, bottom: 2),
+              child: Image.asset(
+                "assets/images/upload_foto.png",
+                height: 60,
+                width: 60,
+              ),
+            ),
             Spacer(),
             Container(
               padding: const EdgeInsets.only(right: 8),

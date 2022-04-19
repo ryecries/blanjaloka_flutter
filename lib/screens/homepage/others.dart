@@ -1,12 +1,12 @@
 import 'package:blanjaloka_flutter/screens/pengaturan.dart';
-import 'package:blanjaloka_flutter/screens/sewatoko/pembayaran_sewa.dart';
-import 'package:blanjaloka_flutter/screens/tambah_produk.dart';
+
+import 'package:blanjaloka_flutter/screens/sewatoko/pilih_sewa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 
 import '../../widget.dart';
-import '../editinformasitoko.dart';
+
 import '../editprofilakun.dart';
 
 class Others extends StatefulWidget {
@@ -48,7 +48,7 @@ class _OthersState extends State<Others> {
           Padding(
             padding: const EdgeInsets.only(right: 24),
             child: IconButton(
-              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => TambahProduk()),);},
+              onPressed: () {},
               icon: Icon(Icons.notifications),color: Colors.black87,
             ),
           ),
@@ -133,25 +133,25 @@ class _OthersState extends State<Others> {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Container(
-                                      height: 110,
-                                      width: 330,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(12),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            offset: Offset(0, 1),
-                                            blurRadius: 2,
-                                            color: Colors.black.withOpacity(0.2),
-                                          ),
-                                        ],
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 16),
-                                        child: Row(
-                                          children: [
-                                             Container(
-                                               width: 160,
+                                        height: 110,
+                                        width: 330,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(12),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              offset: Offset(0, 1),
+                                              blurRadius: 2,
+                                              color: Colors.black.withOpacity(0.2),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 16),
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                width: 160,
                                                 margin: EdgeInsets.symmetric(
                                                   horizontal: 8,
                                                   vertical: 8,
@@ -165,39 +165,39 @@ class _OthersState extends State<Others> {
                                                     Text("Aktifkan jika kamu ingin menerima pesanan",style: TextStyle(fontSize: 12,color: Colors.grey.shade600),),
                                                   ],
                                                 ),
-                                            ),
-                                            Expanded(
-                                              child: Align(
-                                                alignment: Alignment.topRight,
-                                                child: Container(
-                                                  margin: EdgeInsets.symmetric(
-                                                    vertical: 8,
-                                                  ),
-                                                  color: Colors.transparent,
-                                                  child: Row(
-                                                    mainAxisAlignment: MainAxisAlignment.end,
-                                                    children: [
-                                                      Text('Tutup ', style: TextStyle(
-                                                          color: Colors.black,fontWeight: FontWeight.bold,
-                                                          fontSize: 14.0
-                                                      ),),
-                                                      CustomSwitch(
-                                                        value: _enable,
-                                                        onChanged: (bool val){
-                                                          setState(() {
-                                                            _enable = val;
-                                                          });
-                                                        },
+                                              ),
+                                              Expanded(
+                                                child: Align(
+                                                  alignment: Alignment.topRight,
+                                                  child: Container(
+                                                      margin: EdgeInsets.symmetric(
+                                                        vertical: 8,
                                                       ),
-                                                    ],
-                                                  )
+                                                      color: Colors.transparent,
+                                                      child: Row(
+                                                        mainAxisAlignment: MainAxisAlignment.end,
+                                                        children: [
+                                                          Text('Tutup ', style: TextStyle(
+                                                              color: Colors.black,fontWeight: FontWeight.bold,
+                                                              fontSize: 14.0
+                                                          ),),
+                                                          CustomSwitch(
+                                                            value: _enable,
+                                                            onChanged: (bool val){
+                                                              setState(() {
+                                                                _enable = val;
+                                                              });
+                                                            },
+                                                          ),
+                                                        ],
+                                                      )
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            // SizedBox(width: 16,),
-                                          ],
-                                        ),
-                                      )
+                                              // SizedBox(width: 16,),
+                                            ],
+                                          ),
+                                        )
                                     ),
                                   ),
                                 ],
@@ -225,7 +225,7 @@ class _OthersState extends State<Others> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => PembayaranSewa()),
+                                              builder: (context) => PilihSewa()),
                                         );
                                       },
                                       child: Row(
