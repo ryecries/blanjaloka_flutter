@@ -1,5 +1,6 @@
 import 'package:blanjaloka_flutter/screens/pengaturan.dart';
 import 'package:blanjaloka_flutter/screens/sewatoko/pembayaran_sewa.dart';
+import 'package:blanjaloka_flutter/screens/tambah_produk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -47,7 +48,7 @@ class _OthersState extends State<Others> {
           Padding(
             padding: const EdgeInsets.only(right: 24),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => TambahProduk()),);},
               icon: Icon(Icons.notifications),color: Colors.black87,
             ),
           ),
