@@ -89,7 +89,7 @@ class _ImageProdukWidgetState extends State<ImageProdukWidget> {
     final ImagePicker _picker = ImagePicker();
     final XFile? imagePicked = await _picker.pickImage(source: ImageSource.gallery);
     images = File(imagePicked!.path);
-    // setState(() {});
+    setState(() {});
   }
 
   @override
@@ -137,7 +137,7 @@ class _ImageProdukWidgetState extends State<ImageProdukWidget> {
                     await getImage();
                   },
                   child: Text(
-                    "Ambil Foto",
+                    "Tambah Foto",
                     style: TextStyle(color: Color(0xFF3c8187), fontWeight: FontWeight.bold),
                   )),
             )

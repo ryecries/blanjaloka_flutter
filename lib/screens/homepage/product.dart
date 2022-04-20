@@ -1,4 +1,5 @@
 import 'package:blanjaloka_flutter/constant.dart';
+import 'package:blanjaloka_flutter/screens/addproduk/tambah_produk.dart';
 import 'package:blanjaloka_flutter/widgets/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -33,7 +34,7 @@ class _ProductState extends State<Product> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => TambahProduk()),);},
             icon: SvgPicture.asset('assets/icons/icon_add.svg'),
             color: Colors.black87,
           ),
