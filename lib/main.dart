@@ -1,9 +1,9 @@
+import 'package:blanjaloka_flutter/constant.dart';
 import 'package:blanjaloka_flutter/screens/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 void main() {
   runApp(MyApp());
@@ -24,6 +24,9 @@ class MyApp extends StatelessWidget {
         appBarTheme: Theme.of(context)
             .appBarTheme
             .copyWith(systemOverlayStyle: SystemUiOverlayStyle.dark),
+        colorScheme: ThemeData().colorScheme.copyWith(
+              primary: bPrimaryColor,
+            ),
       ),
       home: Splash(),
     );
