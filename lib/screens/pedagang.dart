@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:blanjaloka_flutter/widget.dart';
 
-import 'editprofilakun.dart';
+import 'pengaturan/editprofilakun.dart';
 
 class Pedagang extends StatefulWidget {
   const Pedagang({Key? key}) : super(key: key);

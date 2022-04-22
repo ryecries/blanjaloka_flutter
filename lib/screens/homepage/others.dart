@@ -1,4 +1,4 @@
-import 'package:blanjaloka_flutter/screens/pengaturan.dart';
+import 'package:blanjaloka_flutter/screens/pengaturan/pengaturan.dart';
 
 import 'package:blanjaloka_flutter/screens/sewatoko/pilih_sewa.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 
 import '../../widget.dart';
 
-import '../editprofilakun.dart';
+import '../pengaturan/editprofilakun.dart';
 
 class Others extends StatefulWidget {
   const Others({Key? key}) : super(key: key);
