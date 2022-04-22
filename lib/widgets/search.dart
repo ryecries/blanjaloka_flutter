@@ -25,7 +25,6 @@ class _SearchWidgetState extends State<SearchWidget> {
 
     return Container(
       height: 42,
-      margin: const EdgeInsets.fromLTRB(20, 16, 20, 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: Colors.black12,
