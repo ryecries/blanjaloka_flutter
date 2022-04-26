@@ -1,3 +1,4 @@
+import 'package:blanjaloka_flutter/screens/pengaturan/editinformasirekening.dart';
 import 'package:blanjaloka_flutter/screens/pengaturan/editinformasitoko.dart';
 import 'package:blanjaloka_flutter/screens/pengaturan/editprofilakun.dart';
 import 'package:blanjaloka_flutter/screens/pengaturan/pengaturan_lokasi_toko.dart';
@@ -274,11 +275,11 @@ class Pengaturan extends StatelessWidget {
                           ),
                           child: InkWell(
                             onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //       builder: (context) => Pedagang()),
-                              // );
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => EditRekening()),
+                              );
                             },
                             child: Row(
                               children: [

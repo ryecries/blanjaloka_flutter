@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:blanjaloka_flutter/api/produk.dart';
 import 'package:blanjaloka_flutter/constant.dart';
+import 'package:blanjaloka_flutter/screens/addproduk/tambah_produk.dart';
+import 'package:blanjaloka_flutter/screens/addproduk/ubah_produk.dart';
 import 'package:blanjaloka_flutter/widgets/primary_button.dart';
 import 'package:blanjaloka_flutter/widgets/search.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +53,10 @@ class _ProductState extends State<Product> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () { Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TambahProduk()),
+            );},
             icon: SvgPicture.asset('assets/icons/icon_add.svg'),
             color: Colors.black87,
           ),
@@ -276,7 +281,7 @@ class _ProductState extends State<Product> {
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.w600),
                             )),
-                        onPressed: () {},
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => UbahProduk()),);},
                         style: ElevatedButton.styleFrom(
                           elevation: 0.5,
                           primary: Colors.white,

@@ -270,11 +270,11 @@ class _OthersState extends State<Others> {
                                     ),
                                     child: InkWell(
                                       onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => EditProfil()),
-                                        );
+                                        // Navigator.push(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //       builder: (context) => EditProfil()),
+                                        // );
                                       },
                                       child: Row(
                                         children: [
@@ -318,11 +318,11 @@ class _OthersState extends State<Others> {
                                     ),
                                     child: InkWell(
                                       onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => EditProfil()),
-                                        );
+                                        // Navigator.push(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //       builder: (context) => EditProfil()),
+                                        // );
                                       },
                                       child: Row(
                                         children: [
@@ -366,11 +366,11 @@ class _OthersState extends State<Others> {
                                     ),
                                     child: InkWell(
                                       onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => EditProfil()),
-                                        );
+                                        // Navigator.push(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //       builder: (context) => EditProfil()),
+                                        // );
                                       },
                                       child: Row(
                                         children: [
