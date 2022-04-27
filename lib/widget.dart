@@ -30,23 +30,24 @@ class _ImagePedagangWidgetState extends State<ImagePedagangWidget> {
       children: [
         image != null
             ? Padding(
-                padding: const EdgeInsets.only(left: 5),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Image.file(
-                      image!,
-                      fit: BoxFit.cover,
-                      height: 80,
-                      width: 80,
-                    )),
-              )
+          padding: const EdgeInsets.only(left: 5),
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: Image.file(
+                image!,
+                fit: BoxFit.cover,
+                height: 80,
+                width: 80,
+              )),
+        )
             : Container(
-                padding: const EdgeInsets.only(left: 8),
-                child: Icon(
-                  Icons.add_a_photo_outlined,
-                  size: 60.0,
-                ),
-              ),
+          padding: const EdgeInsets.only(left: 8, bottom: 2),
+          child: Image.asset(
+            "assets/images/upload_foto.png",
+            height: 60,
+            width: 60,
+          ),
+        ),
         Padding(
           padding: const EdgeInsets.only(left: 5),
           child: Text(
@@ -74,6 +75,81 @@ class _ImagePedagangWidgetState extends State<ImagePedagangWidget> {
                     color: Color(0xFF3c8187), fontWeight: FontWeight.bold),
               )),
         )
+      ],
+    );
+  }
+}
+
+///////////////////////////////////////////////////////////////////////
+class ImageProdukWidget extends StatefulWidget {
+  ImageProdukWidget({Key? key, this.titleImgs}) : super(key: key);
+  final String? titleImgs;
+
+  @override
+  State<ImageProdukWidget> createState() => _ImageProdukWidgetState();
+}
+
+class _ImageProdukWidgetState extends State<ImageProdukWidget> {
+  File? images;
+
+  Future getImage() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? imagePicked = await _picker.pickImage(source: ImageSource.gallery);
+    images = File(imagePicked!.path);
+    setState(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 8,bottom: 8),
+          child: Text(
+            widget.titleImgs ?? "(Title)",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            images != null
+                ? Padding(
+              padding: const EdgeInsets.only(left: 5),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: Image.file(
+                    images!,
+                    fit: BoxFit.cover,
+                    height: 80,
+                    width: 80,
+                  )),
+            )
+                : Container(
+              padding: const EdgeInsets.only(left: 8, bottom: 2),
+              child: Image.asset(
+                "assets/images/upload_foto.png",
+                height: 60,
+                width: 60,
+              ),
+            ),
+            Spacer(),
+            Container(
+              padding: const EdgeInsets.only(right: 8),
+              child: ElevatedButton(
+                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white), shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0), side: BorderSide(color: Color(0xFF3c8187))))),
+                  // TextButton.styleFrom(backgroundColor: bPrimaryColor),
+                  onPressed: () async {
+                    await getImage();
+                  },
+                  child: Text(
+                    "Tambah Foto",
+                    style: TextStyle(color: Color(0xFF3c8187), fontWeight: FontWeight.bold),
+                  )),
+            )
+          ],
+        ),
       ],
     );
   }
@@ -161,21 +237,20 @@ class CustomSwitch extends StatefulWidget {
   final bool value;
   final ValueChanged<bool> onChanged;
 
-  CustomSwitch({Key? key, required this.value, required this.onChanged})
-      : super(key: key);
+  CustomSwitch({Key? key, required this.value, required this.onChanged}) : super(key: key);
 
   @override
   _CustomSwitchState createState() => _CustomSwitchState();
 }
 
-class _CustomSwitchState extends State<CustomSwitch>
-    with SingleTickerProviderStateMixin {
+class _CustomSwitchState extends State<CustomSwitch> with SingleTickerProviderStateMixin {
   Animation? _circleAnimation;
   AnimationController? _animationController;
 
   @override
   void initState() {
     super.initState();
+
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 60));
     _circleAnimation = AlignmentTween(
@@ -183,6 +258,7 @@ class _CustomSwitchState extends State<CustomSwitch>
             end: widget.value ? Alignment.centerLeft : Alignment.centerRight)
         .animate(CurvedAnimation(
             parent: _animationController!, curve: Curves.linear));
+
   }
 
   @override
@@ -197,30 +273,24 @@ class _CustomSwitchState extends State<CustomSwitch>
             } else {
               _animationController!.forward();
             }
-            widget.value == false
-                ? widget.onChanged(true)
-                : widget.onChanged(false);
+            widget.value == false ? widget.onChanged(true) : widget.onChanged(false);
           },
           child: Container(
             width: 45.0,
             height: 28.0,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24.0),
-              color: _circleAnimation!.value == Alignment.centerLeft
-                  ? Colors.grey
-                  : Colors.blue,
+              color: _circleAnimation!.value == Alignment.centerLeft ? Colors.grey : Colors.blue,
             ),
             child: Padding(
-              padding: const EdgeInsets.only(
-                  top: 2.0, bottom: 2.0, right: 2.0, left: 2.0),
+              padding: const EdgeInsets.only(top: 2.0, bottom: 2.0, right: 2.0, left: 2.0),
               child: Container(
-                alignment:
-                    widget.value ? Alignment.centerRight : Alignment.centerLeft,
+                alignment: widget.value ? Alignment.centerRight : Alignment.centerLeft,
+
                 child: Container(
                   width: 20.0,
                   height: 20.0,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle, color: Colors.white),
+                  decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white),
                 ),
               ),
             ),

@@ -1,10 +1,3 @@
-import 'package:blanjaloka_flutter/screens/editinformasitoko.dart';
-import 'package:blanjaloka_flutter/screens/editprofilakun.dart';
-import 'package:blanjaloka_flutter/screens/promo_produk.dart';
-import 'package:blanjaloka_flutter/screens/promo_toko.dart';
-import 'package:blanjaloka_flutter/screens/rekening.dart';
-import 'package:blanjaloka_flutter/screens/sewatoko/detail_produk.dart';
-import 'package:blanjaloka_flutter/screens/sewatoko/pilih_sewa.dart';
 import 'package:blanjaloka_flutter/screens/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,7 +24,7 @@ class MyApp extends StatelessWidget {
             .appBarTheme
             .copyWith(systemOverlayStyle: SystemUiOverlayStyle.dark),
       ),
-      home: promoproduk(),
+      home: Splash(),
     );
   }
 }
