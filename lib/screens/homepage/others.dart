@@ -1,6 +1,6 @@
 import 'package:blanjaloka_flutter/screens/pengaturan/pengaturan.dart';
 import 'package:blanjaloka_flutter/screens/promo/promo_produk.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:blanjaloka_flutter/screens/sewatoko/pilih_sewa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,7 +8,6 @@ import 'package:flutter/services.dart';
 
 import '../../widget.dart';
 
-import '../pengaturan/editprofilakun.dart';
 
 class Others extends StatefulWidget {
   const Others({Key? key}) : super(key: key);
@@ -231,35 +230,39 @@ class _OthersState extends State<Others> {
                                       },
                                       child: Row(
                                         children: [
-                                          Expanded(
-                                              flex: 1,
-                                              child: Icon(
-                                                Icons.shopping_bag,
-                                                size: 24,
-                                                color: Colors.black,
-                                              )),
-                                          Expanded(
-                                              flex: 10,
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(left: 12),
-                                                child: Text(
-                                                  'Masa Sewa Toko',
-                                                  style: TextStyle(
-                                                      fontSize: 14,fontWeight: FontWeight.bold),
-                                                ),
-                                              )),
-                                          Expanded(
-                                              flex: 1,
-                                              child: Icon(
-                                                Icons.arrow_forward_ios,
-                                                size: 14,
-                                                color: Colors.grey,
-                                              )),
+                                          Container(
+                                            width: 36,
+                                            height: 36,
+                                            child: IconButton(
+                                              onPressed: () {},
+                                              icon: SvgPicture.asset('assets/icons/icon_sewa_toko.svg'),
+                                              iconSize: 50,
+                                              color: Colors.black87,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(left: 8),
+                                            child: Text(
+                                              'Masa Sewa Toko',
+                                              style: TextStyle(
+                                                  fontSize: 14,fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          Spacer(),
+                                          Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Icon(
+                                              Icons.arrow_forward_ios,
+                                              size: 14,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),
                                   ),
-                                ),Padding(
+                                ),
+                                Padding(
                                   padding: const EdgeInsets.only(left: 20, right: 20),
                                   child: Container(
                                     height: 56,
@@ -279,35 +282,91 @@ class _OthersState extends State<Others> {
                                       },
                                       child: Row(
                                         children: [
-                                          Expanded(
-                                              flex: 1,
-                                              child: Icon(
-                                                Icons.airplane_ticket_rounded,
-                                                size: 24,
-                                                color: Colors.black,
-                                              )),
-                                          Expanded(
-                                              flex: 10,
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(left: 12),
-                                                child: Text(
-                                                  'Promo Toko',
-                                                  style: TextStyle(
-                                                      fontSize: 14,fontWeight: FontWeight.bold),
-                                                ),
-                                              )),
-                                          Expanded(
-                                              flex: 1,
-                                              child: Icon(
-                                                Icons.arrow_forward_ios,
-                                                size: 14,
-                                                color: Colors.grey,
-                                              )),
+                                          Container(
+                                            width: 36,
+                                            height: 36,
+                                            child: IconButton(
+                                              onPressed: () {},
+                                              icon: SvgPicture.asset('assets/icons/icon_promo_toko.svg'),
+                                              iconSize: 50,
+                                              color: Colors.black87,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(left: 8),
+                                            child: Text(
+                                              'Promo Toko',
+                                              style: TextStyle(
+                                                  fontSize: 14,fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          Spacer(),
+                                          Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Icon(
+                                              Icons.arrow_forward_ios,
+                                              size: 14,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),
                                   ),
-                                ),Padding(
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                                  child: Container(
+                                    height: 56,
+                                    decoration: BoxDecoration(
+                                      border: Border(
+                                        bottom:
+                                        BorderSide(width: 1.0, color: Colors.grey),
+                                      ),
+                                    ),
+                                    child: InkWell(
+                                      onTap: () {
+                                        // Navigator.push(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //       builder: (context) => EditProfil()),
+                                        // );
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            width: 36,
+                                            height: 36,
+                                            child: IconButton(
+                                              onPressed: () {},
+                                              icon: SvgPicture.asset('assets/icons/icon_ulasan_pembeli.svg'),
+                                              iconSize: 50,
+                                              color: Colors.black87,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(left: 8),
+                                            child: Text(
+                                              'Ulasan Pembeli',
+                                              style: TextStyle(
+                                                  fontSize: 14,fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          Spacer(),
+                                          Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Icon(
+                                              Icons.arrow_forward_ios,
+                                              size: 14,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
                                   padding: const EdgeInsets.only(left: 20, right: 20),
                                   child: Container(
                                     height: 56,
@@ -327,78 +386,33 @@ class _OthersState extends State<Others> {
                                       },
                                       child: Row(
                                         children: [
-                                          Expanded(
-                                              flex: 1,
-                                              child: Icon(
-                                                Icons.star_rate_rounded,
-                                                size: 24,
-                                                color: Colors.black,
-                                              )),
-                                          Expanded(
-                                              flex: 10,
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(left: 12),
-                                                child: Text(
-                                                  'Ulasan Pembeli',
-                                                  style: TextStyle(
-                                                      fontSize: 14,fontWeight: FontWeight.bold),
-                                                ),
-                                              )),
-                                          Expanded(
-                                              flex: 1,
-                                              child: Icon(
-                                                Icons.arrow_forward_ios,
-                                                size: 14,
-                                                color: Colors.grey,
-                                              )),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),Padding(
-                                  padding: const EdgeInsets.only(left: 20, right: 20),
-                                  child: Container(
-                                    height: 56,
-                                    decoration: BoxDecoration(
-                                      border: Border(
-                                        bottom:
-                                        BorderSide(width: 1.0, color: Colors.grey),
-                                      ),
-                                    ),
-                                    child: InkWell(
-                                      onTap: () {
-                                        // Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //       builder: (context) => EditProfil()),
-                                        // );
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                              flex: 1,
-                                              child: Icon(
-                                                Icons.call,
-                                                size: 24,
-                                                color: Colors.black,
-                                              )),
-                                          Expanded(
-                                              flex: 10,
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(left: 12),
-                                                child: Text(
-                                                  'Pusat Bantuan',
-                                                  style: TextStyle(
-                                                      fontSize: 14,fontWeight: FontWeight.bold),
-                                                ),
-                                              )),
-                                          Expanded(
-                                              flex: 1,
-                                              child: Icon(
-                                                Icons.arrow_forward_ios,
-                                                size: 14,
-                                                color: Colors.grey,
-                                              )),
+                                          Container(
+                                            width: 36,
+                                            height: 36,
+                                            child: IconButton(
+                                              onPressed: () {},
+                                              icon: SvgPicture.asset('assets/icons/icon_pusat_bantuan.svg'),
+                                              iconSize: 50,
+                                              color: Colors.black87,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(left: 8),
+                                            child: Text(
+                                              'Pusat Bantuan',
+                                              style: TextStyle(
+                                                  fontSize: 14,fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          Spacer(),
+                                          Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Icon(
+                                              Icons.arrow_forward_ios,
+                                              size: 14,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -419,27 +433,33 @@ class _OthersState extends State<Others> {
                                       },
                                       child: Row(
                                         children: [
-                                          Expanded(
-                                              flex: 1,
-                                              child: Icon(
-                                                Icons.settings,
-                                                size: 24,
-                                                color: Colors.black,
-                                              )),
-                                          Expanded(
-                                              flex: 10,
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(left: 12),
-                                                child: Text(
-                                                  'Pengaturan',
-                                                  style: TextStyle(
-                                                      fontSize: 14,fontWeight: FontWeight.bold),
-                                                ),
-                                              )),
-                                          Expanded(
-                                              flex: 1,
-                                              child: Icon(Icons.arrow_forward_ios,
-                                                  size: 14, color: Colors.grey)),
+                                          Container(
+                                            width: 36,
+                                            height: 36,
+                                            child: IconButton(
+                                              onPressed: () {},
+                                              icon: SvgPicture.asset('assets/icons/icon_pengaturan.svg'),
+                                              iconSize: 50,
+                                              color: Colors.black87,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(left: 8),
+                                            child: Text(
+                                              'Pengaturan',
+                                              style: TextStyle(
+                                                  fontSize: 14,fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          Spacer(),
+                                          Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Icon(
+                                              Icons.arrow_forward_ios,
+                                              size: 14,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -468,21 +488,24 @@ class _OthersState extends State<Others> {
                                       },
                                       child: Row(
                                         children: [
-                                          Expanded(
-                                              flex: 1,
-                                              child: Icon(
-                                                Icons.logout,
-                                                size: 24,
-                                                color: Colors.black,
-                                              )),
-                                          Expanded(
-                                              flex: 8,
-                                              child: Text(
-                                                'Keluar',
-                                                style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.bold),
-                                              )),
+                                          Container(
+                                            width: 36,
+                                            height: 36,
+                                            child: IconButton(
+                                              onPressed: () {},
+                                              icon: SvgPicture.asset('assets/icons/icon_keluar.svg'),
+                                              iconSize: 50,
+                                              color: Colors.black87,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(left: 8),
+                                            child: Text(
+                                              'Keluar',
+                                              style: TextStyle(
+                                                  fontSize: 14,fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),
