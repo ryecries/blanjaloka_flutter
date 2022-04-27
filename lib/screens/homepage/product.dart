@@ -1,19 +1,16 @@
+
 import 'dart:convert';
 
 import 'package:blanjaloka_flutter/api/produk.dart';
 import 'package:blanjaloka_flutter/constant.dart';
 import 'package:blanjaloka_flutter/screens/addproduk/tambah_produk.dart';
-import 'package:blanjaloka_flutter/screens/addproduk/ubah_produk.dart';
-import 'package:blanjaloka_flutter/screens/promo_produk.dart';
-
-import 'package:blanjaloka_flutter/screens/promo_toko.dart';
-import 'package:blanjaloka_flutter/screens/sewatoko/detail_produk.dart';
-
 import 'package:blanjaloka_flutter/widgets/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:http/http.dart' as http;
+
+import '../addproduk/ubah_produk.dart';
+import '../sewatoko/detail_produk.dart';
 
 class Product extends StatefulWidget {
   const Product({Key? key}) : super(key: key);
@@ -127,7 +124,7 @@ class _ProductState extends State<Product> {
                 )),
             Divider(thickness: 2, height: 2),
             Container(
-              height: MediaQuery.of(context).size.height / 1.75,
+              height: MediaQuery.of(context).size.height / 1.69,
               child: FutureBuilder<List<Produk>>(
                 future: produkFuture,
                 builder: (context, snapshot) {
@@ -166,13 +163,6 @@ class _ProductState extends State<Product> {
                       ),
                     );
                   }
-                  // if (snapshot.hasData) {
-                  //   final produks = snapshot.data!;
-
-                  //   return buildProduk(produks);
-                  // } else {
-                  //   return const Text('Tidak ada data produk');
-                  // }
                 },
               ),
             )
@@ -235,9 +225,13 @@ class _ProductState extends State<Product> {
                                 SizedBox(
                                   height: 10,
                                 ),
-                                Text(produk.name,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w500)),
+                                RichText(
+                                  text: TextSpan(
+                                      text: produk.name,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.black)),
+                                ),
                                 RichText(
                                   text: TextSpan(
                                       text: 'Rp. ${produk.price} ',
@@ -316,17 +310,6 @@ class _ProductState extends State<Product> {
               ],
             ),
           );
-          // return Card(
-          //   child: ListTile(
-          //     leading: CircleAvatar(
-          //       radius: 28,
-          //       backgroundImage: NetworkImage(produk.image),
-          //     ),
-          //     title: Text(produk.id),
-          //     subtitle: Text(produk.price.toString()),
-
-          //   ),
-          // );
         },
       );
 }
