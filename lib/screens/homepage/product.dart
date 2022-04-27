@@ -4,11 +4,15 @@ import 'package:blanjaloka_flutter/api/produk.dart';
 import 'package:blanjaloka_flutter/constant.dart';
 import 'package:blanjaloka_flutter/screens/addproduk/tambah_produk.dart';
 import 'package:blanjaloka_flutter/screens/addproduk/ubah_produk.dart';
-import 'package:blanjaloka_flutter/widgets/primary_button.dart';
+import 'package:blanjaloka_flutter/screens/promo_produk.dart';
+
+import 'package:blanjaloka_flutter/screens/promo_toko.dart';
+import 'package:blanjaloka_flutter/screens/sewatoko/detail_produk.dart';
+
 import 'package:blanjaloka_flutter/widgets/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:http/http.dart' as http;
 
 class Product extends StatefulWidget {
@@ -61,7 +65,10 @@ class _ProductState extends State<Product> {
             color: Colors.black87,
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => detailproduk()),
+            );},
             icon: SvgPicture.asset('assets/icons/icon_chat.svg'),
             color: Colors.black87,
           ),

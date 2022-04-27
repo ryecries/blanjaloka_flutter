@@ -17,7 +17,8 @@ class _ImagePedagangWidgetState extends State<ImagePedagangWidget> {
 
   Future getImage() async {
     final ImagePicker _picker = ImagePicker();
-    final XFile? imagePicked = await _picker.pickImage(source: ImageSource.gallery);
+    final XFile? imagePicked =
+        await _picker.pickImage(source: ImageSource.gallery);
     image = File(imagePicked!.path);
     // setState(() {});
   }
@@ -58,14 +59,20 @@ class _ImagePedagangWidgetState extends State<ImagePedagangWidget> {
         Container(
           padding: const EdgeInsets.only(right: 8),
           child: ElevatedButton(
-              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white), shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0), side: BorderSide(color: Color(0xFF3c8187))))),
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.white),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Color(0xFF3c8187))))),
               // TextButton.styleFrom(backgroundColor: bPrimaryColor),
               onPressed: () async {
                 await getImage();
               },
               child: Text(
                 "Ambil Foto",
-                style: TextStyle(color: Color(0xFF3c8187), fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Color(0xFF3c8187), fontWeight: FontWeight.bold),
               )),
         )
       ],
@@ -169,7 +176,7 @@ class PedagangWidget extends StatelessWidget {
               title ?? "(Unnamed)",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 12,
+                fontSize: 10,
               ),
             ),
           ),
@@ -216,7 +223,9 @@ class Pedagang2Widget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
           child: TextFormField(
             keyboardType: TextInputType.text,
-            decoration: InputDecoration(hintText: hint2 ?? "(Unnamed)", suffixIcon: Icon(Icons.keyboard_arrow_down)),
+            decoration: InputDecoration(
+                hintText: hint2 ?? "(Unnamed)",
+                suffixIcon: Icon(Icons.keyboard_arrow_down)),
           ),
         )
       ],
@@ -241,8 +250,15 @@ class _CustomSwitchState extends State<CustomSwitch> with SingleTickerProviderSt
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 60));
-    _circleAnimation = AlignmentTween(begin: widget.value ? Alignment.centerRight : Alignment.centerLeft, end: widget.value ? Alignment.centerLeft : Alignment.centerRight).animate(CurvedAnimation(parent: _animationController!, curve: Curves.linear));
+
+    _animationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 60));
+    _circleAnimation = AlignmentTween(
+            begin: widget.value ? Alignment.centerRight : Alignment.centerLeft,
+            end: widget.value ? Alignment.centerLeft : Alignment.centerRight)
+        .animate(CurvedAnimation(
+            parent: _animationController!, curve: Curves.linear));
+
   }
 
   @override
@@ -270,6 +286,7 @@ class _CustomSwitchState extends State<CustomSwitch> with SingleTickerProviderSt
               padding: const EdgeInsets.only(top: 2.0, bottom: 2.0, right: 2.0, left: 2.0),
               child: Container(
                 alignment: widget.value ? Alignment.centerRight : Alignment.centerLeft,
+
                 child: Container(
                   width: 20.0,
                   height: 20.0,
