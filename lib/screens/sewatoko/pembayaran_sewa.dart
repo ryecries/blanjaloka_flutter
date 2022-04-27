@@ -148,7 +148,7 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
                                             padding:
                                                 const EdgeInsets.only(left: 15),
                                             child: Text(
-                                              'Pilih Pembayaran',
+                                              'BCA Virtual Account',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold),
                                             ),
@@ -263,15 +263,15 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
             PrimaryButton(
                 buttontxt: 'Bayar',
                 onPressed: () {
-                  // String? textToSend = widget.passedText;
-                  // String? imgToSend = widget.passedImg;
-                  print(codeBank);
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //       builder: (context) => MenungguPembayaran(
-                  //           img: imgToSend!, text: textToSend!)),
-                  // );
+                  String? textToSend = widget.passedText;
+                  String? imgToSend = widget.passedImg;
+                  // print(codeBank);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MenungguPembayaran(
+                            img: imgToSend!, text: textToSend!)),
+                  );
                 })
           ],
         ),

@@ -1,3 +1,4 @@
+
 import 'dart:convert';
 
 import 'package:blanjaloka_flutter/api/produk.dart';
@@ -7,6 +8,9 @@ import 'package:blanjaloka_flutter/widgets/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
+
+import '../addproduk/ubah_produk.dart';
+import '../sewatoko/detail_produk.dart';
 
 class Product extends StatefulWidget {
   const Product({Key? key}) : super(key: key);
@@ -50,16 +54,18 @@ class _ProductState extends State<Product> {
         ),
         actions: [
           IconButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => TambahProduk(),
-              ));
-            },
+            onPressed: () { Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TambahProduk()),
+            );},
             icon: SvgPicture.asset('assets/icons/icon_add.svg'),
             color: Colors.black87,
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => detailproduk()),
+            );},
             icon: SvgPicture.asset('assets/icons/icon_chat.svg'),
             color: Colors.black87,
           ),
@@ -276,7 +282,7 @@ class _ProductState extends State<Product> {
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.w600),
                             )),
-                        onPressed: () {},
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => UbahProduk()),);},
                         style: ElevatedButton.styleFrom(
                           elevation: 0.5,
                           primary: Colors.white,

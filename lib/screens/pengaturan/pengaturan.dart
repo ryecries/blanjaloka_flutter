@@ -1,7 +1,11 @@
-import 'package:blanjaloka_flutter/screens/editinformasitoko.dart';
-import 'package:blanjaloka_flutter/screens/editprofilakun.dart';
-import 'package:blanjaloka_flutter/screens/pengaturan_lokasi_toko.dart';
+import 'package:blanjaloka_flutter/screens/pengaturan/editinformasirekening.dart';
+import 'package:blanjaloka_flutter/screens/pengaturan/editinformasitoko.dart';
+import 'package:blanjaloka_flutter/screens/pengaturan/editprofilakun.dart';
+import 'package:blanjaloka_flutter/screens/pengaturan/pengaturan_lokasi_toko.dart';
+import 'package:blanjaloka_flutter/screens/ubah_password.dart';
 import 'package:flutter/material.dart';
+
+import 'editinformasitoko.dart';
 
 class Pengaturan extends StatelessWidget {
   const Pengaturan({Key? key}) : super(key: key);
@@ -271,11 +275,11 @@ class Pengaturan extends StatelessWidget {
                           ),
                           child: InkWell(
                             onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //       builder: (context) => Pedagang()),
-                              // );
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => EditRekening()),
+                              );
                             },
                             child: Row(
                               children: [
@@ -305,11 +309,11 @@ class Pengaturan extends StatelessWidget {
                           height: 56,
                           child: InkWell(
                             onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //       builder: (context) => Pedagang()),
-                              // );
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => UbahPassword()),
+                              );
                             },
                             child: Row(
                               children: [

@@ -1,4 +1,5 @@
-import 'package:blanjaloka_flutter/screens/pengaturan.dart';
+import 'package:blanjaloka_flutter/screens/pengaturan/pengaturan.dart';
+import 'package:blanjaloka_flutter/screens/promo/promo_produk.dart';
 
 import 'package:blanjaloka_flutter/screens/sewatoko/pilih_sewa.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,7 @@ import 'package:flutter/services.dart';
 
 import '../../widget.dart';
 
-import '../editprofilakun.dart';
+import '../pengaturan/editprofilakun.dart';
 
 class Others extends StatefulWidget {
   const Others({Key? key}) : super(key: key);
@@ -273,7 +274,7 @@ class _OthersState extends State<Others> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => EditProfil()),
+                                              builder: (context) => PagePromoToko()),
                                         );
                                       },
                                       child: Row(
@@ -318,11 +319,11 @@ class _OthersState extends State<Others> {
                                     ),
                                     child: InkWell(
                                       onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => EditProfil()),
-                                        );
+                                        // Navigator.push(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //       builder: (context) => EditProfil()),
+                                        // );
                                       },
                                       child: Row(
                                         children: [
@@ -366,11 +367,11 @@ class _OthersState extends State<Others> {
                                     ),
                                     child: InkWell(
                                       onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => EditProfil()),
-                                        );
+                                        // Navigator.push(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //       builder: (context) => EditProfil()),
+                                        // );
                                       },
                                       child: Row(
                                         children: [

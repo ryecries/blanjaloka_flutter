@@ -151,7 +151,8 @@ class _PagePromoTokoState extends State<PagePromoToko> {
                               ),
                             ),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                          },
                         )
                       ],
                     ),
