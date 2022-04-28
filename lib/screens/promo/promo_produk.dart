@@ -1,4 +1,5 @@
 import 'package:blanjaloka_flutter/constant.dart';
+import 'package:blanjaloka_flutter/screens/promo/pilih_produk_promo.dart';
 import 'package:blanjaloka_flutter/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -57,7 +58,19 @@ class _PagePromoTokoState extends State<PagePromoToko> {
                       child: InkWell(
                         borderRadius: BorderRadius.circular(4),
                         splashColor: bPrimaryColor,
-                        onTap: () {},
+                        onTap: () async {
+                          final result = await showModalBottomSheet(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20))),
+                              isScrollControlled: true,
+                              enableDrag: false,
+                              context: context,
+                              builder: (context) => PilihProductPromo());
+                          setState(() {
+                          });
+                        },
                         child: Image(
                             image:
                                 AssetImage('assets/images/upload_foto_wide.png')),
