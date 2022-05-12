@@ -1,4 +1,4 @@
-import 'package:blanjaloka_flutter/model/chart.dart';
+import 'package:blanjaloka_flutter/models/chart.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
