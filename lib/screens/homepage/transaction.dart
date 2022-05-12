@@ -1,5 +1,5 @@
 import 'package:blanjaloka_flutter/constant.dart';
-import 'package:blanjaloka_flutter/model/riwayat_transaksi.dart';
+import 'package:blanjaloka_flutter/models/riwayat_transaksi.dart';
 import 'package:blanjaloka_flutter/widgets/bar_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

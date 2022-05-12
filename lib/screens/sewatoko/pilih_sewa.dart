@@ -38,67 +38,65 @@ class _PilihSewaState extends State<PilihSewa> {
           Container(
             color: Colors.white,
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            child: Expanded(
-              child: ListView(
-                children: [
-                  Column(children: [
-                    CardRadio(
-                      borderActive:
-                          _isRadioSelected == 1 ? bPrimaryColor : Colors.black,
-                      label: '1 Bulan',
-                      bestChoose: '',
-                      desc:
-                          'Gratis 7 hari percobaan, fitur penjualan yang mudah, riwayat penjualan terekam, transaksi keuangan jauh lebih cepat dan mudah.',
-                      harga: 'Rp 210.000',
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      value: 1,
-                      groupValue: _isRadioSelected,
-                      onChanged: (newValue) {
-                        setState(() {
-                          _isRadioSelected = newValue;
-                          hargaSewa = 'Rp 210.000';
-                        });
-                      },
-                    ),
-                    CardRadio(
-                      borderActive:
-                          _isRadioSelected == 3 ? bPrimaryColor : Colors.black,
-                      label: '3 Bulan',
-                      bestChoose: 'Pilihan Terbaik',
-                      desc:
-                          'Gratis 14 hari percobaan, fitur penjualan yang mudah, riwayat penjualan terekam, transaksi keuangan jauh lebih cepat dan mudah.',
-                      harga: 'Rp 540.000',
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      value: 3,
-                      groupValue: _isRadioSelected,
-                      onChanged: (newValue) {
-                        setState(() {
-                          _isRadioSelected = newValue;
-                          hargaSewa = 'Rp 540.000';
-                        });
-                      },
-                    ),
-                    CardRadio(
-                      borderActive:
-                          _isRadioSelected == 6 ? bPrimaryColor : Colors.black,
-                      label: '6 Bulan',
-                      bestChoose: '',
-                      desc:
-                          'Gratis 30 hari percobaan, fitur penjualan yang mudah, riwayat penjualan terekam, transaksi keuangan jauh lebih cepat dan mudah.',
-                      harga: 'Rp 1.800.000',
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      value: 6,
-                      groupValue: _isRadioSelected,
-                      onChanged: (newValue) {
-                        setState(() {
-                          _isRadioSelected = newValue;
-                          hargaSewa = 'Rp 1.800.000';
-                        });
-                      },
-                    )
-                  ]),
-                ],
-              ),
+            child: ListView(
+              children: [
+                Column(children: [
+                  CardRadio(
+                    borderActive:
+                        _isRadioSelected == 1 ? bPrimaryColor : Colors.black,
+                    label: '1 Bulan',
+                    bestChoose: '',
+                    desc:
+                        'Gratis 7 hari percobaan, fitur penjualan yang mudah, riwayat penjualan terekam, transaksi keuangan jauh lebih cepat dan mudah.',
+                    harga: 'Rp 210.000',
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    value: 1,
+                    groupValue: _isRadioSelected,
+                    onChanged: (newValue) {
+                      setState(() {
+                        _isRadioSelected = newValue;
+                        hargaSewa = 'Rp 210.000';
+                      });
+                    },
+                  ),
+                  CardRadio(
+                    borderActive:
+                        _isRadioSelected == 3 ? bPrimaryColor : Colors.black,
+                    label: '3 Bulan',
+                    bestChoose: 'Pilihan Terbaik',
+                    desc:
+                        'Gratis 14 hari percobaan, fitur penjualan yang mudah, riwayat penjualan terekam, transaksi keuangan jauh lebih cepat dan mudah.',
+                    harga: 'Rp 540.000',
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    value: 3,
+                    groupValue: _isRadioSelected,
+                    onChanged: (newValue) {
+                      setState(() {
+                        _isRadioSelected = newValue;
+                        hargaSewa = 'Rp 540.000';
+                      });
+                    },
+                  ),
+                  CardRadio(
+                    borderActive:
+                        _isRadioSelected == 6 ? bPrimaryColor : Colors.black,
+                    label: '6 Bulan',
+                    bestChoose: '',
+                    desc:
+                        'Gratis 30 hari percobaan, fitur penjualan yang mudah, riwayat penjualan terekam, transaksi keuangan jauh lebih cepat dan mudah.',
+                    harga: 'Rp 1.800.000',
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    value: 6,
+                    groupValue: _isRadioSelected,
+                    onChanged: (newValue) {
+                      setState(() {
+                        _isRadioSelected = newValue;
+                        hargaSewa = 'Rp 1.800.000';
+                      });
+                    },
+                  )
+                ]),
+              ],
             ),
           ),
           PrimaryButton(
