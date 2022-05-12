@@ -1,7 +1,6 @@
 
 import 'dart:convert';
 
-import 'package:blanjaloka_flutter/api/produk.dart';
 import 'package:blanjaloka_flutter/constant.dart';
 import 'package:blanjaloka_flutter/screens/addproduk/tambah_produk.dart';
 import 'package:blanjaloka_flutter/screens/chat/adminchat.dart';
@@ -10,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
 
+import '../../model/produk.dart';
 import '../addproduk/ubah_produk.dart';
 import '../sewatoko/detail_produk.dart';
 
