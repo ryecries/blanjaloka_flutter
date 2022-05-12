@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 
 
 import '../../widget.dart';
+import '../chat/adminchat.dart';
 
 
 class Others extends StatefulWidget {
@@ -41,7 +42,10 @@ class _OthersState extends State<Others> {
           Padding(
             padding: const EdgeInsets.only(left: 2),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AdminChat()),);
+              },
               icon: Icon(Icons.chat_outlined),color: Colors.black87,
             ),
           ),

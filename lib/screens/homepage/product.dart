@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:blanjaloka_flutter/api/produk.dart';
 import 'package:blanjaloka_flutter/constant.dart';
 import 'package:blanjaloka_flutter/screens/addproduk/tambah_produk.dart';
+import 'package:blanjaloka_flutter/screens/chat/adminchat.dart';
 import 'package:blanjaloka_flutter/widgets/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -64,8 +65,8 @@ class _ProductState extends State<Product> {
           IconButton(
             onPressed: () {Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => detailproduk()),
-            );},
+              MaterialPageRoute(builder: (context) => AdminChat()),);
+            },
             icon: SvgPicture.asset('assets/icons/icon_chat.svg'),
             color: Colors.black87,
           ),
