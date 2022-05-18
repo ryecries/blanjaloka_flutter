@@ -1,9 +1,10 @@
-
 import 'dart:convert';
 
 import 'package:blanjaloka_flutter/constant.dart';
+import 'package:blanjaloka_flutter/models/riwayat_transaksi.dart';
 import 'package:blanjaloka_flutter/screens/addproduk/tambah_produk.dart';
 import 'package:blanjaloka_flutter/screens/chat/adminchat.dart';
+import 'package:blanjaloka_flutter/screens/chat/notification.dart';
 import 'package:blanjaloka_flutter/widgets/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,7 +12,6 @@ import 'package:http/http.dart' as http;
 
 import '../../models/produk.dart';
 import '../addproduk/ubah_produk.dart';
-import '../sewatoko/detail_produk.dart';
 
 class Product extends StatefulWidget {
   const Product({Key? key}) : super(key: key);
@@ -55,23 +55,32 @@ class _ProductState extends State<Product> {
         ),
         actions: [
           IconButton(
-            onPressed: () { Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => TambahProduk()),
-            );},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TambahProduk()),
+              );
+            },
             icon: SvgPicture.asset('assets/icons/icon_add.svg'),
             color: Colors.black87,
           ),
           IconButton(
-            onPressed: () {Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => AdminChat()),);
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AdminChat()),
+              );
             },
             icon: SvgPicture.asset('assets/icons/icon_chat.svg'),
             color: Colors.black87,
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Notifikasi()),
+              );
+            },
             icon: SvgPicture.asset('assets/icons/icon_notification.svg'),
             color: Colors.black87,
           ),
@@ -116,7 +125,7 @@ class _ProductState extends State<Product> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        '{jumlah.produk} ada produk yang dijual.',
+                        'Ada ${transaksi.length} produk yang dijual.',
                         style: TextStyle(
                             fontWeight: FontWeight.w500, fontSize: 15),
                       ),
@@ -283,7 +292,13 @@ class _ProductState extends State<Product> {
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.w600),
                             )),
-                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => UbahProduk()),);},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UbahProduk()),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           elevation: 0.5,
                           primary: Colors.white,
