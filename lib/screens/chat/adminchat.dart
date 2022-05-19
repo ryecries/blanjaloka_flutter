@@ -44,11 +44,8 @@ class _AdminChatState extends State<AdminChat> {
         ),
         actions: [
           IconButton(
-            onPressed: () { Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => TambahProduk()),
-            );},
-            icon: SvgPicture.asset('assets/icons/icon_add.svg'),
+            onPressed: () { },
+            icon: SvgPicture.asset('assets/icons/icon_search.svg'),
             color: Colors.black87,
           ),
           SizedBox(width: 15)

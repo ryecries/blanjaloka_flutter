@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'models/chatMessageModel.dart';
 
 class ChatDetailPage extends StatefulWidget{
@@ -52,9 +53,14 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                       ],
                     ),
                   ),
-                  Icon(Icons.local_phone,color: Colors.black54),
-                  SizedBox(width: 16),
-                  Icon(Icons.videocam_rounded,color: Colors.black54),
+                  IconButton(
+                    onPressed: () {
+                      launchUrl(Uri(scheme: 'tel', path: '1234567890'));
+                    },
+                    icon: Icon(Icons.call),
+                    color: Colors.black54,
+                  ),
+                  Icon(Icons.more_vert,color: Colors.black54),
                 ],
               ),
             ),

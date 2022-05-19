@@ -4,6 +4,8 @@ import 'package:blanjaloka_flutter/widgets/bar_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../chat/adminchat.dart';
+
 class Transaction extends StatefulWidget {
   const Transaction({Key? key}) : super(key: key);
 
@@ -43,7 +45,10 @@ class _TransactionState extends State<Transaction> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AdminChat()),);
+            },
             icon: SvgPicture.asset('assets/icons/icon_chat.svg'),
             color: Colors.black87,
           ),

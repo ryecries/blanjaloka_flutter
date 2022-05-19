@@ -39,23 +39,20 @@ class _OthersState extends State<Others> {
           ),
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(left: 2),
-            child: IconButton(
-              onPressed: () {Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AdminChat()),);
-              },
-              icon: Icon(Icons.chat_outlined),color: Colors.black87,
-            ),
+          IconButton(
+            onPressed: () {Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AdminChat()),);
+            },
+            icon: SvgPicture.asset('assets/icons/icon_chat.svg'),
+            color: Colors.black87,
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 24),
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.notifications),color: Colors.black87,
-            ),
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset('assets/icons/icon_notification.svg'),
+            color: Colors.black87,
           ),
+          SizedBox(width: 15)
         ],
       ),
 

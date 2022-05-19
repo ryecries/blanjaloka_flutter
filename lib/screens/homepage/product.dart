@@ -5,6 +5,7 @@ import 'package:blanjaloka_flutter/models/riwayat_transaksi.dart';
 import 'package:blanjaloka_flutter/screens/addproduk/tambah_produk.dart';
 import 'package:blanjaloka_flutter/screens/chat/adminchat.dart';
 import 'package:blanjaloka_flutter/screens/chat/notification.dart';
+import 'package:blanjaloka_flutter/screens/order_detail.dart';
 import 'package:blanjaloka_flutter/widgets/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -75,11 +76,9 @@ class _ProductState extends State<Product> {
             color: Colors.black87,
           ),
           IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Notifikasi()),
-              );
+            onPressed: () {Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => OrderDetail()),);
             },
             icon: SvgPicture.asset('assets/icons/icon_notification.svg'),
             color: Colors.black87,
