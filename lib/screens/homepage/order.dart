@@ -1,6 +1,7 @@
 import 'package:blanjaloka_flutter/constant.dart';
 import 'package:blanjaloka_flutter/screens/chat/adminchat.dart';
 import 'package:blanjaloka_flutter/screens/chat/notification.dart';
+import 'package:blanjaloka_flutter/screens/order_detail.dart';
 import 'package:blanjaloka_flutter/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -86,8 +87,14 @@ class _OrderState extends State<Order> {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(4),
                     splashColor: bPrimaryColor,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => OrderDetail()),
+                      );
+                    },
                     child: Container(
+                      decoration: BoxDecoration(border: Border.all(width: 0.1), borderRadius: BorderRadius.circular(4)),
                       child: Column(
                         children: [
                           Container(

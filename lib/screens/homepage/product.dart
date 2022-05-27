@@ -78,7 +78,8 @@ class _ProductState extends State<Product> {
           IconButton(
             onPressed: () {Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => OrderDetail()),);
+              MaterialPageRoute(builder: (context) => Notifikasi()),
+            );
             },
             icon: SvgPicture.asset('assets/icons/icon_notification.svg'),
             color: Colors.black87,

@@ -1,4 +1,7 @@
+import 'package:blanjaloka_flutter/screens/sewatoko/pembayaran_sewa.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/primary_button.dart';
 
 class OrderDetail extends StatelessWidget {
   const OrderDetail({Key? key}) : super(key: key);
@@ -481,11 +484,20 @@ class OrderDetail extends StatelessWidget {
                           ],
                         ),
                       ),
+                      SizedBox(
+                        height: 65,
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
+            PrimaryButton(
+                buttontxt: 'Proses Pesanan',
+                onPressed: () {
+                  // Navigator.of(context).push(
+                  //     MaterialPageRoute(builder: (context) => ()));
+                })
           ],
         ),
       ),
