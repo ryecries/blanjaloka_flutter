@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../chat/adminchat.dart';
+import '../chat/notification.dart';
 
 class Transaction extends StatefulWidget {
   const Transaction({Key? key}) : super(key: key);
@@ -55,7 +56,12 @@ class _TransactionState extends State<Transaction> {
             color: Colors.black87,
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Notifikasi()),
+              );
+            },
             icon: SvgPicture.asset('assets/icons/icon_notification.svg'),
             color: Colors.black87,
           ),

@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 
 import '../../widget.dart';
 import '../chat/adminchat.dart';
+import '../chat/notification.dart';
 
 
 class Others extends StatefulWidget {
@@ -40,15 +41,22 @@ class _OthersState extends State<Others> {
         ),
         actions: [
           IconButton(
-            onPressed: () {Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => AdminChat()),);
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AdminChat()),
+              );
             },
             icon: SvgPicture.asset('assets/icons/icon_chat.svg'),
             color: Colors.black87,
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Notifikasi()),
+              );
+            },
             icon: SvgPicture.asset('assets/icons/icon_notification.svg'),
             color: Colors.black87,
           ),
