@@ -54,5 +54,23 @@ List<RiwayatTransaksi> transaksi = [
       status: 'Selesai',
       date: '12 Sep 2021',
       iconColor: Colors.green,
-      iconData: Icons.add)
+      iconData: Icons.add),
+      RiwayatTransaksi(
+      nama: 'Rara Reski',
+      profilPict: 'assets/images/profil_photo_3.png',
+      price: 200000,
+      id: 1621093,
+      status: 'Selesai',
+      date: '12 Sep 2021',
+      iconColor: Colors.green,
+      iconData: Icons.add),
+      RiwayatTransaksi(
+      nama: 'Mola Reski',
+      profilPict: 'assets/images/profil_photo_3.png',
+      price: 80000,
+      id: 1621093,
+      status: 'Dibatalkan',
+      date: '26 Sep 2022',
+      iconColor: Colors.red,
+      iconData: Icons.cancel_rounded)
 ];
