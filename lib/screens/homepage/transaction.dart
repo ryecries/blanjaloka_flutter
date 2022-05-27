@@ -45,9 +45,11 @@ class _TransactionState extends State<Transaction> {
         ),
         actions: [
           IconButton(
-            onPressed: () {Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => AdminChat()),);
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AdminChat()),
+              );
             },
             icon: SvgPicture.asset('assets/icons/icon_chat.svg'),
             color: Colors.black87,
@@ -61,168 +63,167 @@ class _TransactionState extends State<Transaction> {
         ],
       ),
       body: SafeArea(
-          child: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            child: Row(
-              children: [
-                Column(
-                  children: [
-                    Text('Pendapatan Kamu',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        )),
-                    Text('Rp 450.000',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w600,
-                        ))
-                  ],
-                ),
-                Spacer(),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(color: Colors.grey, width: 0.5)),
-                  child: DropdownButtonHideUnderline(
-                    child: DropdownButton<String>(
-                        borderRadius: BorderRadius.circular(25),
-                        alignment: Alignment.center,
-                        hint: Text('Filter',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black)),
-                        value: value,
-                        icon: Icon(Icons.keyboard_arrow_down_rounded,
-                            color: Colors.black),
-                        items: filterProduk.map(buildMenuItem).toList(),
-                        onChanged: (value) =>
-                            setState(() => this.value = value)),
+          child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      Text('Pendapatan Kamu',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Colors.grey,
+                          )),
+                      Text('Rp 450.000',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w600,
+                          ))
+                    ],
                   ),
-                )
-              ],
+                  Spacer(),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        border: Border.all(color: Colors.grey, width: 0.5)),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                          borderRadius: BorderRadius.circular(25),
+                          alignment: Alignment.center,
+                          hint: Text('Filter',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black)),
+                          value: value,
+                          icon: Icon(Icons.keyboard_arrow_down_rounded,
+                              color: Colors.black),
+                          items: filterProduk.map(buildMenuItem).toList(),
+                          onChanged: (value) =>
+                              setState(() => this.value = value)),
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Container(
-              height: MediaQuery.of(context).size.height / 3,
-              child: BarChart(),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                height: MediaQuery.of(context).size.height / 3,
+                child: BarChartWidget(),
+              ),
             ),
-          ),
-          Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
-              child: Divider(height: 10, thickness: 5)),
-          Container(
-            margin: EdgeInsets.only(left: 20, bottom: 10),
-            child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Riwayat Transaksi',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                )),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20),
-            height: 35,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: categories.length,
-              itemBuilder: (context, index) => buildTextKategori(index),
+            Container(
+                margin: EdgeInsets.symmetric(vertical: 10),
+                child: Divider(height: 10, thickness: 5)),
+            Container(
+              margin: EdgeInsets.only(left: 20, bottom: 10),
+              child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Riwayat Transaksi',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  )),
             ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: transaksi.length,
-              itemBuilder: (context, index){
-              return buildRiwayatTransaksi(index);
-            }),
-          )
-        ],
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              height: 35,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: categories.length,
+                itemBuilder: (context, index) => buildTextKategori(index),
+              ),
+            ),
+            ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: transaksi.length,
+                itemBuilder: (context, index) {
+                  return buildRiwayatTransaksi(index);
+                })
+          ],
+        ),
       )),
     );
   }
 
   Widget buildRiwayatTransaksi(int index) {
     return Container(
-          decoration: BoxDecoration(
-              border:
-                  Border(bottom: BorderSide(width: 0.5, color: Colors.grey))),
-          margin: EdgeInsets.only(left: 20, top: 20, right: 20),
-          padding: EdgeInsets.only(bottom: 10),
-          child: Row(
-            children: [
-              Container(
-                  height: 53,
-                  width: 53,
-                  child: CircleAvatar(
-                      backgroundImage: AssetImage(transaksi[index].profilPict))),
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.only(left: 5),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        transaksi[index].nama,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 16),
-                      ),
-                      Row(
-                        children: [
-                          Text('ID # ${transaksi[index].id}',
-                              style: TextStyle(
-                                  fontSize: 12, color: Colors.grey)),
-                          Container(
-                            padding: EdgeInsets.only(bottom: 8),
-                            child: Text(' . ',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                          Text(
-                            transaksi[index].status,
-                            style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold,
-                                color: transaksi[index].iconColor),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+      decoration: BoxDecoration(
+          border: Border(bottom: BorderSide(width: 0.5, color: Colors.grey))),
+      margin: EdgeInsets.only(left: 20, top: 20, right: 20),
+      padding: EdgeInsets.only(bottom: 10),
+      child: Row(
+        children: [
+          Container(
+              height: 53,
+              width: 53,
+              child: CircleAvatar(
+                  backgroundImage: AssetImage(transaksi[index].profilPict))),
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.only(left: 5),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(
+                    transaksi[index].nama,
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                  ),
                   Row(
                     children: [
-                      Icon(
-                        transaksi[index].iconData,
-                        size: 16,
-                        color: transaksi[index].iconColor,
+                      Text('ID # ${transaksi[index].id}',
+                          style: TextStyle(fontSize: 12, color: Colors.grey)),
+                      Container(
+                        padding: EdgeInsets.only(bottom: 8),
+                        child: Text(' . ',
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold)),
                       ),
                       Text(
-                        ' Rp ${transaksi[index].price.toString()}',
+                        transaksi[index].status,
                         style: TextStyle(
+                            fontSize: 10,
                             fontWeight: FontWeight.bold,
-                            fontSize: 16,
                             color: transaksi[index].iconColor),
-                      ),
+                      )
                     ],
-                  ),
-                  Text(transaksi[index].date,
-                      style: TextStyle(fontSize: 12, color: Colors.grey)),
+                  )
                 ],
-              )
-            ],
+              ),
+            ),
           ),
-        );
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    transaksi[index].iconData,
+                    size: 16,
+                    color: transaksi[index].iconColor,
+                  ),
+                  Text(
+                    ' Rp ${transaksi[index].price.toString()}',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: transaksi[index].iconColor),
+                  ),
+                ],
+              ),
+              Text(transaksi[index].date,
+                  style: TextStyle(fontSize: 12, color: Colors.grey)),
+            ],
+          )
+        ],
+      ),
+    );
   }
 
   Widget buildTextKategori(int index) => GestureDetector(
