@@ -1,4 +1,5 @@
 import 'package:blanjaloka_flutter/screens/pengaturan/pengaturan.dart';
+import 'package:blanjaloka_flutter/screens/pengaturan/pusat_bantuan.dart';
 import 'package:blanjaloka_flutter/screens/promo/promo_produk.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:blanjaloka_flutter/screens/sewatoko/pilih_sewa.dart';
@@ -387,11 +388,11 @@ class _OthersState extends State<Others> {
                                     ),
                                     child: InkWell(
                                       onTap: () {
-                                        // Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //       builder: (context) => EditProfil()),
-                                        // );
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => PusatBantuan()),
+                                        );
                                       },
                                       child: Row(
                                         children: [

@@ -1,7 +1,7 @@
 import 'package:blanjaloka_flutter/screens/sewatoko/pembayaran_sewa.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/primary_button.dart';
+import '../../widgets/primary_button.dart';
 
 class OrderDetail extends StatelessWidget {
   const OrderDetail({Key? key}) : super(key: key);
