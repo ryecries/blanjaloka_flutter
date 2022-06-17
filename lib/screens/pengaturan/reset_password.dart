@@ -1,7 +1,8 @@
-import 'package:blanjaloka_flutter/screens/ubah_password.dart';
+import 'package:blanjaloka_flutter/screens/pengaturan/ubah_password.dart';
 import 'package:flutter/material.dart';
 
-import '../constant.dart';
+import '../../constant.dart';
+
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({Key? key}) : super(key: key);

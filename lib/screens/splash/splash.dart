@@ -1,4 +1,6 @@
-import 'package:blanjaloka_flutter/screens/regist_login.dart';
+import 'package:blanjaloka_flutter/screens/home/home.dart';
+import 'package:blanjaloka_flutter/screens/onboarding/on_boarding_page.dart';
+import 'package:blanjaloka_flutter/size_config.dart';
 import 'package:flutter/material.dart';
 
 
@@ -12,18 +14,20 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> {
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _navigatetohome();
   }
 
-  _navigatetohome() async{
-    await Future.delayed(Duration(milliseconds: 1500), (){});
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> RegistLogin()));
+  _navigatetohome() async {
+    await Future.delayed(Duration(milliseconds: 1500), () {});
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => OnBoardingPage()));
   }
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -33,14 +37,11 @@ class _SplashState extends State<Splash> {
           ),
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.only(
-                  bottom: 80
-              ),
+              padding: const EdgeInsets.only(bottom: 80),
               child: Container(
-                width: 240,
-                height: 240,
-                child: Image.asset('assets/images/logo.png',
-                ),
+                width: getProportionateScreenWidth(240),
+                height: getProportionateScreenHeight(240),
+                child: Image.asset('assets/images/logo.png'),
               ),
             ),
           ),

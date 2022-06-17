@@ -4,7 +4,8 @@ import 'package:blanjaloka_flutter/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'enterpassword.dart';
+import '../../size_config.dart';
+import '../../widgets/primary_button.dart';
 
 class RegisterInfoToko extends StatefulWidget {
   const RegisterInfoToko({Key? key}) : super(key: key);
@@ -319,131 +320,112 @@ class _RegisterInfoTokoState extends State<RegisterInfoToko> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
-        appBar: AppBar(
-          elevation: 1,
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.black54),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          title: Text(
-            "Informasi Toko",
-            style:
-                TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
-          ),
+      appBar: AppBar(
+        elevation: 1,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black54),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        body: Container(
-            margin: EdgeInsets.all(20),
-            width: MediaQuery.of(context).size.width,
-            child: Stack(
-              children: [
-                Column(children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      image != null
-                          ? Padding(
-                              padding: const EdgeInsets.only(left: 5),
-                              child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  child: Image.file(
-                                    image!,
-                                    fit: BoxFit.cover,
-                                    height: 80,
-                                    width: 80,
-                                  )),
-                            )
-                          : Container(
-                              padding: const EdgeInsets.only(left: 8),
-                              child: Image(
-                                  image: AssetImage(
-                                      'assets/images/upload_foto.png'))),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5),
-                        child: Text(
-                          "Foto Profil Toko",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
+        title: Text(
+          "Informasi Toko",
+          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: Container(
+          margin: EdgeInsets.all(20),
+          width: MediaQuery.of(context).size.width,
+          child: Stack(
+            children: [
+              Column(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    image != null
+                        ? Padding(
+                            padding: const EdgeInsets.only(left: 5),
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10.0),
+                                child: Image.file(
+                                  image!,
+                                  fit: BoxFit.cover,
+                                  height: 80,
+                                  width: 80,
+                                )),
+                          )
+                        : Container(
+                            padding: const EdgeInsets.only(left: 8),
+                            child: Image(
+                                image: AssetImage(
+                                    'assets/images/upload_foto.png'))),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5),
+                      child: Text(
+                        "Foto Profil Toko",
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      Spacer(),
-                      Container(
-                        padding: const EdgeInsets.only(right: 8),
-                        child: ElevatedButton(
-                            style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all(Colors.white),
-                                shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(18.0),
-                                        side:
-                                            BorderSide(color: bPrimaryColor)))),
-                            // TextButton.styleFrom(backgroundColor: bPrimaryColor),
-                            onPressed: () async {
-                              await getImage();
-                            },
-                            child: Text(
-                              "Ambil Foto",
-                              style: TextStyle(
-                                  color: bPrimaryColor,
-                                  fontWeight: FontWeight.bold),
-                            )),
-                      )
-                    ],
-                  ),
-                  Expanded(
-                      child: ListView(
-                    children: [
-                      Form(
-                          child: Column(
-                        key: _formKey,
-                        // mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          new Padding(padding: EdgeInsets.only(top: 15)),
-                          _buildNameToko(),
-                          _buildKategoriProduk(),
-                          _buildProv(),
-                          _buildKota(),
-                          _buildPasar(),
-                          _buildAlamatToko(),
-                          _buildPatokan(),
-                          _buildLokasiToko(),
-                          SizedBox(height: 80)
-                        ],
-                      ))
-                    ],
-                  ))
-                ]),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    margin: const EdgeInsets.only(
-                      bottom: 20,
                     ),
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      child: Container(
-                          padding: EdgeInsets.symmetric(vertical: 12),
+                    Spacer(),
+                    Container(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.white),
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                      side: BorderSide(color: bPrimaryColor)))),
+                          // TextButton.styleFrom(backgroundColor: bPrimaryColor),
+                          onPressed: () async {
+                            await getImage();
+                          },
                           child: Text(
-                            "Simpan",
-                            style: TextStyle(fontSize: 20),
+                            "Ambil Foto",
+                            style: TextStyle(
+                                color: bPrimaryColor,
+                                fontWeight: FontWeight.bold),
                           )),
-                      onPressed: () {
-                        // Navigator.push(context, MaterialPageRoute(builder: (context) => EnterPassword()),);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: bPrimaryColor,
-                        onPrimary: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            )));
+                    )
+                  ],
+                ),
+                Expanded(
+                    child: ListView(
+                  children: [
+                    Form(
+                        child: Column(
+                      key: _formKey,
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        new Padding(padding: EdgeInsets.only(top: 15)),
+                        _buildNameToko(),
+                        _buildKategoriProduk(),
+                        _buildProv(),
+                        _buildKota(),
+                        _buildPasar(),
+                        _buildAlamatToko(),
+                        _buildPatokan(),
+                        _buildLokasiToko(),
+                      ],
+                    ))
+                  ],
+                ))
+              ]),
+            ],
+          )),
+      bottomNavigationBar: Container(
+        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        height: getProportionateScreenHeight(100),
+        child: PrimaryButton(
+            buttontxt: "Kirim Data",
+            onPressed: () {
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => EditProfil()));
+            }),
+      ),
+    );
   }
 }

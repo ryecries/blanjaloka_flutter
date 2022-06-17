@@ -1,18 +1,21 @@
+import 'package:blanjaloka_flutter/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import '../widget.dart';
+import '../../widget.dart';
+import '../../widgets/primary_button.dart';
 
-class rekening extends StatefulWidget {
-  const rekening({Key? key}) : super(key: key);
+class InfoRekening extends StatefulWidget {
+  const InfoRekening({Key? key}) : super(key: key);
 
   @override
-  State<rekening> createState() => _rekeningState();
+  State<InfoRekening> createState() => _InfoRekeningState();
 }
 
-class _rekeningState extends State<rekening> {
+class _InfoRekeningState extends State<InfoRekening> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -62,40 +65,20 @@ class _rekeningState extends State<rekening> {
                     ),
                   ],
                 ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    margin: const EdgeInsets.only(
-                      left: 10,
-                      right: 10,
-                      bottom: 25,
-                    ),
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      child: Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 100, vertical: 12),
-                          child: Text(
-                            "Simpan",
-                            style: TextStyle(fontSize: 20),
-                          )),
-                      onPressed: () {
-                        // Navigator.push(context, MaterialPageRoute(builder: (context) => EnterPassword()),);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xFF00838F),
-                        onPrimary: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                    ),
-                  ),
-                )
               ],
             ),
           ),
         ),
+      ),
+      bottomNavigationBar: Container(
+        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        height: getProportionateScreenHeight(100),
+        child: PrimaryButton(
+            buttontxt: "Kirim Data",
+            onPressed: () {
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => EditProfil()));
+            }),
       ),
     );
   }

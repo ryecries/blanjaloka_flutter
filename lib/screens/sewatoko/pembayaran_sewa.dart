@@ -2,7 +2,7 @@ import 'package:blanjaloka_flutter/constant.dart';
 import 'package:blanjaloka_flutter/screens/sewatoko/menunggu_pembayaran.dart';
 import 'package:blanjaloka_flutter/screens/sewatoko/pilih_pembayaran.dart';
 import 'package:blanjaloka_flutter/screens/sewatoko/pilih_sistem_pembayaran.dart';
-import 'package:blanjaloka_flutter/screens/tokoregister.dart';
+import 'package:blanjaloka_flutter/screens/register_merchant/tokoregister.dart';
 import 'package:blanjaloka_flutter/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 

@@ -1,9 +1,9 @@
-import 'package:blanjaloka_flutter/screens/reset_password.dart';
-import 'package:blanjaloka_flutter/screens/tokoregister.dart';
-import 'package:blanjaloka_flutter/screens/ubah_password.dart';
+import 'package:blanjaloka_flutter/screens/register_merchant/tokoregister.dart';
+import 'package:blanjaloka_flutter/screens/pengaturan/ubah_password.dart';
 import 'package:flutter/material.dart';
 
-import '../constant.dart';
+import '../../constant.dart';
+import 'reset_password.dart';
 
 class ValidasiUbahPassword extends StatefulWidget {
   const ValidasiUbahPassword({Key? key}) : super(key: key);

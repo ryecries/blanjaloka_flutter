@@ -1,5 +1,5 @@
 import 'package:blanjaloka_flutter/constant.dart';
-import 'package:blanjaloka_flutter/screens/splash.dart';
+import 'package:blanjaloka_flutter/screens/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';

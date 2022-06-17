@@ -1,7 +1,9 @@
+import 'package:blanjaloka_flutter/screens/pengaturan/editprofilakun.dart';
 import 'package:flutter/material.dart';
 import 'package:blanjaloka_flutter/widget.dart';
 
-import 'pengaturan/editprofilakun.dart';
+import '../../size_config.dart';
+import '../../widgets/primary_button.dart';
 
 class Pedagang extends StatefulWidget {
   const Pedagang({Key? key}) : super(key: key);
@@ -13,7 +15,9 @@ class Pedagang extends StatefulWidget {
 class _PedagangState extends State<Pedagang> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
@@ -21,10 +25,10 @@ class _PedagangState extends State<Pedagang> {
         ),
         backgroundColor: Colors.white,
         elevation: 0.5,
-        title: Text("Identitas Pedagang",
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.black),),
+        title: Text(
+          "Identitas Pedagang",
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+        ),
       ),
       body: SafeArea(
         child: Container(
@@ -75,42 +79,47 @@ class _PedagangState extends State<Pedagang> {
                     ),
                   ],
                 ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    margin: const EdgeInsets.only(
-                      left: 10,
-                      right: 10,
-                      bottom: 25,
-                    ),
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 100,vertical: 12),
-                          child: Text("Simpan",style: TextStyle(fontSize: 20),)),
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfil()),);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xFF00838F),
-                        onPrimary: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                    ),
-                  ),
-                )
+                // Align(
+                //   alignment: Alignment.bottomCenter,
+                //   child: Container(
+                //     margin: const EdgeInsets.only(
+                //       left: 10,
+                //       right: 10,
+                //       bottom: 25,
+                //     ),
+                //     width: double.infinity,
+                //     child: ElevatedButton(
+                //       child: Container(
+                //           padding: EdgeInsets.symmetric(horizontal: 100,vertical: 12),
+                //           child: Text("Simpan",style: TextStyle(fontSize: 20),)),
+                //       onPressed: () {
+                //         Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfil()),);
+                //       },
+                //       style: ElevatedButton.styleFrom(
+                //         primary: Color(0xFF00838F),
+                //         onPrimary: Colors.white,
+                //         shape: RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.circular(10.0),
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // )
               ],
-
             ),
-
           ),
-
         ),
-
       ),
-
+      bottomNavigationBar: Container(
+        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        height: getProportionateScreenHeight(100),
+        child: PrimaryButton(
+            buttontxt: "Kirim Data",
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => EditProfil()));
+            }),
+      ),
     );
   }
 }

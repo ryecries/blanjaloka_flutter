@@ -1,7 +1,7 @@
-import 'package:blanjaloka_flutter/screens/login.dart';
+import 'package:blanjaloka_flutter/screens/login/login.dart';
 import 'package:flutter/material.dart';
 
-import '../constant.dart';
+import '../../constant.dart';
 
 class UbahPassword extends StatelessWidget {
   const UbahPassword({Key? key}) : super(key: key);

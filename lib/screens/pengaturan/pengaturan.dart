@@ -2,7 +2,7 @@ import 'package:blanjaloka_flutter/screens/pengaturan/editinformasirekening.dart
 import 'package:blanjaloka_flutter/screens/pengaturan/editinformasitoko.dart';
 import 'package:blanjaloka_flutter/screens/pengaturan/editprofilakun.dart';
 import 'package:blanjaloka_flutter/screens/pengaturan/pengaturan_lokasi_toko.dart';
-import 'package:blanjaloka_flutter/screens/ubah_password.dart';
+import 'package:blanjaloka_flutter/screens/pengaturan/ubah_password.dart';
 import 'package:flutter/material.dart';
 
 import 'editinformasitoko.dart';
