@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:blanjaloka_flutter/constant.dart';
 import 'package:blanjaloka_flutter/screens/reset_password.dart';
 import 'package:flutter/material.dart';
+
+
 import 'package:http/http.dart' as http;
 
 import 'package:blanjaloka_flutter/utils/progressHUD.dart';
@@ -12,7 +14,7 @@ import 'package:blanjaloka_flutter/utils/shared_service.dart';
 import 'package:blanjaloka_flutter/provider/api_service.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key key}) : super(key: key);
+  const Login({Key? key}) : super(key: key);
 
   @override
   _LoginState createState() => _LoginState();
@@ -22,13 +24,13 @@ class _LoginState extends State<Login> {
   bool hidePassword = true;
   bool isApiCallProcess = false;
   GlobalKey<FormState> globalFormKey = GlobalKey<FormState>();
-  LoginRequestModel loginRequestModel;
+  late LoginRequestModel loginRequestModel;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    loginRequestModel = new LoginRequestModel();
+    loginRequestModel = new LoginRequestModel(password: '', email: '');
   }
 
   @override
@@ -40,7 +42,6 @@ class _LoginState extends State<Login> {
     );
   }
 
-  @override
   Widget _uiSetup(BuildContext context) {
     return  Scaffold(
       key: scaffoldKey,
@@ -125,8 +126,8 @@ class _LoginState extends State<Login> {
                             child: TextFormField(
                               keyboardType: TextInputType.emailAddress,
                               onSaved: (input) =>
-                              loginRequestModel.email = input,
-                              validator: (input) => !input.contains('@')
+                              loginRequestModel.email = input!,
+                              validator: (input) => !input!.contains('@')
                                   ? "Email Id should be valid"
                                   : null,
                               decoration: const InputDecoration(
@@ -158,8 +159,8 @@ class _LoginState extends State<Login> {
                             child: TextFormField(
                               keyboardType: TextInputType.text,
                               onSaved: (input) =>
-                              loginRequestModel.password = input,
-                              validator: (input) => input.length < 3
+                              loginRequestModel.password = input!,
+                              validator: (input) => input!.length < 3
                                   ? "Password should be more than 3 characters"
                                   : null,
                               obscureText: hidePassword,
@@ -233,15 +234,15 @@ class _LoginState extends State<Login> {
                                   content:Text("Login Successful"),
                                   backgroundColor: Colors.green,
                                 );
-                                scaffoldKey.currentState.showSnackBar(snackBar);
-                                SharedService.setLoginDetails(value);
+                                scaffoldKey.currentState!.showSnackBar(snackBar);
+                                // SharedService.setLoginDetails(value);
                                 Navigator.of(context).pushReplacementNamed("/home");
                               }else{
                                 final snackBar=SnackBar(
                                   content:Text(value.error),
                                   backgroundColor: Colors.red,
                                 );
-                                scaffoldKey.currentState.showSnackBar(snackBar);
+                                scaffoldKey.currentState!.showSnackBar(snackBar);
                               }
                             }
                           });
@@ -292,7 +293,7 @@ class _LoginState extends State<Login> {
   }
   bool validateAndSave() {
     final form = globalFormKey.currentState;
-    if (form.validate()) {
+    if (form!.validate()) {
       form.save();
       return true;
     }

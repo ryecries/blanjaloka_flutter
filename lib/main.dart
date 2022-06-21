@@ -1,10 +1,19 @@
 import 'package:blanjaloka_flutter/constant.dart';
+import 'package:blanjaloka_flutter/nav.dart';
+import 'package:blanjaloka_flutter/screens/login.dart';
 import 'package:blanjaloka_flutter/screens/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:blanjaloka_flutter/utils/shared_service.dart';
 
-void main() {
+Widget _defaultHome=Splash();
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  bool _isLoggedIn=await SharedService.isLoggedIn();
+  if(_isLoggedIn){
+    _defaultHome=Nav();
+  }
   runApp(MyApp());
 }
 
@@ -27,7 +36,11 @@ class MyApp extends StatelessWidget {
               primary: bPrimaryColor,
             ),
       ),
-      home: Splash(),
+      home: _defaultHome,
+      routes: <String,WidgetBuilder>{
+        '/home':(BuildContext context)=>Nav(),
+        '/login':(BuildContext context)=>Login(),
+      },
     );
   }
 }

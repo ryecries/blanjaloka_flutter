@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 
+import '../../utils/shared_service.dart';
 import '../../widget.dart';
 import '../chat/adminchat.dart';
 import '../chat/notification.dart';
@@ -491,10 +492,9 @@ class _OthersState extends State<Others> {
                                     height: 56,
                                     child: InkWell(
                                       onTap: () {
-                                        // Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //       builder: (context) => Pedagang()),
+                                        // SharedService.logout().then((_) {
+                                        Navigator.of(context).pushReplacementNamed("/login");
+                                        // }
                                         // );
                                       },
                                       child: Row(
@@ -503,7 +503,7 @@ class _OthersState extends State<Others> {
                                             width: 36,
                                             height: 36,
                                             child: IconButton(
-                                              onPressed: () {},
+                                              onPressed: (){},
                                               icon: SvgPicture.asset('assets/icons/icon_keluar.svg'),
                                               iconSize: 50,
                                               color: Colors.black87,

@@ -6,20 +6,14 @@ class ProgressHUD extends StatelessWidget {
   final bool inAsyncCall;
   final double opacity;
   final Color color;
-  final Animation<Color> valueColor;
 
-  ProgressHUD({
-    Key key,
-    @required this.child,
-    @required this.inAsyncCall,
-    this.opacity = 0.3,
-    this.color = Colors.grey,
-    this.valueColor,
+  ProgressHUD({Key? key, this.opacity = 0.3, this.color = Colors.grey,
+    required this.child, required this.inAsyncCall,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> widgetList = new List<Widget>();
+    List<Widget> widgetList = <Widget>[];
     widgetList.add(child);
     if (inAsyncCall) {
       final modal = new Stack(

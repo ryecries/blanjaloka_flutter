@@ -10,11 +10,12 @@ class SharedService{
     return prefs.getString("login_details") !=null ? true:false;
   }
 
-  static Future<void> setLoginDetails(LoginResponeModel model)async{
-    final prefs= await SharedPreferences.getInstance();
-    return prefs.setString("login_details", model !=null ? jsonEncode(model.toJson()):null);
-  }
-  static Future<void>logout()async{
-    await setLoginDetails(null);
-  }
+  // static Future<void> setLoginDetails(LoginResponeModel model)async{
+  //   final prefs= await SharedPreferences.getInstance();
+  //   return prefs.setString("login_details", model !=null ? jsonEncode(model.toJson()):null);
+  // }
+  // static Future<void>logout()async{
+  //   await setLoginDetails(null);
+  // }
 }
+
