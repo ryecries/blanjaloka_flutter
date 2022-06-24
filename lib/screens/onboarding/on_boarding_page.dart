@@ -114,26 +114,29 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       ),
                       width: double.infinity,
                       child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomePage()),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                              primary: Color(0xFF00838f),
-                              onPrimary: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0))),
-                          child: Container(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => HomePage()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                            primary: Color(0xFF00838f),
+                            onPrimary: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        child: Container(
+                          height: getProportionateScreenHeight(50),
+                          child: Center(
                             child: Text(
                               "Mulai Sekarang",
                               style: TextStyle(
                                   fontSize: getProportionateScreenHeight(20),
                                   fontWeight: FontWeight.bold),
                             ),
-                          )),
+                          ),
+                        ),
+                      ),
                     )
                   : Container(
                       height: getProportionateScreenHeight(110),
