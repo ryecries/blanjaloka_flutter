@@ -206,88 +206,6 @@ class _LoginState extends State<Login> {
                     ),
                   ],
                 ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    margin: const EdgeInsets.only(
-                      left: 10,
-                      right: 10,
-                      bottom: 25,
-                    ),
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      child: Container(
-                          padding: EdgeInsets.symmetric(vertical: 12),
-                          child: Text(
-                            "Masuk",
-                            style: TextStyle(fontSize: 20),
-                          )),
-                      onPressed: () {
-                        if (validateAndSave()) {
-                          print(loginRequestModel.toJson());
-                          setState(() {
-                            isApiCallProcess = true;
-                          });
-                          APIService apiService = new APIService();
-                          apiService.login(loginRequestModel).then((value) {
-                            if (value != null) {
-                              print("the response is " + value.token);
-                              setState(() {
-                                isApiCallProcess = false;
-                              });
-                              if (value.token.isNotEmpty) {
-                                final snackBar = SnackBar(
-                                  content: Text("Login Successful"),
-                                  backgroundColor: Colors.green,
-                                );
-                                scaffoldKey.currentState!
-                                    .showSnackBar(snackBar);
-                                // SharedService.setLoginDetails(value);
-                                Navigator.of(context)
-                                    .pushReplacementNamed("/home");
-                              } else {
-                                final snackBar = SnackBar(
-                                  content: Text(value.error),
-                                  backgroundColor: Colors.red,
-                                );
-                                scaffoldKey.currentState!
-                                    .showSnackBar(snackBar);
-                              }
-                            }
-                          });
-                          //
-                          // APIService apiService = new APIService();
-                          // apiService.login(loginRequestModel).then((value) {
-                          //   if (value != null) {
-                          //     setState(() {
-                          //       isApiCallProcess = false;
-                          //     });
-                          //
-                          //     if (value.token.isNotEmpty) {
-                          //       final snackBar = SnackBar(
-                          //           content: Text("Login Successful"));
-                          //       scaffoldKey.currentState
-                          //           .showSnackBar(snackBar);
-                          //     } else {
-                          //       final snackBar =
-                          //       SnackBar(content: Text(value.error));
-                          //       scaffoldKey.currentState
-                          //           .showSnackBar(snackBar);
-                          //     }
-                          //   }
-                          // });
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: bPrimaryColor,
-                        onPrimary: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                    ),
-                  ),
-                )
               ],
             ),
           ),
@@ -309,10 +227,57 @@ class _LoginState extends State<Login> {
                 style: TextStyle(fontSize: 20),
               )),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Nav()),
-            );
+            if (validateAndSave()) {
+              print(loginRequestModel.toJson());
+              setState(() {
+                isApiCallProcess = true;
+              });
+              APIService apiService = new APIService();
+              apiService.login(loginRequestModel).then((value) {
+                if (value != null) {
+                  print("the response is " + value.token);
+                  setState(() {
+                    isApiCallProcess = false;
+                  });
+                  if (value.token.isNotEmpty) {
+                    final snackBar = SnackBar(
+                      content: Text("Login Successful"),
+                      backgroundColor: Colors.green,
+                    );
+                    scaffoldKey.currentState!.showSnackBar(snackBar);
+                    // SharedService.setLoginDetails(value);
+                    Navigator.of(context).pushReplacementNamed("/home");
+                  } else {
+                    final snackBar = SnackBar(
+                      content: Text(value.error),
+                      backgroundColor: Colors.red,
+                    );
+                    scaffoldKey.currentState!.showSnackBar(snackBar);
+                  }
+                }
+              });
+              //
+              // APIService apiService = new APIService();
+              // apiService.login(loginRequestModel).then((value) {
+              //   if (value != null) {
+              //     setState(() {
+              //       isApiCallProcess = false;
+              //     });
+              //
+              //     if (value.token.isNotEmpty) {
+              //       final snackBar = SnackBar(
+              //           content: Text("Login Successful"));
+              //       scaffoldKey.currentState
+              //           .showSnackBar(snackBar);
+              //     } else {
+              //       final snackBar =
+              //       SnackBar(content: Text(value.error));
+              //       scaffoldKey.currentState
+              //           .showSnackBar(snackBar);
+              //     }
+              //   }
+              // });
+            }
           },
           style: ElevatedButton.styleFrom(
             primary: bPrimaryColor,
