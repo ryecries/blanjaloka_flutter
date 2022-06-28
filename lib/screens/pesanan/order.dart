@@ -2,7 +2,6 @@ import 'package:blanjaloka_flutter/constant.dart';
 import 'package:blanjaloka_flutter/screens/chat/adminchat.dart';
 import 'package:blanjaloka_flutter/screens/chat/notification.dart';
 import 'package:blanjaloka_flutter/screens/pesanan/order_detail.dart';
-import 'package:blanjaloka_flutter/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

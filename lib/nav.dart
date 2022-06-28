@@ -1,11 +1,9 @@
 import 'package:blanjaloka_flutter/constant.dart';
-import 'package:blanjaloka_flutter/screens/homepage/order.dart';
-import 'package:blanjaloka_flutter/screens/homepage/others.dart';
-import 'package:blanjaloka_flutter/screens/homepage/product.dart';
-import 'package:blanjaloka_flutter/screens/homepage/transaction.dart';
-import 'package:flutter/widgets.dart';
+import 'package:blanjaloka_flutter/screens/pesanan/order.dart';
+import 'package:blanjaloka_flutter/screens/other/others.dart';
+import 'package:blanjaloka_flutter/screens/produk/product.dart';
+import 'package:blanjaloka_flutter/screens/transaksi/transaction.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 
 class Nav extends StatefulWidget {

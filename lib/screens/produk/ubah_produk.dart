@@ -1,6 +1,6 @@
 import 'package:blanjaloka_flutter/nav.dart';
-import 'package:blanjaloka_flutter/screens/addproduk/pilih_kategori_produk.dart';
-import 'package:blanjaloka_flutter/screens/addproduk/pilih_satuan_produk.dart';
+import 'package:blanjaloka_flutter/screens/produk/pilih_kategori_produk.dart';
+import 'package:blanjaloka_flutter/screens/produk/pilih_satuan_produk.dart';
 import 'package:flutter/material.dart';
 
 import '../../widget.dart';
@@ -9,21 +9,21 @@ import 'package:blanjaloka_flutter/constant.dart';
 
 import 'package:blanjaloka_flutter/widgets/primary_button.dart';
 
-class TambahProduk extends StatefulWidget {
+class UbahProduk extends StatefulWidget {
   final int? dataKategori;
   final int? dataSatuan;
   final String? passedKategori;
   final String? passedSatuan;
-  const TambahProduk({Key? key, this.dataKategori,this.dataSatuan, this.passedKategori,this.passedSatuan}) : super(key: key);
+  const UbahProduk({Key? key, this.dataKategori,this.dataSatuan, this.passedKategori,this.passedSatuan}) : super(key: key);
 
   @override
-  State<TambahProduk> createState() => _TambahProdukState();
+  State<UbahProduk> createState() => _UbahProdukState();
 }
 
-class _TambahProdukState extends State<TambahProduk> {
+class _UbahProdukState extends State<UbahProduk> {
   String? kategori;
   String? satuan;
-  bool _enable = false;
+  bool _enable = true;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class _TambahProdukState extends State<TambahProduk> {
         backgroundColor: Colors.white,
         elevation: 0.5,
         title: Text(
-          "Tambah Produk",
+          "Ubah Produk",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ),
@@ -108,10 +108,10 @@ class _TambahProdukState extends State<TambahProduk> {
                             Container(
                               decoration: BoxDecoration(
                                   border: Border(
-                                      bottom: BorderSide(
-                                        color: Colors.grey,
-                                        width: 1.0,
-                                      ),
+                                    bottom: BorderSide(
+                                      color: Colors.grey,
+                                      width: 1.0,
+                                    ),
                                   )),
                               child: Column(
                                 children: [
@@ -126,40 +126,40 @@ class _TambahProdukState extends State<TambahProduk> {
                                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                                           child: widget.dataKategori != null
                                               ? Row(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: [
-                                                    SizedBox(height: 45,),
-                                                    Text(
-                                                        widget.passedKategori!,
-                                                      ),
-                                                    Spacer(),
-                                                    Icon(Icons.arrow_forward_ios, size: 16)
-                                                  ],
-                                                )
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              SizedBox(height: 45,),
+                                              Text(
+                                                widget.passedKategori!,
+                                              ),
+                                              Spacer(),
+                                              Icon(Icons.arrow_forward_ios, size: 16)
+                                            ],
+                                          )
                                               : Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                  children: [
-                                                    Text(
-                                                      "Kategori Produk",
-                                                      style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold),
-                                                    ),
-                                                    SizedBox(
-                                                      height: 45,
-                                                    ),
-                                                    Icon(Icons.arrow_forward_ios, size: 16)
-                                                  ],
-                                                ),
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                "Kategori Produk",
+                                                style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold),
+                                              ),
+                                              SizedBox(
+                                                height: 45,
+                                              ),
+                                              Icon(Icons.arrow_forward_ios, size: 16)
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
                                     onTap: () async {
                                       final result =
-                                          await showModalBottomSheet(
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.only(
-                                                      topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-                                              isScrollControlled: true,
-                                              enableDrag: false, context: context, builder: (context) => PilihKategoriProduk());
+                                      await showModalBottomSheet(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.only(
+                                                  topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+                                          isScrollControlled: true,
+                                          enableDrag: false, context: context, builder: (context) => PilihKategoriProduk());
                                       setState(() {
                                         this.kategori = result;
                                       });

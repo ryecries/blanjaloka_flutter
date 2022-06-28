@@ -1,17 +1,8 @@
-import 'dart:convert';
-
 import 'package:blanjaloka_flutter/constant.dart';
-import 'package:blanjaloka_flutter/nav.dart';
 import 'package:blanjaloka_flutter/screens/pengaturan/reset_password.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-
-import 'package:http/http.dart' as http;
-
 import 'package:blanjaloka_flutter/utils/progressHUD.dart';
 import 'package:blanjaloka_flutter/models/login_model.dart';
-
-import 'package:blanjaloka_flutter/utils/shared_service.dart';
 import 'package:blanjaloka_flutter/provider/api_service.dart';
 
 class Login extends StatefulWidget {

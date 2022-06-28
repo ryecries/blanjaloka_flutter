@@ -1,18 +1,16 @@
-import 'dart:ui';
-
-import 'package:blanjaloka_flutter/screens/homepage/product.dart';
+import 'package:blanjaloka_flutter/screens/produk/product.dart';
 import 'package:blanjaloka_flutter/widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class promotoko extends StatefulWidget {
-  const promotoko({Key? key}) : super(key: key);
+class PromoToko extends StatefulWidget {
+  const PromoToko({Key? key}) : super(key: key);
 
   @override
-  State<promotoko> createState() => _promotokoState();
+  State<PromoToko> createState() => _PromoTokoState();
 }
 
-class _promotokoState extends State<promotoko> {
+class _PromoTokoState extends State<PromoToko> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

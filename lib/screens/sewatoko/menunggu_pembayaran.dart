@@ -1,4 +1,4 @@
-import 'package:blanjaloka_flutter/screens/homepage/others.dart';
+import 'package:blanjaloka_flutter/screens/other/others.dart';
 import 'package:blanjaloka_flutter/screens/sewatoko/pilih_pembayaran.dart';
 import 'package:blanjaloka_flutter/screens/sewatoko/pilih_sistem_pembayaran.dart';
 import 'package:flutter/cupertino.dart';

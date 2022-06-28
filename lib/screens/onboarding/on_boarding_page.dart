@@ -55,14 +55,17 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        leading: IconButton(
-          onPressed: () {
-            _pageController.previousPage(
-                duration: Duration(milliseconds: 300), curve: Curves.ease);
-          },
-          icon: Icon(Icons.arrow_back),
-          color: Colors.black,
-        ),
+        leading: currentPage != 0
+            ? IconButton(
+                onPressed: () {
+                  _pageController.previousPage(
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.ease);
+                },
+                icon: Icon(Icons.arrow_back),
+                color: Colors.black,
+              )
+            : Container(),
         actions: <Widget>[
           TextButton(
             onPressed: () {
