@@ -1,6 +1,8 @@
+import 'package:blanjaloka_flutter/nav.dart';
 import 'package:blanjaloka_flutter/screens/home/home.dart';
 import 'package:blanjaloka_flutter/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../constant.dart';
 
@@ -10,6 +12,7 @@ class OnBoardingPage extends StatefulWidget {
   @override
   State<OnBoardingPage> createState() => _OnBoardingPageState();
 }
+
 
 class _OnBoardingPageState extends State<OnBoardingPage> {
   int currentPage = 0;
@@ -34,9 +37,23 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
   Object? get index => null;
   late PageController _pageController;
+  void ceckLogin() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var islogin = pref.getBool("is_login");
+    if (islogin != null && islogin) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => const Nav(),
+        ),
+            (route) => false,
+      );
+    }
+  }
 
   @override
   void initState() {
+    ceckLogin();
     _pageController = PageController(initialPage: 0);
     super.initState();
   }

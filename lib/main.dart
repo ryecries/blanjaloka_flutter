@@ -10,10 +10,6 @@ import 'package:blanjaloka_flutter/utils/shared_service.dart';
 Widget _defaultHome = Splash();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  bool _isLoggedIn = await SharedService.isLoggedIn();
-  if (_isLoggedIn) {
-    _defaultHome = Nav();
-  }
   runApp(MyApp());
 }
 

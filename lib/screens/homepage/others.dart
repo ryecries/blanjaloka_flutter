@@ -1,3 +1,4 @@
+import 'package:blanjaloka_flutter/screens/login/login.dart';
 import 'package:blanjaloka_flutter/screens/pengaturan/pengaturan.dart';
 import 'package:blanjaloka_flutter/screens/pengaturan/pusat_bantuan.dart';
 import 'package:blanjaloka_flutter/screens/promo/promo_produk.dart';
@@ -8,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 
-import '../../utils/shared_service.dart';
+import 'package:blanjaloka_flutter/utils/shared_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../widget.dart';
 import '../chat/adminchat.dart';
 import '../chat/notification.dart';
@@ -23,6 +25,61 @@ class Others extends StatefulWidget {
 
 class _OthersState extends State<Others> {
   bool _enable = false;
+
+  String email = "";
+  getPref() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var islogin = pref.getBool("is_login");
+    if (islogin != null && islogin == true) {
+      setState(() {
+        email = pref.getString("email")!;
+      });
+    } else {
+      Navigator.of(context, rootNavigator: true).pop();
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => const Login(),
+        ),
+            (route) => false,
+      );
+    }
+  }
+
+  logOut() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      preferences.remove("is_login");
+      preferences.remove("email");
+    });
+
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) =>  Login(),
+      ),
+          (route) => false,
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+          content: Text(
+            "Berhasil logout",
+            style: TextStyle(fontSize: 16),
+          )),
+    );
+  }
+
+  @override
+  void initState() {
+    getPref();
+    super.initState();
+  }
+
+  @override
+  dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -449,7 +506,9 @@ class _OthersState extends State<Others> {
                                             width: 36,
                                             height: 36,
                                             child: IconButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                logOut();
+                                              },
                                               icon: SvgPicture.asset('assets/icons/icon_pengaturan.svg'),
                                               iconSize: 50,
                                               color: Colors.black87,
@@ -503,7 +562,9 @@ class _OthersState extends State<Others> {
                                             width: 36,
                                             height: 36,
                                             child: IconButton(
-                                              onPressed: (){},
+                                              onPressed: (){
+                                                logOut();
+                                              },
                                               icon: SvgPicture.asset('assets/icons/icon_keluar.svg'),
                                               iconSize: 50,
                                               color: Colors.black87,

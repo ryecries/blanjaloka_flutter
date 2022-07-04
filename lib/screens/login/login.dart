@@ -3,16 +3,18 @@ import 'dart:convert';
 import 'package:blanjaloka_flutter/constant.dart';
 import 'package:blanjaloka_flutter/nav.dart';
 import 'package:blanjaloka_flutter/screens/pengaturan/reset_password.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:blanjaloka_flutter/widgets/dialogs.dart';
 
-import 'package:http/http.dart' as http;
 
 import 'package:blanjaloka_flutter/utils/progressHUD.dart';
 import 'package:blanjaloka_flutter/models/login_model.dart';
 
 import 'package:blanjaloka_flutter/utils/shared_service.dart';
 import 'package:blanjaloka_flutter/provider/api_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -21,34 +23,110 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> {
-  bool hidePassword = true;
-  bool isApiCallProcess = false;
-  GlobalKey<FormState> globalFormKey = GlobalKey<FormState>();
-  late LoginRequestModel loginRequestModel;
-  final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  @override
-  void initState() {
-    super.initState();
-    loginRequestModel = new LoginRequestModel(password: '', email: '');
+class _LoginState extends State<Login> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  var txtEditEmail = TextEditingController();
+  var txtEditPwd = TextEditingController();
+  bool hidePassword = true;
+
+
+  void _validateInputs() {
+    if (_formKey.currentState!.validate()) {
+      //If all data are correct then save data to out variables
+      _formKey.currentState!.save();
+      doLogin(txtEditEmail.text, txtEditPwd.text);
+    }
   }
 
-  var emailController = TextEditingController();
-  var passController = TextEditingController();
+  doLogin(email, password) async {
+    final GlobalKey<State> _keyLoader = GlobalKey<State>();
+    Dialogs.loading(context, _keyLoader, "Proses ...");
 
-  @override
-  Widget build(BuildContext context) {
-    return ProgressHUD(
-      child: _uiSetup(context),
-      inAsyncCall: isApiCallProcess,
-      opacity: 0.3,
+    try {
+      final response = await http.post(
+          Uri.parse("https://blanjaloka.id/blanjaloka/api2/public/customer/login"),
+          headers: {'Content-Type': 'application/json; charset=UTF-8'},
+          body: jsonEncode({
+            "email_customer": email,
+            "password": password,
+          }));
+
+      final output = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        Navigator.of(_keyLoader.currentContext!, rootNavigator: false).pop();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+              content: Text(
+                output['message'],
+                style: const TextStyle(fontSize: 16),
+              )),
+        );
+
+        if (output['success'] == true) {
+          saveSession(email);
+        }
+        //debugPrint(output['message']);
+      } else {
+        Navigator.of(_keyLoader.currentContext!, rootNavigator: false).pop();
+        //debugPrint(output['message']);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+              content: Text(
+                output.toString(),
+                style: const TextStyle(fontSize: 16),
+              )),
+        );
+      }
+    } catch (e) {
+      Navigator.of(_keyLoader.currentContext!, rootNavigator: false).pop();
+      Dialogs.popUp(context, '$e');
+      debugPrint('$e');
+    }
+  }
+
+  saveSession(String email) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    await pref.setString("email", email);
+    await pref.setBool("is_login", true);
+
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) => const Nav(),
+      ),
+          (route) => false,
     );
   }
 
-  Widget _uiSetup(BuildContext context) {
+  void ceckLogin() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var islogin = pref.getBool("is_login");
+    if (islogin != null && islogin) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => const Nav(),
+        ),
+            (route) => false,
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    ceckLogin();
+    super.initState();
+  }
+
+  @override
+  dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
@@ -77,7 +155,7 @@ class _LoginState extends State<Login> {
                 ListView(
                   children: [
                     Form(
-                      key: globalFormKey,
+                      key: _formKey,
                       child: Column(
                         children: [
                           Column(children: [
@@ -129,11 +207,14 @@ class _LoginState extends State<Login> {
                                 horizontal: 8, vertical: 2),
                             child: TextFormField(
                               keyboardType: TextInputType.emailAddress,
-                              onSaved: (input) =>
-                                  loginRequestModel.email = input!,
-                              validator: (input) => !input!.contains('@')
-                                  ? "Email Id should be valid"
+                              autofocus: false,
+                              validator: (email) => email != null && !EmailValidator.validate(email)
+                                  ? 'Masukkan email yang valid'
                                   : null,
+                              controller: txtEditEmail,
+                              onSaved: (String? val) {
+                                txtEditEmail.text = val!;
+                              },
                               decoration: const InputDecoration(
                                 border: UnderlineInputBorder(),
                                 hintText: 'Masukkan Email/No Telepon Anda',
@@ -162,11 +243,18 @@ class _LoginState extends State<Login> {
                                 horizontal: 8, vertical: 2),
                             child: TextFormField(
                               keyboardType: TextInputType.text,
-                              onSaved: (input) =>
-                                  loginRequestModel.password = input!,
-                              validator: (input) => input!.length < 3
-                                  ? "Password should be more than 3 characters"
-                                  : null,
+                              autofocus: false,
+                              validator: (String? arg) {
+                                if (arg == null || arg.isEmpty) {
+                                  return 'Password harus diisi';
+                                } else {
+                                  return null;
+                                }
+                              },
+                              controller: txtEditPwd,
+                              onSaved: (String? val) {
+                                txtEditPwd.text = val!;
+                              },
                               obscureText: hidePassword,
                               decoration: InputDecoration(
                                 hintText: 'Masukkan Kata Sandi Anda',
@@ -227,57 +315,7 @@ class _LoginState extends State<Login> {
                 style: TextStyle(fontSize: 20),
               )),
           onPressed: () {
-            if (validateAndSave()) {
-              print(loginRequestModel.toJson());
-              setState(() {
-                isApiCallProcess = true;
-              });
-              APIService apiService = new APIService();
-              apiService.login(loginRequestModel).then((value) {
-                if (value != null) {
-                  print("the response is " + value.token);
-                  setState(() {
-                    isApiCallProcess = false;
-                  });
-                  if (value.token.isNotEmpty) {
-                    final snackBar = SnackBar(
-                      content: Text("Login Successful"),
-                      backgroundColor: Colors.green,
-                    );
-                    scaffoldKey.currentState!.showSnackBar(snackBar);
-                    // SharedService.setLoginDetails(value);
-                    Navigator.of(context).pushReplacementNamed("/home");
-                  } else {
-                    final snackBar = SnackBar(
-                      content: Text(value.error),
-                      backgroundColor: Colors.red,
-                    );
-                    scaffoldKey.currentState!.showSnackBar(snackBar);
-                  }
-                }
-              });
-              //
-              // APIService apiService = new APIService();
-              // apiService.login(loginRequestModel).then((value) {
-              //   if (value != null) {
-              //     setState(() {
-              //       isApiCallProcess = false;
-              //     });
-              //
-              //     if (value.token.isNotEmpty) {
-              //       final snackBar = SnackBar(
-              //           content: Text("Login Successful"));
-              //       scaffoldKey.currentState
-              //           .showSnackBar(snackBar);
-              //     } else {
-              //       final snackBar =
-              //       SnackBar(content: Text(value.error));
-              //       scaffoldKey.currentState
-              //           .showSnackBar(snackBar);
-              //     }
-              //   }
-              // });
-            }
+            _validateInputs();
           },
           style: ElevatedButton.styleFrom(
             primary: bPrimaryColor,
@@ -289,14 +327,5 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
-  }
-
-  bool validateAndSave() {
-    final form = globalFormKey.currentState;
-    if (form!.validate()) {
-      form.save();
-      return true;
-    }
-    return false;
   }
 }
