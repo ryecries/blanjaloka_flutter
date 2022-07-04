@@ -5,7 +5,7 @@ import 'package:blanjaloka_flutter/screens/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:blanjaloka_flutter/utils/shared_service.dart';
+
 
 Widget _defaultHome = Splash();
 void main() async {
