@@ -9,8 +9,12 @@ import '../../constant.dart';
 import '../../widgets/primary_button.dart';
 
 class MenungguPembayaran extends StatefulWidget {
-  String img, text;
-  MenungguPembayaran({Key? key, required this.img, required this.text}) : super(key: key);
+  // String img, text;
+  MenungguPembayaran({
+    Key? key,
+    // required this.img,
+    // required this.text
+  }) : super(key: key);
 
   @override
   _MenungguPembayaranState createState() => _MenungguPembayaranState();
@@ -55,17 +59,23 @@ class _MenungguPembayaranState extends State<MenungguPembayaran> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text('Batas Pembayaran :'),
-                                Text('25 Sep 2021, 11:27',
-                                      style: TextStyle(fontWeight: FontWeight.bold),),
+                                Text(
+                                  '25 Sep 2021, 11:27',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ],
                             ),
                             Spacer(),
-                            Container(child: TweenAnimationBuilder(
-                                tween: Tween(begin: 59.0, end: 0),
-                                duration: Duration(seconds: 60),
-                                builder: (_, num value, child) => Text("0:${value.toInt()}",
-                                    style: TextStyle(color: Color(0xFFE45200), fontWeight: FontWeight.bold, fontSize: 15)))
-                            ),
+                            Container(
+                                child: TweenAnimationBuilder(
+                                    tween: Tween(begin: 59.0, end: 0),
+                                    duration: Duration(seconds: 60),
+                                    builder: (_, num value, child) => Text(
+                                        "0:${value.toInt()}",
+                                        style: TextStyle(
+                                            color: Color(0xFFE45200),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15)))),
                           ],
                         ),
                       ],
@@ -81,14 +91,14 @@ class _MenungguPembayaranState extends State<MenungguPembayaran> {
                         Row(
                           children: [
                             Image.asset(
-                              widget.img,
+                              "assets/images/logo_bca.png",
                               height: 50,
                               width: 50,
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 15),
                               child: Text(
-                                widget.text,
+                                "BCA",
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -101,22 +111,31 @@ class _MenungguPembayaranState extends State<MenungguPembayaran> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text('No Rekening :'),
-                                Text('7088801278950045',
+                                Text(
+                                  '7088801278950045',
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
                             Spacer(),
                             TextButton(
-                              child: Text('Salin',style: TextStyle(fontWeight: FontWeight.bold,color: bPrimaryColor),),
+                              child: Text(
+                                'Salin',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: bPrimaryColor),
+                              ),
                               onPressed: () {
-                                Clipboard.setData(ClipboardData(text: '7088801278950045')).then((result) {
+                                Clipboard.setData(
+                                        ClipboardData(text: '7088801278950045'))
+                                    .then((result) {
                                   final snackBar = SnackBar(
                                     content: Text('Text Tersalin'),
                                   );
-                                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
                                 });
-                                },
+                              },
                             ),
                           ],
                         ),
@@ -130,7 +149,8 @@ class _MenungguPembayaranState extends State<MenungguPembayaran> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text('Total Pembayaran :'),
-                                Text('Rp. 540.000',
+                                Text(
+                                  'Rp. 540.000',
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ],

@@ -1,12 +1,21 @@
-import 'package:blanjaloka_flutter/constant.dart';
-import 'package:blanjaloka_flutter/screens/register_merchant/tokoregister.dart';
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
-import '../../size_config.dart';
-import '../../widgets/primary_button.dart';
+import 'package:blanjaloka_flutter/provider/api_service.dart';
+import 'package:blanjaloka_flutter/provider/global.dart';
+import 'package:blanjaloka_flutter/screens/register_merchant/tokoregister.dart';
+import 'package:blanjaloka_flutter/size_config.dart';
+import 'package:blanjaloka_flutter/widgets/primary_button.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class EnterPassword extends StatefulWidget {
-  const EnterPassword({Key? key}) : super(key: key);
+  final String nama;
+  final String noHp;
+  final String email;
+
+  const EnterPassword(
+      {Key? key, required this.nama, required this.noHp, required this.email})
+      : super(key: key);
 
   @override
   _EnterPasswordState createState() => _EnterPasswordState();
@@ -14,10 +23,35 @@ class EnterPassword extends StatefulWidget {
 
 class _EnterPasswordState extends State<EnterPassword> {
   bool _passwordVisible = false;
+  String _kataSandi = "";
+  String _cekKataSandi = "";
+
   @override
   void initState() {
     super.initState();
     _passwordVisible = false;
+  }
+
+  createAccountPressed() async {
+    bool emailValid = RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(widget.email);
+    if (emailValid) {
+      http.Response response = await APIService.register(
+          widget.nama, widget.email, _kataSandi, widget.noHp);
+      Map responseMap = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => const TokoReg(),
+            ));
+      } else {
+        errorSnackBar(context, responseMap.values.first[0]);
+      }
+    } else {
+      errorSnackBar(context, 'email not valid');
+    }
   }
 
   @override
@@ -40,9 +74,6 @@ class _EnterPasswordState extends State<EnterPassword> {
       body: SafeArea(
         child: Container(
           width: double.infinity,
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 20,
@@ -102,6 +133,9 @@ class _EnterPasswordState extends State<EnterPassword> {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 2),
                           child: TextFormField(
+                            onChanged: (value) {
+                              _kataSandi = value;
+                            },
                             keyboardType: TextInputType.text,
                             obscureText: !_passwordVisible,
                             decoration: InputDecoration(
@@ -143,6 +177,9 @@ class _EnterPasswordState extends State<EnterPassword> {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 2),
                           child: TextFormField(
+                            onChanged: (value) {
+                              _cekKataSandi = value;
+                            },
                             keyboardType: TextInputType.text,
                             obscureText: !_passwordVisible,
                             decoration: InputDecoration(
@@ -174,15 +211,17 @@ class _EnterPasswordState extends State<EnterPassword> {
         ),
       ),
       bottomNavigationBar: Container(
-        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        margin: EdgeInsets.only(bottom: 16),
         height: getProportionateScreenHeight(100),
-        color: Colors.white,
-        child: PrimaryButton(
-            buttontxt: "Lanjut",
-            onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => TokoReg()));
-            }),
+        child: Center(
+          child: PrimaryButton(
+              buttontxt: "Lanjut",
+              onPressed: () {
+                createAccountPressed();
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => TokoReg()));
+              }),
+        ),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:blanjaloka_flutter/provider/global.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -12,5 +13,24 @@ class APIService{
     }else{
       throw Exception('failed to load data');
     }
+  }
+
+  static Future<http.Response> register(
+      String name, String email, String password, String telepon) async {
+    Map data = {
+      "nama_customer": name,
+      "email_customer": email,
+      "password": password,
+      "nomor_telepon": telepon,
+    };
+    var body = json.encode(data);
+    var url = Uri.parse(baseURL + 'customer/register');
+    http.Response response = await http.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+    print(response.body);
+    return response;
   }
 }

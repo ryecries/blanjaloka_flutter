@@ -1,6 +1,7 @@
 import 'package:blanjaloka_flutter/constant.dart';
 import 'package:blanjaloka_flutter/nav.dart';
 import 'package:blanjaloka_flutter/screens/login/login.dart';
+import 'package:blanjaloka_flutter/screens/register_merchant/tokoregister.dart';
 import 'package:blanjaloka_flutter/screens/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -36,11 +37,11 @@ class MyApp extends StatelessWidget {
               primary: bPrimaryColor,
             ),
       ),
-      home: _defaultHome,
-      routes: <String, WidgetBuilder>{
-        '/home': (BuildContext context) => Nav(),
-        '/login': (BuildContext context) => Login(),
-      },
+      home: TokoReg(),
+      // routes: <String, WidgetBuilder>{
+      //   '/home': (BuildContext context) => Nav(),
+      //   '/login': (BuildContext context) => Login(),
+      // },
     );
   }
 }
