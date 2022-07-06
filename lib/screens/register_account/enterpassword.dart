@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:blanjaloka_flutter/provider/api_service.dart';
 import 'package:blanjaloka_flutter/provider/global.dart';
+import 'package:blanjaloka_flutter/provider/service.dart';
 import 'package:blanjaloka_flutter/screens/register_merchant/tokoregister.dart';
 import 'package:blanjaloka_flutter/size_config.dart';
 import 'package:blanjaloka_flutter/widgets/primary_button.dart';
