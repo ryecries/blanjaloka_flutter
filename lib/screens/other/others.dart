@@ -1,3 +1,4 @@
+import 'package:blanjaloka_flutter/screens/home/home.dart';
 import 'package:blanjaloka_flutter/screens/login/login.dart';
 import 'package:blanjaloka_flutter/screens/pengaturan/pengaturan.dart';
 import 'package:blanjaloka_flutter/screens/pengaturan/pusat_bantuan.dart';
@@ -56,7 +57,7 @@ class _OthersState extends State<Others> {
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(
-        builder: (BuildContext context) =>  Login(),
+        builder: (BuildContext context) =>  HomePage(),
       ),
           (route) => false,
     );
@@ -551,8 +552,9 @@ class _OthersState extends State<Others> {
                                     height: 56,
                                     child: InkWell(
                                       onTap: () {
+                                        logOut();
                                         // SharedService.logout().then((_) {
-                                        Navigator.of(context).pushReplacementNamed("/login");
+                                        // Navigator.of(context).pushReplacementNamed("/login");
                                         // }
                                         // );
                                       },

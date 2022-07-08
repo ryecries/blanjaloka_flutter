@@ -36,13 +36,10 @@ class _SplashState extends State<Splash> {
             color: Colors.white,
           ),
           child: Center(
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 80),
-              child: Container(
-                width: getProportionateScreenWidth(240),
-                height: getProportionateScreenHeight(240),
-                child: Image.asset('assets/images/logo.png'),
-              ),
+            child: Container(
+              width: getProportionateScreenWidth(240),
+              height: getProportionateScreenHeight(240),
+              child: Image.asset('assets/images/logo.png'),
             ),
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:blanjaloka_flutter/size_config.dart';
 import 'package:flutter/material.dart';
 
 import '../constant.dart';
@@ -12,6 +13,7 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
@@ -19,10 +21,12 @@ class PrimaryButton extends StatelessWidget {
         width: double.infinity,
         child: ElevatedButton(
           child: Container(
-              padding: EdgeInsets.symmetric(vertical: 12),
-              child: Text(
-                buttontxt,
-                style: TextStyle(fontSize: 20),
+              height: getProportionateScreenHeight(50),
+              child: Center(
+                child: Text(
+                  buttontxt,
+                  style: TextStyle(fontSize: getProportionateScreenHeight(20)),
+                ),
               )),
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(

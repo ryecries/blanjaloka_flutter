@@ -263,14 +263,16 @@ class _PembayaranSewaState extends State<PembayaranSewa> {
             PrimaryButton(
                 buttontxt: 'Bayar',
                 onPressed: () {
-                  String? textToSend = widget.passedText;
-                  String? imgToSend = widget.passedImg;
+                  // String? textToSend = widget.passedText;
+                  // String? imgToSend = widget.passedImg;
                   // print(codeBank);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => MenungguPembayaran(
-                            img: imgToSend!, text: textToSend!)),
+                            // img: imgToSend!, 
+                            // text: textToSend!
+                            )),
                   );
                 })
           ],

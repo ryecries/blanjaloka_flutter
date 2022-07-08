@@ -1,10 +1,7 @@
-import 'package:blanjaloka_flutter/screens/register_account/otp.dart';
+import 'package:blanjaloka_flutter/screens/register_account/enterpassword.dart';
 import 'package:blanjaloka_flutter/size_config.dart';
 import 'package:blanjaloka_flutter/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-import 'enterpassword.dart';
 
 class RegisterAcc extends StatefulWidget {
   const RegisterAcc({Key? key}) : super(key: key);
@@ -14,6 +11,11 @@ class RegisterAcc extends StatefulWidget {
 }
 
 class _RegisterAccState extends State<RegisterAcc> {
+  String _nama = "";
+  String _noHp = "";
+  String _email = "";
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -33,149 +35,175 @@ class _RegisterAccState extends State<RegisterAcc> {
       ),
       body: SafeArea(
         child: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 20,
-            ),
-            child: Stack(
+          padding: EdgeInsets.only(left: 20, right: 20, top: 10),
+          child: SingleChildScrollView(
+            child: Column(
               children: [
-                ListView(
-                  children: [
-                    Column(
-                      children: [
-                        Column(children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 4,
-                              left: 8,
-                            ),
-                            child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                "Daftar Akun Toko Blanjaloka",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              left: 8,
-                              bottom: 20,
-                            ),
-                            child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                    'Lengkapi data dibawah untuk mendaftar Akun Toko Blanjaloka')),
-                          ),
-                        ]),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            top: 8,
-                            left: 8,
-                          ),
-                          child: Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              "Nama Lengkap",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 2),
-                          child: TextFormField(
-                            decoration: const InputDecoration(
-                              border: UnderlineInputBorder(),
-                              hintText: 'Masukkan Nama Lengkap Anda',
-                              hintStyle: TextStyle(fontSize: 14),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            top: 24,
-                            left: 8,
-                          ),
-                          child: Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              "Nomor Telepon",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 2),
-                          child: TextFormField(
-                            keyboardType: TextInputType.number,
-                            decoration: const InputDecoration(
-                              border: UnderlineInputBorder(),
-                              hintText: 'Contoh : 0812*********',
-                              hintStyle: TextStyle(fontSize: 14),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            top: 24,
-                            left: 8,
-                          ),
-                          child: Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              "Alamat Email",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 2),
-                          child: TextFormField(
-                            decoration: const InputDecoration(
-                              border: UnderlineInputBorder(),
-                              hintText: 'Contoh : Emailanda@gmail.com',
-                              hintStyle: TextStyle(fontSize: 14),
-                            ),
-                          ),
-                        ),
-                      ],
+                //========================================================
+                //Heading text
+                //========================================================
+
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Daftar Akun Toko Blanjaloka",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
                     ),
-                  ],
+                  ),
                 ),
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Lengkapi data dibawah untuk mendaftar Akun Toko Blanjaloka',
+                      style:
+                          TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+                    )),
+
+                //========================================================
+                //end Heading
+                //========================================================
+
+                //========================================================
+                //form
+                //========================================================
+
+                SizedBox(height: getProportionateScreenHeight(32)),
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Nama Lengkap",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                      TextFormField(
+                        keyboardType: TextInputType.name,
+                        decoration: const InputDecoration(
+                          border: UnderlineInputBorder(),
+                          hintText: 'Masukkan Nama Lengkap Anda',
+                          hintStyle: TextStyle(fontSize: 14),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Masukkan Nama Lengkap Anda';
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          _nama = value;
+                        },
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(4)),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Silahkan gunakan nama sesuai dengan KTP anda",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(24)),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Nomor Telepon",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                      TextFormField(
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                          border: UnderlineInputBorder(),
+                          hintText: 'Contoh : 0812*********',
+                          hintStyle: TextStyle(fontSize: 14),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Masukkan Nomor Telepon Anda';
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          _noHp = value;
+                        },
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(24)),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Alamat Email",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          border: UnderlineInputBorder(),
+                          hintText: 'Contoh : Emailanda@gmail.com',
+                          hintStyle: TextStyle(fontSize: 14),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Form Email Tidak Boleh Kosong';
+                          }
+                          if (!RegExp(
+                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              .hasMatch(value)) {
+                            return 'Masukkan Email yang Valid';
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          _email = value;
+                        },
+                      ),
+                    ],
+                  ),
+                )
+
+                //========================================================
+                //end form
+                //========================================================
               ],
             ),
           ),
         ),
       ),
+
+      //========================================================
+      //bottom button
+      //========================================================
       bottomNavigationBar: Container(
-        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        margin: EdgeInsets.only(bottom: 16),
         height: getProportionateScreenHeight(100),
-        child: PrimaryButton(
-            buttontxt: "Lanjut",
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => EnterPassword()));
-            }),
+        child: Center(
+          child: PrimaryButton(
+              buttontxt: "Lanjut",
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EnterPassword(
+                              nama: _nama, email: _email, noHp: _noHp)));
+                }
+              }),
+        ),
       ),
     );
   }

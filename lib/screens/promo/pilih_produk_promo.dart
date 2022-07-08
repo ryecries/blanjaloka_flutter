@@ -1,13 +1,10 @@
+import 'package:blanjaloka_flutter/widgets/primary_button.dart';
+import 'package:blanjaloka_flutter/widgets/search.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:blanjaloka_flutter/models/produk.dart';
 import 'package:blanjaloka_flutter/constant.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../widgets/primary_button.dart';
-import '../../widgets/search.dart';
-import '../addproduk/ubah_produk.dart';
 
 class PilihProductPromo extends StatefulWidget {
   const PilihProductPromo({Key? key}) : super(key: key);
@@ -70,8 +67,8 @@ class _PilihProductPromoState extends State<PilihProductPromo> {
                           height: MediaQuery.of(context).size.height / 1.75,
                           child: Center(
                               child: CircularProgressIndicator(
-                                color: bPrimaryColor,
-                              )));
+                            color: bPrimaryColor,
+                          )));
                     } else if (snapshot.hasError) {
                       return Text('${snapshot.error}');
                     } else if (snapshot.hasData) {
@@ -86,7 +83,7 @@ class _PilihProductPromoState extends State<PilihProductPromo> {
                           children: [
                             Image(
                                 image:
-                                AssetImage('assets/images/no_product.png')),
+                                    AssetImage('assets/images/no_product.png')),
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 40),
                               child: Text(
@@ -131,92 +128,92 @@ class _PilihProductPromoState extends State<PilihProductPromo> {
   }
 
   Widget buildProduk(List<Produk> produks) => ListView.builder(
-    itemCount: produks.length,
-    itemBuilder: (context, index) {
-      final produk = produks[index];
+        itemCount: produks.length,
+        itemBuilder: (context, index) {
+          final produk = produks[index];
 
-      return Container(
-        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        decoration: BoxDecoration(
-            border: Border.all(width: 0.1),
-            borderRadius: BorderRadius.circular(10)),
-        child: Stack(
-          children: [
-            // Tambah Checklist button
-            Column(
+          return Container(
+            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            decoration: BoxDecoration(
+                border: Border.all(width: 0.1),
+                borderRadius: BorderRadius.circular(10)),
+            child: Stack(
               children: [
-                Container(
-                  padding:
-                  EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: Row(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10.0),
-                        child: Image.network(
-                          produk.image,
-                          fit: BoxFit.cover,
-                          height: 80,
-                          width: 80,
-                        ),
+                // Tambah Checklist button
+                Column(
+                  children: [
+                    Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      child: Row(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: Image.network(
+                              produk.image,
+                              fit: BoxFit.cover,
+                              height: 80,
+                              width: 80,
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(left: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                RichText(
+                                  text: TextSpan(
+                                      text: produk.name,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.black)),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                RichText(
+                                  text: TextSpan(
+                                      text: 'Rp. ${produk.price} ',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black),
+                                      children: [
+                                        TextSpan(
+                                            text: '/ 1 ${produk.satuan}',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.grey))
+                                      ]),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                // RichText(
+                                //     text: TextSpan(
+                                //         text: 'Stok : ',
+                                //         style: TextStyle(
+                                //             fontSize: 12,
+                                //             fontWeight: FontWeight.w400,
+                                //             color: Colors.grey),
+                                //         children: [
+                                //           TextSpan(
+                                //               text: '${produk.stock}',
+                                //               style: TextStyle(color: Colors.black))
+                                //         ])),
+                              ],
+                            ),
+                          )
+                        ],
                       ),
-                      Container(
-                        padding: EdgeInsets.only(left: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            RichText(
-                              text: TextSpan(
-                                  text: produk.name,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black)),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            RichText(
-                              text: TextSpan(
-                                  text: 'Rp. ${produk.price} ',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black),
-                                  children: [
-                                    TextSpan(
-                                        text: '/ 1 ${produk.satuan}',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.grey))
-                                  ]),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            // RichText(
-                            //     text: TextSpan(
-                            //         text: 'Stok : ',
-                            //         style: TextStyle(
-                            //             fontSize: 12,
-                            //             fontWeight: FontWeight.w400,
-                            //             color: Colors.grey),
-                            //         children: [
-                            //           TextSpan(
-                            //               text: '${produk.stock}',
-                            //               style: TextStyle(color: Colors.black))
-                            //         ])),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
+          );
+        },
       );
-    },
-  );
 }

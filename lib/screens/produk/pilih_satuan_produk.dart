@@ -1,28 +1,27 @@
 import 'package:blanjaloka_flutter/constant.dart';
-import 'package:blanjaloka_flutter/screens/addproduk/tambah_produk.dart';
+import 'package:blanjaloka_flutter/screens/produk/tambah_produk.dart';
 
 import 'package:blanjaloka_flutter/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/labeled_radio.dart';
 import '../../widgets/no_image_labeled_radio.dart';
 
-class PilihKategoriProduk extends StatefulWidget {
-  const PilihKategoriProduk({Key? key}) : super(key: key);
+class PilihSatuanProduk extends StatefulWidget {
+  const PilihSatuanProduk({Key? key}) : super(key: key);
 
   @override
-  State<PilihKategoriProduk> createState() => _PilihKategoriProdukState();
+  State<PilihSatuanProduk> createState() => _PilihSatuanProdukState();
 }
 
-class _PilihKategoriProdukState extends State<PilihKategoriProduk> {
+class _PilihSatuanProdukState extends State<PilihSatuanProduk> {
   int _isRadioSelected = 0;
-  String? passKategori;
+  String? passSatuan;
 
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * .50,
+      height: MediaQuery.of(context).size.height * .45,
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Stack(
         children: [
@@ -38,7 +37,7 @@ class _PilihKategoriProdukState extends State<PilihKategoriProduk> {
                       onPressed: () => Navigator.of(context).pop(),
                     ),
                     Text(
-                      "Pilih Kategori Penjualan",
+                      "Pilih Satuan Produk",
                       style: TextStyle(
                           color: Colors.black87,
                           fontWeight: FontWeight.bold,
@@ -56,14 +55,14 @@ class _PilihKategoriProdukState extends State<PilihKategoriProduk> {
                           borderActive: _isRadioSelected == 1
                               ? bPrimaryColor
                               : Colors.black,
-                          label: 'Sayuran',
+                          label: 'Bungkus (bks)',
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
                           value: 1,
                           groupValue: _isRadioSelected,
                           onChanged: (newValue) {
                             setState(() {
                               _isRadioSelected = newValue;
-                              passKategori = 'Sayuran';
+                              passSatuan = 'Bungkus (bks)';
                             });
                           },
                         ),
@@ -71,14 +70,14 @@ class _PilihKategoriProdukState extends State<PilihKategoriProduk> {
                           borderActive: _isRadioSelected == 2
                               ? bPrimaryColor
                               : Colors.black,
-                          label: 'Buah',
+                          label: 'Gram (g)',
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
                           value: 2,
                           groupValue: _isRadioSelected,
                           onChanged: (newValue) {
                             setState(() {
                               _isRadioSelected = newValue;
-                              passKategori = 'Buah';
+                              passSatuan = 'Gram (g)';
                             });
                           },
                         ),
@@ -86,14 +85,14 @@ class _PilihKategoriProdukState extends State<PilihKategoriProduk> {
                           borderActive: _isRadioSelected == 3
                               ? bPrimaryColor
                               : Colors.black,
-                          label: 'Daging',
+                          label: 'Kilogram (Kg)',
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
                           value: 3,
                           groupValue: _isRadioSelected,
                           onChanged: (newValue) {
                             setState(() {
                               _isRadioSelected = newValue;
-                              passKategori = 'Daging';
+                              passSatuan = 'Kilogram (Kg)';
                             });
                           },
                         ),
@@ -101,29 +100,14 @@ class _PilihKategoriProdukState extends State<PilihKategoriProduk> {
                           borderActive: _isRadioSelected == 4
                               ? bPrimaryColor
                               : Colors.black,
-                          label: 'Ikan',
+                          label: 'Liter (ltr)',
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
                           value: 4,
                           groupValue: _isRadioSelected,
                           onChanged: (newValue) {
                             setState(() {
                               _isRadioSelected = newValue;
-                              passKategori = 'Ikan';
-                            });
-                          },
-                        ),
-                        NoImageLabeledRadio(
-                          borderActive: _isRadioSelected == 5
-                              ? bPrimaryColor
-                              : Colors.black,
-                          label: 'Sembako',
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          value: 5,
-                          groupValue: _isRadioSelected,
-                          onChanged: (newValue) {
-                            setState(() {
-                              _isRadioSelected = newValue;
-                              passKategori = 'Sembako';
+                              passSatuan = 'Liter (ltr)';
                             });
                           },
                         ),
@@ -142,9 +126,9 @@ class _PilihKategoriProdukState extends State<PilihKategoriProduk> {
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => TambahProduk(
-                          dataKategori : _isRadioSelected,
-                          passedKategori: passKategori,
-                        )));
+                      dataSatuan : _isRadioSelected,
+                      passedSatuan: passSatuan,
+                    )));
                 // Navigator.of(context).pop(_isRadioSelected.toString());
               })
         ],
