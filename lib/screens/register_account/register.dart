@@ -14,6 +14,7 @@ class _RegisterAccState extends State<RegisterAcc> {
   String _nama = "";
   String _noHp = "";
   String _email = "";
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -69,81 +70,111 @@ class _RegisterAccState extends State<RegisterAcc> {
                 //========================================================
 
                 SizedBox(height: getProportionateScreenHeight(32)),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "Nama Lengkap",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                    ),
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Nama Lengkap",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                      TextFormField(
+                        keyboardType: TextInputType.name,
+                        decoration: const InputDecoration(
+                          border: UnderlineInputBorder(),
+                          hintText: 'Masukkan Nama Lengkap Anda',
+                          hintStyle: TextStyle(fontSize: 14),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Masukkan Nama Lengkap Anda';
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          _nama = value;
+                        },
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(4)),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Silahkan gunakan nama sesuai dengan KTP anda",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(24)),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Nomor Telepon",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                      TextFormField(
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                          border: UnderlineInputBorder(),
+                          hintText: 'Contoh : 0812*********',
+                          hintStyle: TextStyle(fontSize: 14),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Masukkan Nomor Telepon Anda';
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          _noHp = value;
+                        },
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(24)),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Alamat Email",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          border: UnderlineInputBorder(),
+                          hintText: 'Contoh : Emailanda@gmail.com',
+                          hintStyle: TextStyle(fontSize: 14),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Form Email Tidak Boleh Kosong';
+                          }
+                          if (!RegExp(
+                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              .hasMatch(value)) {
+                            return 'Masukkan Email yang Valid';
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          _email = value;
+                        },
+                      ),
+                    ],
                   ),
-                ),
-                TextFormField(
-                  keyboardType: TextInputType.name,
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(),
-                    hintText: 'Masukkan Nama Lengkap Anda',
-                    hintStyle: TextStyle(fontSize: 14),
-                  ),
-                  onChanged: (value) {
-                    _nama = value;
-                  },
-                ),
-                SizedBox(height: getProportionateScreenHeight(4)),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "Silahkan gunakan nama sesuai dengan KTP anda",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 10,
-                    ),
-                  ),
-                ),
-                SizedBox(height: getProportionateScreenHeight(24)),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "Nomor Telepon",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                    ),
-                  ),
-                ),
-                TextFormField(
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(),
-                    hintText: 'Contoh : 0812*********',
-                    hintStyle: TextStyle(fontSize: 14),
-                  ),
-                  onChanged: (value) {
-                    _noHp = value;
-                  },
-                ),
-                SizedBox(height: getProportionateScreenHeight(24)),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "Alamat Email",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                    ),
-                  ),
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(),
-                    hintText: 'Contoh : Emailanda@gmail.com',
-                    hintStyle: TextStyle(fontSize: 14),
-                  ),
-                  onChanged: (value) {
-                    _email = value;
-                  },
-                ),
+                )
 
                 //========================================================
                 //end form
@@ -164,11 +195,13 @@ class _RegisterAccState extends State<RegisterAcc> {
           child: PrimaryButton(
               buttontxt: "Lanjut",
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => EnterPassword(
-                            nama: _nama, email: _email, noHp: _noHp)));
+                if (_formKey.currentState!.validate()) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EnterPassword(
+                              nama: _nama, email: _email, noHp: _noHp)));
+                }
               }),
         ),
       ),
